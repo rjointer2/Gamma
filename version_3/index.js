@@ -110,6 +110,21 @@ Rectangle.prototype = {
             this.y_velocity = 0;
     
         }
+    }, draw: function() {
+        // we have to give the canvas gray filling
+    context.fillStyle = '#202020';
+    // This erases the color behind and around the square, because it
+    // didn't we will get a contiouns stroke
+    context.fillRect(0, 0, 320, 180);
+    // This keeps the player stroking the canvas
+
+    // i don't want both to be red
+    context.fillStyle = this.color;// layer color: ;
+    // makes a new square
+    context.beginPath();
+    // the dimessional of the player
+    context.rect(red.x, red.y, red.width, red.height);
+    // so blue is working now! just no input
     }
 }
 
@@ -141,7 +156,7 @@ controller = {
         // state of the key
 
         let key_state = (event.type == "keydown") ? true : false;
-        console.log(event.keyCode)
+        //console.log(event.keyCode)
 
         switch(event.keyCode) {
 
@@ -202,33 +217,34 @@ loop = function() {
 
     // wall detection
 
-    // we have to give the canvas gray filling
-    context.fillStyle = '#202020';
-    // This erases the color behind and around the square, because it
-    // didn't we will get a contiouns stroke
-    context.fillRect(0, 0, 320, 180);
-    // This keeps the player stroking the canvas
-    context.fillStyle = "#ff0000";// hex for red
-    context.beginPath();
-    // the dimessional of the player
-    context.rect(red.x, red.y, red.width, red.height);
+    
+    red.draw();
+    blue.draw();
 
-    // so blue is working now! just no input
-    context.rect(blue.x, blue.y, blue.width, blue.height);
+
+    
     context.fill();
 
-    context.strokeStyle = "#202020";
+    /* context.strokeStyle = "#202020";
     context.lineWidth = 4;
     context.beginPath();
     context.moveTo(0, 164);
     context.lineTo(320, 164);
-    context.stroke();
+    context.stroke(); */
     
 
     window.requestAnimationFrame(loop);
 
 };
 
+// player 1
+
 window.addEventListener("keydown", controller.keyListener);
 window.addEventListener("keyup", controller.keyListener);
+
+// player 2
+
+window.addEventListener("keydown", controller1.keyListener2);
+window.addEventListener("keyup", controller1.keyListener1);
+
 window.requestAnimationFrame(loop);
