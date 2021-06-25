@@ -123,8 +123,10 @@ Rectangle.prototype = {
     // makes a new square
     context.beginPath();
     // the dimessional of the player
-    context.rect(red.x, red.y, red.width, red.height);
+    context.rect(this.x, this.y, this.width, this.height);
     // so blue is working now! just no input
+
+    context.fill();
     }
 }
 
@@ -219,11 +221,11 @@ loop = function() {
 
     
     red.draw();
-    blue.draw();
+
 
 
     
-    context.fill();
+    
 
     /* context.strokeStyle = "#202020";
     context.lineWidth = 4;
@@ -239,12 +241,17 @@ loop = function() {
 
 // player 1
 
-window.addEventListener("keydown", controller.keyListener);
-window.addEventListener("keyup", controller.keyListener);
+// so why is the controller defined but the controller 1 isn't
 
+/* window.addEventListener("keydown", controller.keyListener);
+window.addEventListener("keyup", controller.keyListener);
+ */
 // player 2
 
-window.addEventListener("keydown", controller1.keyListener2);
-window.addEventListener("keyup", controller1.keyListener1);
+window.addEventListener("keydown", controller1.keyListener);
+window.addEventListener("keyup", controller1.keyListener);
+
+console.log(window.controller)
+console.log(controller)
 
 window.requestAnimationFrame(loop);
