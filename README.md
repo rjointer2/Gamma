@@ -8,6 +8,12 @@ meant or should be should be use in production at. This git branch is simply
 the game in a beta state and to track the game's engine and physics 
 mechanics.
 
+This is basically a environment see if if we can get the minimal requiremnt ( MVP )
+for the final project.
+
+-> Working Character with moving and jumping functions
+-> Secondary Character with moving and jumping functions
+
 ## Installations
 
 There are NO installations or packages used as now!
