@@ -5,6 +5,7 @@ let context, controller, controller1, Rectangle, loop;
 // we now have to slect the canvas html5 element and get the context
 context = document.querySelector("canvas").getContext('2d');
 
+
 // we have to define the dimessions of the html5 canvas 
 
 context.canvas.height = 180;
@@ -14,7 +15,7 @@ context.canvas.width = 320;
 
 
 
-Rectangle = function(height, width, jumping, x_velocity, x, y_velocity, y, color, name) {
+Rectangle = function(height, width, jumping, x_velocity, x, y_velocity, y, color, name, dom) {
     this.height = height;
     this.width = width;
     // we have access to this prop so when it's jumping we define 
@@ -26,6 +27,7 @@ Rectangle = function(height, width, jumping, x_velocity, x, y_velocity, y, color
     this.y = y;
     this.color = color;
     this.name = name;
+    this.dom = dom;
 
 }
 
@@ -114,25 +116,20 @@ Rectangle.prototype = {
         }
     }, 
     draw: function() {
+
+        // makes a new square
+        context.beginPath();
         // we have to give the canvas gray filling
-    
-    // This keeps the player stroking the canvas
-
-    // i don't want both to be red
-    context.fillStyle = this.color;// layer color: ;
-    // makes a new square
-    context.beginPath();
-    // the dimessional of the player
-    context.rect(this.x, this.y, this.width, this.height);
-    // so blue is working now! just no input
-
-    context.fill();
+        context.rect(this.x, this.y, this.width, this.height);
+        // so blue is working now! just no input
+        context.fillStyle = this.color;// layer color: ;
+        context.fill();
     }
 }
 
 
 
-red = new Rectangle(32, 32, true, 0, 144, 0, 0, '#eb4334', 'red');
+red = new Rectangle(32, 32, true, 0, 144, 0, 0, '#eb4334', 'red', document.createElement('h2'));
 blue = new Rectangle(32, 32, true, 0, 100, 0, 0, '#3477eb');
 
 
@@ -154,10 +151,8 @@ controller = {
     left: false,
     right: false,
     up: false,
-    keyListener: (event) => {
+    keyListener: function (event) {
         // state of the key
-
-        console.log(event.keyCode)
 
         let key_state = (event.type == "keydown") ? true : false;
 
@@ -184,7 +179,10 @@ controller1 = {
     left: false,
     right: false,
     up: false,
-    keyListener: (event) => {
+    keyListener: function (event) {
+
+        console.log('controller 1')
+
         // state of the key
 
         let key_state = (event.type == "keydown") ? true : false;
@@ -192,13 +190,13 @@ controller1 = {
         switch(event.keyCode) {
 
             case 65: // left key
-            controller.left = key_state;
+            controller1.left = key_state;
             break;
             case 87: // up key
-            controller.up = key_state;
+            controller1.up = key_state;
             break;
             case 68: // right key
-            controller.right = key_state;
+            controller1.right = key_state;
             break;
 
         }
@@ -211,21 +209,15 @@ controller1 = {
 
 loop = function() {
 
+    red.input1();
+    blue.input2();
+
     context.fillStyle = '#202020';
-    // This erases the color behind and around the square, because it
-    // didn't we will get a contiouns stroke
     context.fillRect(0, 0, 320, 180);
 
-    // so we fill the canvas and then import the rectangle and use the draw and input function
-
-    red.input1();
     red.draw();
-
-    blue.input2();
     blue.draw();
 
-
-    
 
     window.requestAnimationFrame(loop);
 
@@ -238,12 +230,13 @@ loop = function() {
 window.addEventListener("keydown", controller.keyListener);
 window.addEventListener("keyup", controller.keyListener);
 
-// player 2
-
 window.addEventListener("keydown", controller1.keyListener);
 window.addEventListener("keyup", controller1.keyListener);
 
+
+
+
 window.requestAnimationFrame(loop);
 
-Object.defineProperty()
+console.log(red)
 
