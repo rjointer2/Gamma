@@ -220,6 +220,11 @@ loop = function() {
 
     red.input1();
     red.draw();
+
+    blue.input2();
+    blue.draw();
+
+
     
 
     window.requestAnimationFrame(loop);
@@ -234,6 +239,9 @@ window.addEventListener("keydown", controller.keyListener);
 window.addEventListener("keyup", controller.keyListener);
 
 // player 2
+
+window.addEventListener("keydown", controller1.keyListener);
+window.addEventListener("keyup", controller1.keyListener);
 
 window.requestAnimationFrame(loop);
 
