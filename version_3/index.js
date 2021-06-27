@@ -126,10 +126,29 @@ Rectangle.prototype = {
         context.fill();
     }, 
     // for the collision
-    bottom: () => this.y + this.height,
-    left: () => this.x,
-    top: () => this.x + this.width,
-    right: () => this.y,
+    bottom: function() {
+        return this.y + this.height
+    },
+    left: function() {
+        return this.x
+    },
+    top: function() {
+        return this.x + this.width
+    },
+    right: function() {
+        return this.y
+    },
+    testCollision:function(rectangle) {
+
+        if (this.top > rectangle.bottom || this.right < rectangle.left || this.bottom < rectangle.top || this.left > rectangle.right) {
+    
+          return false;
+    
+        }
+    
+        return true;
+    
+      }
 }
 
 
@@ -222,9 +241,11 @@ loop = function() {
     context.fillRect(0, 0, 320, 180);
 
     red.draw();
-    red.bottom();
     blue.draw();
 
+    console.log(red.left())
+
+    
 
     window.requestAnimationFrame(loop);
 
