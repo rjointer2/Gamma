@@ -124,7 +124,12 @@ Rectangle.prototype = {
         // so blue is working now! just no input
         context.fillStyle = this.color;// layer color: ;
         context.fill();
-    }
+    }, 
+    // for the collision
+    bottom: () => this.y + this.height,
+    left: () => this.x,
+    top: () => this.x + this.width,
+    right: () => this.y,
 }
 
 
@@ -154,6 +159,7 @@ controller = {
     keyListener: function (event) {
         // state of the key
 
+        console.log(event.keyCode)
         let key_state = (event.type == "keydown") ? true : false;
 
         switch(event.keyCode) {
@@ -216,6 +222,7 @@ loop = function() {
     context.fillRect(0, 0, 320, 180);
 
     red.draw();
+    red.bottom();
     blue.draw();
 
 
