@@ -1,6 +1,7 @@
 // We have 5 variables
 
-let context, controller, controller1, Rectangle, loop;
+let context, controller, controller1, Rectangle, loop; 
+                                                // engine
 
 /* 
 
@@ -9,7 +10,7 @@ let context, controller, controller1, Rectangle, loop;
                         and ALL physics and mechanics must account for the context.
 
     controller ->       This keybinds used to move the rectangles, each rectangle gets a controller
-    controller1 ->      In this beta model, we have the arrow kets codes and "a", "w", "s", "d"
+    controller1 ->      In this beta model, we have the arrow keys codes and "a", "w", "s", "d"
                         to control the rectangles individually
 
     Rectangle ->        A class use to blueprint the dimension and position on the context 
@@ -47,6 +48,8 @@ context.canvas.width = 320;
 // Rectangle Class
 
 Rectangle = function(height, width, jumping, x_velocity, x, y_velocity, y, color, name ) {
+
+    // regular properties to be used later
 
     // dimessions
     this.height = height;
@@ -171,9 +174,12 @@ Rectangle.prototype = {
     }, 
     draw: function() {
 
+        // this happens only once!
+
         // makes a new square
         context.beginPath();
         // we have to give the canvas gray filling
+        // x & y defines the postion in the context or space
         context.rect(this.x, this.y, this.width, this.height);
         // so blue is working now! just no input
         context.fillStyle = this.color;// layer color: ;
@@ -196,7 +202,7 @@ Rectangle.prototype = {
         // SO TECHINCALLY SPEAKING THIS ISN'T COLLISION DETECTION, THIS IS 
         // IS THIS DETECTING IF THE OBJECT CALLING THIS METHOD IS 
         // ON OR BEHIND THE ARGUMENT PASSED
-        if( this.x_cood() - rectangle.x_cood() < 10 ) console.log('touching');
+        if( this.x_cood() - rectangle.x_cood() < 32 ) console.log('touching');
         return false
 
     }
@@ -397,5 +403,24 @@ window.addEventListener("keyup", controller1.keyListener);
 
 window.requestAnimationFrame(loop);
 
-console.log(red)
+console.log(red);
+
+// New Goals
+
+/* 
+
+-> Define a invisible wall or detection for each square to not cross!
+-> Make the square shoot something
+
+// it's a animation that shoots square
+
+
+____________________
+
+other goals
+
+- losing health 
+- death or win conditions
+
+*/
 
