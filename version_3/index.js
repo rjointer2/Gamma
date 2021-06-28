@@ -217,9 +217,6 @@ Rectangle.prototype = {
 
 
 
-
-
-
 // Players
 
 red = new Rectangle(32, 32, true, 0, 144, 0, 0, '#eb4334', 'red');
