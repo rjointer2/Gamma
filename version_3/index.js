@@ -193,18 +193,17 @@ Rectangle.prototype = {
     x_cood: function() { return this.x },
     top: function() { return this.x + this.width },
 
-
-    testCollision: function(rectangle) {
-
-        // NOW THE RECTANGLE FOR THE PURPOSES OF THE GAME SHOULD NOT BE
-        // ON THE OTHER OF THE STARTING POSITIONS
-
-        // SO TECHINCALLY SPEAKING THIS ISN'T COLLISION DETECTION, THIS IS 
-        // IS THIS DETECTING IF THE OBJECT CALLING THIS METHOD IS 
-        // ON OR BEHIND THE ARGUMENT PASSED
-        if( this.x_cood() - rectangle.x_cood() < 32 ) console.log('touching');
-        return false
-
+    borderDetectionPlayer1: function() {
+        if(this.x_cood() > 148  ) {
+            this.x = 148;
+        }
+        return false;
+    },
+    borderDetectionPlayer2: function() {
+        if(this.x_cood() < 148  ) {
+            this.x = 148;
+        }
+        return false;
     }
 }
 
@@ -225,8 +224,8 @@ Rectangle.prototype = {
 
 // Players
 
-red = new Rectangle(32, 32, true, 0, 144, 0, 0, '#eb4334', 'red');
-blue = new Rectangle(32, 32, true, 0, 100, 0, 0, '#3477eb', 'blue');
+red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
+blue = new Rectangle(32, 32, true, 0, 200, 0, 0, '#3477eb', 'blue');
 
 
 
@@ -361,8 +360,8 @@ loop = function() {
     red.draw();
     blue.draw();
 
-    // test collision made
-    red.testCollision(blue);
+    blue.borderDetectionPlayer2();
+    red.borderDetectionPlayer1();
 
     // The window.requestAnimationFrame() method tells the browser that you wish 
     // to perform an animation and requests that the browser calls a specified 
