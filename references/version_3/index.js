@@ -184,6 +184,7 @@ Rectangle.prototype = {
         // so blue is working now! just no input
         context.fillStyle = this.color;// layer color: ;
         context.fill();
+<<<<<<< HEAD:version_3/index.js
     }, 
 
 
@@ -204,6 +205,8 @@ Rectangle.prototype = {
             this.x = 148;
         }
         return false;
+=======
+>>>>>>> 890562d68376901d1074896937df4b27b163a5e2:references/version_3/index.js
     }
 }
 
@@ -267,7 +270,6 @@ controller = {
     keyListener: function (event) {
         // state of the key
 
-        console.log(event.keyCode)
         let key_state = (event.type == "keydown") ? true : false;
 
         switch(event.keyCode) {
@@ -360,8 +362,11 @@ loop = function() {
     red.draw();
     blue.draw();
 
+<<<<<<< HEAD:version_3/index.js
     blue.borderDetectionPlayer2();
     red.borderDetectionPlayer1();
+=======
+>>>>>>> 890562d68376901d1074896937df4b27b163a5e2:references/version_3/index.js
 
     // The window.requestAnimationFrame() method tells the browser that you wish 
     // to perform an animation and requests that the browser calls a specified 

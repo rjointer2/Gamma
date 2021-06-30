@@ -1,0 +1,73 @@
+Todos / Assignments
+______________________________
+
+
+
+
+Hung
+______________________
+
+Lead on the UI/UX for the application
+Controllers and GraphQL stuff
+
+
+Roody
+______________________
+
+Work on making the game playable over a socket.io
+Shoot animation and collison test
+
+
+
+Muhammad
+______________________
+
+Front End with login and sign up components
+
+
+Senait
+______________________
+
+Lead on the Server Side Development architecture
+Controllers and GraphQL stuff
+
+Plans Today
+
+
+Front End
+_____________________________________________________________________
+
+Make Pages => Make Sign Up, Sign In, Forgot Password Pages
+
+components
+___________
+
+Navbar
+Footer
+Sign In 
+Game Console
+Chat 
+Friendlist
+
+
+
+
+Structure
+___________
+
+Navbar
+
+-> Pages <-
+
+Footer
+___________
+
+
+
+Backend
+_____________________________________________________________________
+
+Make Sever Connection
+Make DB -> DB Gamma
+Scripts
+
