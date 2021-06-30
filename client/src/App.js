@@ -18,7 +18,7 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/" component={Game}/>
       </Switch>
       <Switch>
         <Route exact path="/login" component={Login}/>
