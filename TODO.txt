@@ -1,0 +1,102 @@
+Todos / Assignments
+______________________________
+
+
+Hung
+______________________
+Develop a UI/UX for the application
+In charge of the Models
+
+Aaron
+______________________
+
+Roody
+______________________
+Redo Development Branch
+Add packages
+REDO README.md
+Make the Development Branch merge with Main
+Make the Development Branch Pullable
+Server Connection and App Connection
+
+
+Muhammad
+______________________
+
+Path created -> please refer the Goals with paths listed above
+
+
+Senait
+______________________
+
+Design the query and mutation and architecture
+
+
+
+Plans Today
+-> Assign Role and Identify Goals for the project
+-> List out the requirements form the critera
+-> Build the README, and LICENSE
+-> Build the TODO.txt
+-> Merge our product into the development branch and clear the other branches
+-> Pull from the development and begin on new assignments
+Front End
+_____________________________________________________________________
+File Structure
+components
+    / [conponentName] sub components
+hooks
+redux
+pages
+ulits
+    / [ulitName] sub ulit paths
+* In your own files *
+node_modules
+-> Packages
+State Management
+_______________________
+Redux
+React-Redux
+UI
+_______________________
+ReactDOM
+React
+React-Router-DOM
+any thing else.....
+-> Guidelines
+_______________________
+-> Write comments; use params if have to, please keep clean
+-> Use rfc only please and hooks
+-> Do not create custom hooks useless approved
+Backend
+_____________________________________________________________________
+controllers
+configs
+schemas
+    / resolvers
+models
+routes
+ulits
+server.js
+* In your own files *
+.env
+.configs
+node_modules
+-> Packages
+mongoose
+express
+bycrpt
+jsonwebtoken
+body-parser
+apollo-express-graphql
+socket.io
+any thing else.....
+-> Guidelines
+_______________________
+-> Write comments; use params if have to, please keep clean
+Root
+_____________________________________________________________________
+README.md
+LICENSE
+TODO.txt
+package.json
