@@ -10,11 +10,9 @@ const Game = () => {
 
     const socket = io('http://localhost:3001');
 
-    socket.on('init', handleInit);
-
-    function handleInit(msg) {
-        console.log(msg)
-    }
+    socket.on('serverToClient', (data) => {
+        console.log( `test message: ${data}`)
+    });
 
     console.log('test')
 

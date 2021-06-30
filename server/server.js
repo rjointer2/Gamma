@@ -63,9 +63,33 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     useUnifiedTopology: true
 }).then(() => {
     console.log('test');
+
+    /* 
+    
+        Using socket.io
+
+        We have 2 main functions ===> on and emit
+
+        emit => sends data
+        on => receives data
+
+        1st arg is the event which can be anything but some words are
+        reserved like connection
+
+        2nd ( optional ) data, you want to send
+
+        The client is ALWAYS emitted to the data to the server
+        and the server is connected to every client
+    
+    
+    */
+
+
     // When the client request hit the server, the socket is instantiated
     io.on('connection', (socket) => {
-        console.log('user created')
+        console.log('user created');
+
+        socket.emit(/* event */ 'serverToClient', "test")
     });
 }).catch(err => {
     console.log('failed')
