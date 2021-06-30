@@ -1,6 +1,8 @@
 
-// to get individual sockets
+import { useEffect } from 'react';
+
 import { io } from 'socket.io-client';
+import engine from '../../ulits/engine';
 
 // this is can be used with a proxy later on
 
@@ -14,11 +16,19 @@ const Game = () => {
         console.log( `test message: ${data}`)
     });
 
-    console.log('test')
+    // engine here 
+
+    useEffect(() => {
+        const context = document.querySelector("canvas");
+        console.log(context)
+    }, []);
+
+    
 
     return (
         <div>
-           
+            {/* THIS IS WHERE THE GAME'S SCREEN IS HELD */}
+           <canvas></canvas>
         </div>
     )
 }
