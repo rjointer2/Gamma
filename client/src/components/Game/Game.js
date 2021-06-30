@@ -12,15 +12,27 @@ const Game = () => {
 
     const socket = io('http://localhost:3001');
 
-    socket.on('serverToClient', (data) => {
-        console.log( `test message: ${data}`)
-    });
+    
+
+    function newPlayer() {
+        // now the client is sending data constantly
+        // in the server we have to receive this data
+        socket.emit(`update`, 'test')
+    }
+
+    /* 
+
+    If new client a new player is created 
+    
+    */
 
     // engine here 
 
     useEffect(() => {
-        const context = document.querySelector("canvas");
-        console.log(context)
+        // We have to pass the engine in the useEffect to not 
+        // render on a side effect and prevent canvas 
+        // selected from being null when queryed
+        engine()
     }, []);
 
     

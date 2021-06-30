@@ -1,5 +1,15 @@
 
-import { context } from "./engine/engine";
+
+/* 
+
+    TODOS 
+
+    when a client connect on the socket, the play instantises 
+    a new player
+
+    the max is two players
+
+*/
 
 // we have to define the dimessions of the html5 canvas in pixels
 
@@ -8,7 +18,7 @@ const engine = () => {
     
     // Select the canvas element and define it's dimessions
 
-    
+    const context = document.querySelector("canvas");
 
     // getContext method returns a drawing context on the canvas,
     // "2d", leading to the creation of a CanvasRenderingContext2D 

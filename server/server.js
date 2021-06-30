@@ -89,7 +89,10 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     io.on('connection', (socket) => {
         console.log('user created');
 
-        socket.emit(/* event */ 'serverToClient', "test")
+        // we can receive the clients information
+        socket.on('update', data => {
+            console.log(data)
+        })
     });
 }).catch(err => {
     console.log('failed')
