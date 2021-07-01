@@ -20,8 +20,6 @@ const engine = (...playersData) => {
         // controllers
         input,
         draw: function() {
-            // this happens only once!
-
             // makes a new square
             context.beginPath();
             // we have to give the canvas gray filling

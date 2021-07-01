@@ -50,7 +50,7 @@ export let controller = {
     right: false,
     up: false,
     keyListener: function (event) {
-        console.log('test')
+    
         // state of the key
 
         let key_state = (event.type == "keydown") ? true : false;
