@@ -114,7 +114,10 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
 
             console.log(`Spawned ${data.x}`)
             console.log(`There are ${Object.keys(players).length} players in the server`);
-            console.log(`players dictionary: `, players)
+            console.log(`players dictionary: `, players);
+
+            // let's send to the client to update the dictionaries of the players
+            socket.emit('updatePlayers', players)
         })
 
         // disconnecting
@@ -124,6 +127,9 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
             delete players[socket.id];
             console.log(`${socket.id} left the server`)
             console.log(`There are ${Object.keys(players).length} players in the server`);
+
+            // let's send to the client to update the dictionaries of the players
+            socket.emit('updatePlayers', players)
         });
 
         // clients aren't aware of the client's conenction or disconnection

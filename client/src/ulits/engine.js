@@ -11,21 +11,24 @@ import { bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPla
 
 const engine = (...playersData) => {
 
+    // here we will set a dictionary of the player on the client-side
+    let clientPlayers = {};
+
     // port listening to
     const socket = io('http://localhost:3001');
 
     const context = document.querySelector("canvas").getContext('2d');
 
-    // Yes we are putting the a method in the engine directly
-    // but to keep on time with the deadline, this is 
-    // best solution I could think of without the useEffect
-    // not catching the context
     Rectangle.prototype = {
         // physics
         bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPlayer2,
         // controllers
         input,
+        // animation
         draw: function() {
+            // because the useEffect isn't catching the canvas on every went import from a different file
+            // we will define the draw method directly in the prototype of the Rectangle with the same reference of the canvas
+            
             // makes a new square
             context.beginPath();
             // we have to give the canvas gray filling
@@ -41,9 +44,30 @@ const engine = (...playersData) => {
     
     // when a player is connected a new square is created 
 
-    socket.emit('newPlayer', {x: red.x_cood()})
+    socket.emit('newPlayer', {x: red.x_cood()});
+
+    socket.on('updatePlayers', players => {
+        context.clearRect(0, 0, 320, 180);
+        // now to literate through the dictionaries
+        let playersFound = {};
 
 
+        for(let id in players) {
+                                                // client get's own id on window
+            if(clientPlayers[id] === undefined && id !== socket.id ) { 
+                clientPlayers[id] = new Rectangle (32, 32, true, 0, 160, 0, 0, '#eb4334', 'red');
+            }
+            playersFound = true;
+        }
+        for(let id in clientPlayers[id]) {
+            // we need a remove or delete function to remove the 
+            // square from the screen
+            if(!playersFound[id]) {
+                
+            }
+        }
+    })
+ 
     // this loop has to take args for the players connect
 
     const loop = function(...players) {
@@ -72,8 +96,6 @@ const engine = (...playersData) => {
         // to perform an animation and requests that the browser calls a specified 
         // function to update an animation before the next repaint. 
         window.requestAnimationFrame(loop);
-        // We will recursive call the method give a new frame, => 60 frames every second
-        // or 60 fps
     
     }
 
