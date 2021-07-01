@@ -24,11 +24,23 @@ const engine = () => {
     // "2d", leading to the creation of a CanvasRenderingContext2D 
     // object representing a two-dimensional rendering context.
 
+    context.canvas.height = 180; // screen height
+    context.canvas.width = 320; // screen width
 
-    const loop = function() {
 
-        console.log('test')
+    // this loop has to take args for the players connect
 
+    const loop = function(...players) {
+
+        // player's controls here
+
+        // Fills Canvas / Context
+        context.fillStyle = '#202020';
+        context.fillRect(0, 0, 320, 180);
+
+        // player's animation here
+
+        // player's border detection
 
         // The window.requestAnimationFrame() method tells the browser that you wish 
         // to perform an animation and requests that the browser calls a specified 

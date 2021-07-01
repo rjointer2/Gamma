@@ -351,7 +351,7 @@ loop = function() {
     red.input1();
     blue.input2();
 
-    // Fills Canvas / COntext
+    // Fills Canvas / Context
     context.fillStyle = '#202020';
     context.fillRect(0, 0, 320, 180);
 

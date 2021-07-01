@@ -12,19 +12,10 @@ const Game = () => {
 
     const socket = io('http://localhost:3001');
 
-    
+    // In the engine we can pass players in the function
+    // have a arr of player
 
-    function newPlayer() {
-        // now the client is sending data constantly
-        // in the server we have to receive this data
-        socket.emit(`update`, 'test')
-    }
-
-    /* 
-
-    If new client a new player is created 
-    
-    */
+    socket.emit('update', )
 
     // engine here 
 
@@ -32,7 +23,7 @@ const Game = () => {
         // We have to pass the engine in the useEffect to not 
         // render on a side effect and prevent canvas 
         // selected from being null when queryed
-        engine()
+        engine();
     }, []);
 
     
