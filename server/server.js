@@ -84,15 +84,41 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     
     */
 
+    // global object
+    let players = {}
+
 
     // When the client request hit the server, the socket is instantiated
     io.on('connection', (socket) => {
         console.log('user created');
 
-        // we can receive the clients information
-        socket.on('update', data => {
-            console.log(`x is ${data.x}`)
+        socket.on('newPlayer', data => {
+            // with theses new players they can be stored in key value 
+            // pairs in a global object
+            console.log(`This is player ${socket.id}`);
+
+            // the player's socket id is made a property of the 
+            // data recevied ( which is passed in the client )
+            players[socket.id] = data;
+
+            /* 
+            
+                Ex: player.x_cood() = 80
+                player {} => player {
+                    socket.id : x: 80
+                }
+
+            */
+
+            console.log(`Spawned ${data.x}`)
+            console.log(`There are ${Object.keys(players).length} players in the server`);
+            console.log(`players dictionary: `, players)
         })
+
+        // we can receive the clients information
+        /* socket.on('update', data => {
+            console.log(`x is ${data.x}`)
+        }) */
     });
 }).catch(err => {
     console.log('failed')

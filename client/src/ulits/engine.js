@@ -10,6 +10,8 @@ import { bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPla
 // we have to define the dimessions of the html5 canvas in pixels
 
 const engine = (...playersData) => {
+
+    // port listening to
     const socket = io('http://localhost:3001');
 
     const context = document.querySelector("canvas").getContext('2d');
@@ -38,6 +40,8 @@ const engine = (...playersData) => {
     let red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
     
     // when a player is connected a new square is created 
+
+    socket.emit('newPlayer', {x: red.x_cood()})
 
 
     // this loop has to take args for the players connect
