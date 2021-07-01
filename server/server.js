@@ -1,4 +1,5 @@
 
+
 // port 
 
 const _PORT = process.env.PORT || 3001;
@@ -11,6 +12,10 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const db = require('./config/connection');
+// import our typeDefs and resolvers
+const { typeDefs, resolvers } = require('./schemas');
+const { authMiddleware } = require('./utils/auth');
 
 // Express will be invoked in the top level of the file and 
 // stored in a instance of appServer 
@@ -29,16 +34,13 @@ const io = require('socket.io')(appServer, {
 
 // schema, resolver, typeDefs here
 
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: authMiddleware
+});
+
 // Middleware
-
-/* 
-
-    App Middleware and Request Method can be used normally
-    from the app reference in the top level
-
-    // Development Testing Below!
-
-*/
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -140,7 +142,4 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     console.log('failed')
     console.log(err)
 });
-
-
-
 
