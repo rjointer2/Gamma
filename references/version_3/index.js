@@ -1,38 +1,95 @@
-// We have to make 3 variables for the rectangle
+// We have 5 variables
 
-let context, controller, controller1, Rectangle, loop;
+let context, controller, controller1, Rectangle, loop; 
+                                                // engine
 
-// we now have to slect the canvas html5 element and get the context
+/* 
+
+    context ->          This is the Canvas HTML5 Element in native Javascript that allows 
+                        ditigal painting to be made. This game relays heavily on the canvas
+                        and ALL physics and mechanics must account for the context.
+
+    controller ->       This keybinds used to move the rectangles, each rectangle gets a controller
+    controller1 ->      In this beta model, we have the arrow keys codes and "a", "w", "s", "d"
+                        to control the rectangles individually
+
+    Rectangle ->        A class use to blueprint the dimension and position on the context 
+
+    loop ->             The "engine" that loop each frame of the context to simulate moving
+
+*/
+
+// getContext method returns a drawing context on the canvas,
+// "2d", leading to the creation of a CanvasRenderingContext2D 
+// object representing a two-dimensional rendering context.
+
 context = document.querySelector("canvas").getContext('2d');
 
 
-// we have to define the dimessions of the html5 canvas 
+// we have to define the dimessions of the html5 canvas in pixels
 
 context.canvas.height = 180;
 context.canvas.width = 320;
 
-// define the propteries and dimesion of the rectangle
 
 
 
-Rectangle = function(height, width, jumping, x_velocity, x, y_velocity, y, color, name, dom) {
+
+
+
+
+
+
+
+
+
+
+
+// Rectangle Class
+
+Rectangle = function(height, width, jumping, x_velocity, x, y_velocity, y, color, name ) {
+
+    // regular properties to be used later
+
+    // dimessions
     this.height = height;
     this.width = width;
-    // we have access to this prop so when it's jumping we define 
-    // flase in the air
-    this.jumping = jumping;
+
+    // coords
+
+    this.x = x; // height poisitioning
+    this.y = y; // left and right / y position
+
+    // physics
+    
+    this.jumping = jumping; // a boolean to tell if the rectangle isn't grounded
+    
     this.x_velocity = x_velocity;
-    this.x = x; // on the ground
     this.y_velocity = y_velocity;
-    this.y = y;
+
+    // characteristics / comestics
+
     this.color = color;
     this.name = name;
-    this.dom = dom;
 
 }
 
+
+
+
+
+
+
+
+
+
+// Rectangle Class Controls and Inputs and Physics Logic
+
 Rectangle.prototype = {
+    // For Red rectangle
     input1: function() {
+
+        // jumping 
         if(controller.up && this.jumping == false) {
             this.y_velocity -= 20;
             this.jumping = true;
@@ -117,20 +174,76 @@ Rectangle.prototype = {
     }, 
     draw: function() {
 
+        // this happens only once!
+
         // makes a new square
         context.beginPath();
         // we have to give the canvas gray filling
+        // x & y defines the postion in the context or space
         context.rect(this.x, this.y, this.width, this.height);
         // so blue is working now! just no input
         context.fillStyle = this.color;// layer color: ;
         context.fill();
+    }, 
+
+
+    // for the collision detection
+
+    bottom: function() { return this.y + this.height },
+    x_cood: function() { return this.x },
+    top: function() { return this.x + this.width },
+
+    borderDetectionPlayer1: function() {
+        if(this.x_cood() > 148  ) {
+            this.x = 148;
+        }
+        return false;
+    },
+    borderDetectionPlayer2: function() {
+        if(this.x_cood() < 148  ) {
+            this.x = 148;
+        }
+        return false;
     }
 }
 
 
 
-red = new Rectangle(32, 32, true, 0, 144, 0, 0, '#eb4334', 'red', document.createElement('h2'));
-blue = new Rectangle(32, 32, true, 0, 100, 0, 0, '#3477eb');
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Players
+
+red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
+blue = new Rectangle(32, 32, true, 0, 200, 0, 0, '#3477eb', 'blue');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -205,38 +318,107 @@ controller1 = {
 }
 
 
-// now let's merge the controller logic with the physics
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Engine
 
 loop = function() {
 
     red.input1();
     blue.input2();
 
+    // Fills Canvas / Context
     context.fillStyle = '#202020';
     context.fillRect(0, 0, 320, 180);
 
+    // Redraws the red and blue square each frame
     red.draw();
     blue.draw();
 
+    blue.borderDetectionPlayer2();
+    red.borderDetectionPlayer1();
 
+    // The window.requestAnimationFrame() method tells the browser that you wish 
+    // to perform an animation and requests that the browser calls a specified 
+    // function to update an animation before the next repaint. 
     window.requestAnimationFrame(loop);
+    // We will recursive call the method give a new frame, => 60 frames every second
+    // or 60 fps
 
 };
 
-// player 1
 
-// so why is the controller defined but the controller 1 isn't
+
+
+
+
+
+
+
+
+
+
+
+
+// Key Listener for Players
+
+// Red
 
 window.addEventListener("keydown", controller.keyListener);
 window.addEventListener("keyup", controller.keyListener);
+
+// Blue
 
 window.addEventListener("keydown", controller1.keyListener);
 window.addEventListener("keyup", controller1.keyListener);
 
 
-
+// Init Engine
 
 window.requestAnimationFrame(loop);
 
-console.log(red)
+console.log(red);
+
+// New Goals
+
+/* 
+
+-> Define a invisible wall or detection for each square to not cross!
+-> Make the square shoot something
+
+// it's a animation that shoots square
+
+
+____________________
+
+other goals
+
+- losing health 
+- death or win conditions
+
+*/
 

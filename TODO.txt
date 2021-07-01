@@ -7,8 +7,7 @@ ______________________________
 Hung
 ______________________
 
-Lead on the UI/UX for the application
-Controllers and GraphQL stuff
+
 
 
 Roody
@@ -16,6 +15,16 @@ ______________________
 
 Work on making the game playable over a socket.io
 Shoot animation and collison test
+
+Models
+___________
+
+Users
+Chat
+Friends 
+
+
+
 
 
 
@@ -70,4 +79,6 @@ _____________________________________________________________________
 Make Sever Connection
 Make DB -> DB Gamma
 Scripts
+
+
 
