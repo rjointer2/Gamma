@@ -1,14 +1,7 @@
 
 import Rectangle from "./player/playerClass";
-import { input } from './player/playerControllers';
+import { controller, input } from './player/playerControllers';
 import { bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPlayer2 } from './player/playerPhysics';
-
-Rectangle.prototype = {
-    // physics
-    bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPlayer2,
-    // controllers
-    input,
-}
 
 
 // we have to define the dimessions of the html5 canvas in pixels
@@ -22,6 +15,10 @@ const engine = (...playersData) => {
     // best solution I could think of without the useEffect
     // not catching the context
     Rectangle.prototype = {
+        // physics
+        bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPlayer2,
+        // controllers
+        input,
         draw: function() {
             // this happens only once!
 
@@ -36,6 +33,8 @@ const engine = (...playersData) => {
         }
     }
 
+    let red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
+    
     // when a player is connected a new square is created 
 
 
@@ -45,7 +44,7 @@ const engine = (...playersData) => {
 
         // player's controls here
 
-
+        red.input();
         
 
         context.canvas.height = 180; // screen height
@@ -57,6 +56,8 @@ const engine = (...playersData) => {
 
         // player's animation here
 
+        red.draw();
+
         // player's border detection
 
         // The window.requestAnimationFrame() method tells the browser that you wish 
@@ -67,6 +68,14 @@ const engine = (...playersData) => {
         // or 60 fps
     
     }
+
+    // Key Listener for Players
+
+    // Red
+
+    window.addEventListener("keydown", controller.keyListener);
+    window.addEventListener("keyup", controller.keyListener);
+
     
     // Init Engine
     
