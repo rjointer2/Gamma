@@ -18,7 +18,7 @@ const app = express();
 const appServer = app.listen(_PORT, () => { 
     // appServer will be passed in 
     // the HOF's arg              
-    console.log('listening')
+    console.log('listening');
 });
 const { ApolloServer } = require('apollo-server-express');
 const io = require('socket.io')(appServer, {
