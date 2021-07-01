@@ -16,13 +16,20 @@ import SignUp from './pages/SignUp/SignUp';
 function App() {
   return (
     <Router>
+      <Navbar />
       <Switch>
-        <Route exact path="/" component={Navbar}/>
+        <Route exact path="/" component={Home}/>
+      </Switch>
+      <Switch>
         <Route exact path="/login" component={Login}/>
-        <Route exact path="/signup" component={SignUp}/>
-        <Route exact path="/home" component={Home}/>
+      </Switch>
+      <Switch>
         <Route exact path="/game" component={Game}/>
       </Switch>
+      <Switch>
+       <Route exact path="/signup" component={SignUp}/>
+      </Switch>    
+      {/* FOOTER HERE */}    
     </Router>
   );
 }
