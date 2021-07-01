@@ -92,6 +92,8 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     io.on('connection', (socket) => {
         console.log('user created');
 
+        // connecting
+
         socket.on('newPlayer', data => {
             // with theses new players they can be stored in key value 
             // pairs in a global object
@@ -115,10 +117,18 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
             console.log(`players dictionary: `, players)
         })
 
-        // we can receive the clients information
-        /* socket.on('update', data => {
-            console.log(`x is ${data.x}`)
-        }) */
+        // disconnecting
+        // "disconnect" is a reserve string keyword for the socket's methods
+
+        socket.on('disconnect', function() {
+            delete players[socket.id];
+            console.log(`${socket.id} left the server`)
+            console.log(`There are ${Object.keys(players).length} players in the server`);
+        });
+
+        // clients aren't aware of the client's conenction or disconnection
+        // so for the front end we have to broadcast those events
+
     });
 }).catch(err => {
     console.log('failed')
