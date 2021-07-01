@@ -24,7 +24,7 @@ const typeDefs = gql`
           addUser(Username: String!, email: String!, password: String!): Auth
       }
 
-  }
+    }
 
 `;
 
