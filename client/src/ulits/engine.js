@@ -1,4 +1,14 @@
 
+import Rectangle from "./player/playerClass";
+import { bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPlayer2 } from './player/playerPhysics';
+
+Rectangle.prototype = {
+    //physics
+    bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPlayer2,
+    
+}
+console.log(Rectangle)
+
 
 /* 
 
@@ -13,12 +23,16 @@
 
 // we have to define the dimessions of the html5 canvas in pixels
 
-const engine = () => {
+const engine = (...playersData) => {
+
+    // when a player is connected a new square is created 
+
+
 
     
     // Select the canvas element and define it's dimessions
 
-    const context = document.querySelector("canvas");
+    const context = document.querySelector("canvas").getContext('2d');
 
     // getContext method returns a drawing context on the canvas,
     // "2d", leading to the creation of a CanvasRenderingContext2D 
