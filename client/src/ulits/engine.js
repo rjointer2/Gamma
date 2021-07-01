@@ -8,41 +8,35 @@ Rectangle.prototype = {
     bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPlayer2,
     // controllers
     input,
-    
 }
-console.log(Rectangle)
 
-
-/* 
-
-    TODOS 
-
-    when a client connect on the socket, the play instantises 
-    a new player
-
-    the max is two players
-
-*/
 
 // we have to define the dimessions of the html5 canvas in pixels
 
 const engine = (...playersData) => {
 
-    // when a player is connected a new square is created 
-
-
-
-    
-    // Select the canvas element and define it's dimessions
-
     const context = document.querySelector("canvas").getContext('2d');
 
-    // getContext method returns a drawing context on the canvas,
-    // "2d", leading to the creation of a CanvasRenderingContext2D 
-    // object representing a two-dimensional rendering context.
+    // Yes we are putting the a method in the engine directly
+    // but to keep on time with the deadline, this is 
+    // best solution I could think of without the useEffect
+    // not catching the context
+    Rectangle.prototype = {
+        draw: function() {
+            // this happens only once!
 
-    context.canvas.height = 180; // screen height
-    context.canvas.width = 320; // screen width
+            // makes a new square
+            context.beginPath();
+            // we have to give the canvas gray filling
+            // x & y defines the postion in the context or space
+            context.rect(this.x, this.y, this.width, this.height);
+            // so blue is working now! just no input
+            context.fillStyle = this.color;// layer color: ;
+            context.fill();
+        }
+    }
+
+    // when a player is connected a new square is created 
 
 
     // this loop has to take args for the players connect
@@ -50,6 +44,12 @@ const engine = (...playersData) => {
     const loop = function(...players) {
 
         // player's controls here
+
+
+        
+
+        context.canvas.height = 180; // screen height
+        context.canvas.width = 320; // screen width
 
         // Fills Canvas / Context
         context.fillStyle = '#202020';
@@ -72,10 +72,6 @@ const engine = (...playersData) => {
     
     window.requestAnimationFrame(loop);
 }
-
-
-
-
 
 // Here We Export the Game
 
