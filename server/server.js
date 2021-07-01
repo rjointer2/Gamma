@@ -91,7 +91,7 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
 
         // we can receive the clients information
         socket.on('update', data => {
-            console.log(data)
+            console.log(`x is ${data.x}`)
         })
     });
 }).catch(err => {

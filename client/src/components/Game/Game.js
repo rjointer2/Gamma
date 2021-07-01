@@ -1,7 +1,6 @@
 
 import { useEffect } from 'react';
 
-import { io } from 'socket.io-client';
 import engine from '../../ulits/engine';
 
 // this is can be used with a proxy later on
@@ -9,13 +8,6 @@ import engine from '../../ulits/engine';
 
 
 const Game = () => {
-
-    const socket = io('http://localhost:3001');
-
-    // In the engine we can pass players in the function
-    // have a arr of player
-
-    socket.emit('update', )
 
     // engine here 
 

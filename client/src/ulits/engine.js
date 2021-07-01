@@ -1,4 +1,7 @@
 
+
+import { io } from 'socket.io-client';
+
 import Rectangle from "./player/playerClass";
 import { controller, input } from './player/playerControllers';
 import { bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPlayer2 } from './player/playerPhysics';
@@ -7,6 +10,7 @@ import { bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPla
 // we have to define the dimessions of the html5 canvas in pixels
 
 const engine = (...playersData) => {
+    const socket = io('http://localhost:3001');
 
     const context = document.querySelector("canvas").getContext('2d');
 
@@ -56,6 +60,8 @@ const engine = (...playersData) => {
 
         red.draw();
 
+        socket.emit('update', { x: red.x_cood() } )
+
         // player's border detection
 
         // The window.requestAnimationFrame() method tells the browser that you wish 
@@ -74,7 +80,7 @@ const engine = (...playersData) => {
     window.addEventListener("keydown", controller.keyListener);
     window.addEventListener("keyup", controller.keyListener);
 
-    
+
     // Init Engine
     
     window.requestAnimationFrame(loop);
