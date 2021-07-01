@@ -1,10 +1,13 @@
 
 import Rectangle from "./player/playerClass";
+import { input } from './player/playerControllers';
 import { bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPlayer2 } from './player/playerPhysics';
 
 Rectangle.prototype = {
-    //physics
+    // physics
     bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPlayer2,
+    // controllers
+    input,
     
 }
 console.log(Rectangle)
