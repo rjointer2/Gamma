@@ -1,10 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Page, Container, TextArea, Button, Form, MyRow, MyMessage, PartnerRow, PartnerMessage } from "./ChatStyles";
+import { Page, Container, TextArea, Button, Form, MyRow, MyMessage, PartnerRow, PartnerMessage, particles } from "./ChatStyles";
 import { io}  from "socket.io-client";
 import Image from "./ImageChat";
+import Particles from 'react-particles-js';
 
-
-
+const particlesOptions = {
+    particles: {
+      number: {
+        value: 30,
+        density: {
+          enable: true,
+          value_area: 800
+        }
+      }
+    }
+  }
 
 const Chat = () => {
   
