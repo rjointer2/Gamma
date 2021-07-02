@@ -14,7 +14,7 @@ const Chat = () => {
     const socketRef = useRef();
 
     useEffect(() => {
-        
+        socketRef.current = io.connect('/');
     });
     return (
         <div>
