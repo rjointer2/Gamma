@@ -3,8 +3,6 @@ import { FormContainer, FormGrid, Input, LoginContainer } from "./LoginStyles"
 
 const Login = () => {
 
-    let color = false
-
     return (
         <LoginContainer>
             <FormContainer>
