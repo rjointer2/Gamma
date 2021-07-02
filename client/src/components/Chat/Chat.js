@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Page, Container, TextArea, Button, Form, MyRow } from "./ChatStyles";
+import { Page, Container, TextArea, Button, Form, MyRow, MyMessage, PartnerRow, PartnerMessage } from "./ChatStyles";
 import io from "socket.io-client";
 
 
@@ -41,23 +41,41 @@ const Chat = () => {
          socketRef.current.emit("send message", messageObject);
      }
 
-     function handleChanges(e) {
+     function handleChange(e) {
          setMessage(e.target.value)
      }
 
 
-
-
-
-    return (
-        <div>
-         <Page></Page>
-         <Container></Container>
-         <TextArea></TextArea>
-         <Button></Button>
-         <Form></Form>
-         <MyRow></MyRow>  
-        </div>
+   return (
+        
+         <Page>
+           <Container>
+                {messages.map((message, index) => {
+                    if (message.id === yourID) {
+                    return (
+                    <MyRow key={index}>
+                        <MyMessage>
+                        {message.body}
+                        </MyMessage>
+                    </MyRow>
+                    )
+                }
+                return (
+                    <PartnerRow key={index}>
+                    <PartnerMessage>
+                        {message.body}
+                    </PartnerMessage>
+                    </PartnerRow>
+                )
+                })}
+           </Container>
+           <Form onSubmit={sendMessage}>
+              <TextArea value={message} onChange={handleChange} placeholder="Type your messages here" />
+              <Button>Send</Button>
+           </Form>
+         </Page>
+         
+    
     )
 }
 

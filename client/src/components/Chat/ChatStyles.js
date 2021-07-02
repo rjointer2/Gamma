@@ -61,3 +61,30 @@ export const MyRow = styled.div`
   justify-content: flex-end;
   margin-top: 10px;
 `;
+
+export const MyMessage = styled.div`
+  width: 45%;
+  background-color: pink;
+  color: #46516e;
+  padding: 10px;
+  margin-right: 5px;
+  text-align: center;
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+`;
+
+export const PartnerRow = styled(MyRow)`
+  justify-content: flex-start;
+`;
+
+export const PartnerMessage = styled.div`
+  width: 45%;
+  background-color: transparent;
+  color: lightgray;
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin-left: 5px;
+  text-align: center;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+`;
