@@ -31,6 +31,15 @@ const Chat = () => {
          setMessages(oldMsgs => [...oldMsgs,message]);
      }
   
+     function sendMessage(e) {
+         e.PreventDefault();
+         const messageObject = {
+             body: message,
+             id: yourID,
+         };
+         setMessage("");
+         socketRef.current.emit("send message", messageObject);
+     }
 
 
 
