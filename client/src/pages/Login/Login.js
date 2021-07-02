@@ -1,12 +1,17 @@
-import { LoginWrapper } from "./LoginStyles"
+import { FormContainer, FormGrid, Input, LoginContainer } from "./LoginStyles"
 
 
 const Login = () => {
 
     return (
-        <div>
-
-        </div>
+        <LoginContainer>
+            <FormContainer>
+               <FormGrid>
+                <Input type="email" placeholder="Email" />
+                <Input type="password" placeholder="Password" />
+               </FormGrid>
+            </FormContainer>
+        </LoginContainer>
     )
 }
 
