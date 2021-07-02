@@ -15,6 +15,14 @@ const Chat = () => {
 
     useEffect(() => {
         socketRef.current = io.connect('/');
+
+        // set eventhandlers that the above socket will listen to
+
+        socketRef.current.on("your id", id => {
+            setYourID(id);
+        })
+
+        
     });
     return (
         <div>
