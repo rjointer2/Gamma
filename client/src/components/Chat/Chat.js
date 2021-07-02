@@ -67,28 +67,48 @@ const Chat = () => {
          setFile(e.target.value.files[0]);
      }
 
+     function renderMessages(message, index) {
+       if (message.type === "file") {
+           const blob = new Blob([message.body], { type: message.type });
+           if (message.id === yourID) {
+               return (
+                   <MyRow key={index}>
+                      <Image fileName={message.fileName} blob={blob} />
+                   </MyRow>
+               )
+           }
+           return (
+               <PartnerRow key={index}>
+                  <Image fileName={message.fileName} />
+               </PartnerRow>
+           )
+       }
+       
+       if (message.id === yourID) {
+           return (
+               <MyRow key={index}>
+                 <MyMessage>
+                     {message.body}
+                 </MyMessage>
+               </MyRow>
+           )
+       }
+
+       return (
+        <PartnerRow key={index}>
+           <PartnerMessage>
+               {message.body}
+           </PartnerMessage>
+        </PartnerRow>
+    )
+
+     }
+
    return (
         
          <Page>
            <Container>
-                {messages.map((message, index) => {
-                    if (message.id === yourID) {
-                    return (
-                    <MyRow key={index}>
-                        <MyMessage>
-                        {message.body}
-                        </MyMessage>
-                    </MyRow>
-                    )
-                }
-                return (
-                    <PartnerRow key={index}>
-                    <PartnerMessage>
-                        {message.body}
-                    </PartnerMessage>
-                    </PartnerRow>
-                )
-                })}
+                {messages.map(renderMessages) }
            </Container>
            <Form onSubmit={sendMessage}>
               <TextArea value={message} onChange={handleChange} placeholder="Type your messages here" />
