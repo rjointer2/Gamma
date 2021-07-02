@@ -1,4 +1,4 @@
-import { LoginWrapper } from "./LoginStyles"
+import { FormContainer, FormGrid, Input, LoginContainer } from "./LoginStyles"
 
 
 const Login = () => {
@@ -6,13 +6,14 @@ const Login = () => {
     let color = false
 
     return (
-        <div>
-            <LoginWrapper color={color}>
-                <div>
-                    hi
-                </div>
-            </LoginWrapper>
-        </div>
+        <LoginContainer>
+            <FormContainer>
+               <FormGrid>
+                <Input type="email" placeholder="Email" />
+                <Input type="password" placeholder="Password" />
+               </FormGrid>
+            </FormContainer>
+        </LoginContainer>
     )
 }
 

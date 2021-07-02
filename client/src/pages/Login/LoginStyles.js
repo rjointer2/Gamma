@@ -1,13 +1,24 @@
 
 import styled from 'styled-components';
 
-export const LoginWrapper = styled.div`
-    background-color: ${({color}) => (color ? 'red' : 'blue')};
-    height: 100px;
-    width: 100%;
+export const LoginContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+`;
 
-    &:hover {
-        color: 'green';
-    }
+export const FormGrid = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
+export const FormContainer = styled.div`
+    
+    
+`;
+
+export const Input = styled.input`
+    margin: 20px 0 0 0;
 `;
