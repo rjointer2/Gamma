@@ -14,6 +14,9 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 
+
+
+
 //const db = require('./config/connection');
 // import our typeDefs and resolvers
 
@@ -100,9 +103,11 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
        socket.emit("your id", socket.id);
        socket.on("send message", body => {
            io.emit("message", body)
+           console.log('chat-socket connected');
+           console.log(message);
        })
 
-        console.log('user created');
+        
 
         // connecting
 

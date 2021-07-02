@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from "./components/Navbar/Navbar";
 import Game from './components/Game/Game';
-import Chat from './components/Chat';
+import Chat from './components/Chat/Chat';
 
 // Pages
 

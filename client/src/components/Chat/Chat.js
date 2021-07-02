@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Page, Container, TextArea, Button, Form, MyRow, MyMessage, PartnerRow, PartnerMessage } from "./ChatStyles";
-import io from "socket.io-client";
+import { io}  from "socket.io-client";
 
 
 
@@ -10,6 +10,7 @@ const Chat = () => {
     const [yourID, setYourID] = useState();
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState("");
+    const [file, setFile] = useState();
 
     const socketRef = useRef();
 
@@ -18,7 +19,7 @@ const Chat = () => {
 
         // set eventhandlers that the above socket will listen to
 
-        socketRef.current.on("your id", id => {
+        socketRef.current.on("your  id", id => {
             setYourID(id);
         })
 
@@ -33,18 +34,38 @@ const Chat = () => {
   
      function sendMessage(e) {
          e.PreventDefault();
-         const messageObject = {
-             body: message,
+         if (file) {
+            const messageObject = {
+               id: yourID,
+               type: "file",
+               body: file,
+               MimeType: file.type,
+               fileName: file.name
+            };
+            setMessage("");
+            setFile();
+            socketRef.current.emit("send message", messageObject);
+         } else { 
+             const messageObject = {
              id: yourID,
+             type: "text",
+             body: message,
          };
          setMessage("");
          socketRef.current.emit("send message", messageObject);
+
+        }
+         
      }
 
      function handleChange(e) {
          setMessage(e.target.value)
      }
 
+     function selectFile(e) {
+         setMessage(e.target.files[0].name);
+         setFile(e.target.value.files[0]);
+     }
 
    return (
         
@@ -71,6 +92,7 @@ const Chat = () => {
            </Container>
            <Form onSubmit={sendMessage}>
               <TextArea value={message} onChange={handleChange} placeholder="Type your messages here" />
+              <input onChange={selectFile} type="file" />
               <Button>Send</Button>
            </Form>
          </Page>
