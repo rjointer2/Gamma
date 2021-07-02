@@ -96,7 +96,11 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     // When the client request hit the server, the socket is instantiated
     io.on('connection', (socket) => {
 
-       
+       // connecting to the chat component
+       socket.emit("your id", socket.id);
+       socket.on("send message", body => {
+           io.emit("message", body)
+       })
 
         console.log('user created');
 
