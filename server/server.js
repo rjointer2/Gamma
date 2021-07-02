@@ -31,7 +31,7 @@ const { ApolloServer } = require('apollo-server-express');
 const io = require('socket.io')(appServer, {
     // from here the server is instantiated with from the app 
     // instance created in the top level
-    cors: {origin: `http://localhost:${_PORT}`}
+    cors: {origin: `http://localhost:3000`}
 });
 
 // schema, resolver, typeDefs here
@@ -116,7 +116,7 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
 
             */
 
-            console.log(`Spawned ${data.x}`)
+            console.log(`Spawned ${data}`)
             console.log(`There are ${Object.keys(players).length} players in the server`);
             console.log(`players dictionary: `, players);
 

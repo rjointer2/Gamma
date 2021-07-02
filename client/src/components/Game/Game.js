@@ -1,7 +1,7 @@
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-import engine from '../../ulits/engine';
+import useEngine from '../../ulits/engine';
 
 // this is can be used with a proxy later on
 
@@ -11,12 +11,7 @@ const Game = () => {
 
     // engine here 
 
-    useEffect(() => {
-        // We have to pass the engine in the useEffect to not 
-        // render on a side effect and prevent canvas 
-        // selected from being null when queryed
-        engine();
-    }, []);
+    useEngine();
 
     
 

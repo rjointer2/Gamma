@@ -1,5 +1,6 @@
 
 
+import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
 import Rectangle from "./player/playerClass";
@@ -9,9 +10,10 @@ import { bottom, top, x_cood, y_cood, borderDetectionPlayer1, borderDetectionPla
 
 // we have to define the dimessions of the html5 canvas in pixels
 
-const engine = (...playersData) => {
+const useEngine = () => {
 
-    // here we will set a dictionary of the player on the client-side
+    useEffect(() => {
+        // here we will set a dictionary of the player on the client-side
     let clientPlayers = {};
 
     // port listening to
@@ -40,42 +42,51 @@ const engine = (...playersData) => {
         }
     }
 
-    let red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
+
+    let playersFound = {};
+
+    //let red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
     
     // when a player is connected a new square is created 
-
-    socket.emit('newPlayer', {x: red.x_cood()});
+    // remove this later 
+    socket.emit('newPlayer', );
 
     socket.on('updatePlayers', players => {
-        context.clearRect(0, 0, 320, 180);
+
+        // when this updatePlayer fires it need to make a new square and pass in the for loop
+
         // now to literate through the dictionaries
-        let playersFound = {};
-
-
+        
+        // player's data from the socket
+        console.log(players)
+        console.log(clientPlayers)
         for(let id in players) {
-                                                // client get's own id on window
+            // client get's own id on window
             if(clientPlayers[id] === undefined && id !== socket.id ) { 
-                clientPlayers[id] = new Rectangle (32, 32, true, 0, 160, 0, 0, '#eb4334', 'red');
+                clientPlayers[id] = players[id]
+                console.log(clientPlayers)
             }
             playersFound = true;
         }
-        for(let id in clientPlayers[id]) {
+        for(let id in clientPlayers) {
             // we need a remove or delete function to remove the 
             // square from the screen
+            console.log(playersFound)
             if(!playersFound[id]) {
                 
             }
         }
     })
+
+    for(let i in clientPlayers ) {
+        clientPlayers[i].input();
+        clientPlayers[i].draw();
+        console.log(clientPlayers[i])
+    }
  
     // this loop has to take args for the players connect
 
-    const loop = function(...players) {
-
-        // player's controls here
-
-        red.input();
-        
+    const loop = function() {
 
         context.canvas.height = 180; // screen height
         context.canvas.width = 320; // screen width
@@ -84,13 +95,9 @@ const engine = (...playersData) => {
         context.fillStyle = '#202020';
         context.fillRect(0, 0, 320, 180);
 
-        // player's animation here
-
-        red.draw();
-
-        socket.emit('update', { x: red.x_cood() } )
-
-        // player's border detection
+            for( let i in clientPlayers ) {
+                // in here new square methods have to be called input and draw
+            }
 
         // The window.requestAnimationFrame() method tells the browser that you wish 
         // to perform an animation and requests that the browser calls a specified 
@@ -110,8 +117,9 @@ const engine = (...playersData) => {
     // Init Engine
     
     window.requestAnimationFrame(loop);
+    }, [])
 }
 
 // Here We Export the Game
 
-export default engine;
+export default useEngine;
