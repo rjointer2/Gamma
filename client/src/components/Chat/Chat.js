@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Page, Container, TextArea, Button, Form, MyRow, MyMessage, PartnerRow, PartnerMessage } from "./ChatStyles";
 import { io}  from "socket.io-client";
+import Image from "./ImageChat";
 
 
 
@@ -113,7 +114,7 @@ const Chat = () => {
            <Form onSubmit={sendMessage}>
               <TextArea value={message} onChange={handleChange} placeholder="Type your messages here" />
               <input onChange={selectFile} type="file" />
-              <Button>Send</Button>
+              <Button className='f3 link dim black underline pa3 pointer'>Send</Button>
            </Form>
          </Page>
          

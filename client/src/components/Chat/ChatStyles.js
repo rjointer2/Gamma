@@ -5,7 +5,7 @@ export const Page = styled.div`
   height: 100vh;
   width: 100%;
   align-items: center;
-  background-color: #46516e;
+  background: linear-gradient(89deg, #1F2939 0%, #236863 100%);
   flex-direction: column;
 `;
 
@@ -49,6 +49,7 @@ export const Button = styled.button`
   border-radius: 10px;
   color: #46516e;
   font-size: 17px;
+  cursor: pointer;
 `;
 
 export const Form = styled.form`
