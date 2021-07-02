@@ -1,4 +1,4 @@
 const User = require('./User');
 
 
-module.exports = { User, Friend };
+module.exports = { User };

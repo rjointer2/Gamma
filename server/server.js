@@ -12,8 +12,10 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const db = require('./config/connection');
+
+//const db = require('./config/connection');
 // import our typeDefs and resolvers
+
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 
@@ -34,11 +36,11 @@ const io = require('socket.io')(appServer, {
 
 // schema, resolver, typeDefs here
 
-const server = new ApolloServer({
+/* const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware
-});
+}); */
 
 // Middleware
 
