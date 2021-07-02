@@ -22,8 +22,20 @@ const Chat = () => {
             setYourID(id);
         })
 
-        
+        socketRef.current.on("message", (message) => {
+            receivedMessages(message);
+        })
     });
+
+     function receivedMessages(message) {
+         setMessages(oldMsgs => [...oldMsgs,message]);
+     }
+  
+
+
+
+
+
     return (
         <div>
          <Page></Page>
