@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Components
@@ -14,26 +14,9 @@ import SignUp from './pages/SignUp/SignUp';
 
 
 function App() {
-
-  const [categories] = useState([
-    { name: 'Favorites'},
-    { name: 'Invite'},
-    { name: 'Games'},
-    { name: 'Sign Out'}
-  ]);
-
-  const [currentCategory, setCurrentCategory] = useState(categories[0]);
-  const [contactSelected, setContactSelected] = useState(false);
-
   return (
     <Router>
-      <Navbar
-        categories={categories}
-        setCurrentCategory={setCurrentCategory}
-        currentCategory={currentCategory}
-        contactSelected={contactSelected}
-        setContactSelected={setContactSelected}
-      />
+      <Navbar/>
       <Switch>
         <Route exact path="/" component={Home}/>
       </Switch>
