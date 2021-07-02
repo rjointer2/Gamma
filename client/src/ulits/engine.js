@@ -114,4 +114,4 @@ const engine = (...playersData) => {
 
 // Here We Export the Game
 
-export default engine
+export default engine;
