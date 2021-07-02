@@ -4,6 +4,7 @@
 
 const _PORT = process.env.PORT || 3001;
 
+
 // modules here
 
 require('dotenv').config(); // .env file should be in the root folder
@@ -94,6 +95,9 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
 
     // When the client request hit the server, the socket is instantiated
     io.on('connection', (socket) => {
+
+       
+
         console.log('user created');
 
         // connecting
