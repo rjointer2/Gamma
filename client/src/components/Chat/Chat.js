@@ -41,6 +41,10 @@ const Chat = () => {
          socketRef.current.emit("send message", messageObject);
      }
 
+     function handleChanges(e) {
+         setMessage(e.target.value)
+     }
+
 
 
 
