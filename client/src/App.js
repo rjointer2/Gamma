@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from "./components/Navbar/Navbar";
 import Game from './components/Game/Game';
+import Chat from './components/Chat';
 
 // Pages
 
@@ -28,7 +29,8 @@ function App() {
       </Switch>
       <Switch>
        <Route exact path="/signup" component={SignUp}/>
-      </Switch>    
+      </Switch>
+      <Chat />    
       {/* FOOTER HERE */}    
     </Router>
   );
