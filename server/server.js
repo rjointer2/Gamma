@@ -62,68 +62,36 @@ app.get("/", (req, res) => {
 
 */
 
-mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kufxl.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kufxl.mongodb.net/${process.env.DB}?retryWrites=true&w=majority` || 'http://localhost:3001', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
-    console.log('test');
 
-    /* 
-    
-        Using socket.io
-
-        We have 2 main functions ===> on and emit
-
-        emit => sends data
-        on => receives data
-
-        1st arg is the event which can be anything but some words are
-        reserved like connection
-
-        2nd ( optional ) data, you want to send
-
-        The client is ALWAYS emitted to the data to the server
-        and the server is connected to every client
-    
-    
-    */
+    //emit => sends data
+    //on => receives data
 
     // global object
     let players = {}
 
 
     // When the client request hit the server, the socket is instantiated
-    io.on('connection', (socket) => {
-        console.log('user created');
+    io.on('connection', connected);
 
-        // connecting
+    function connected(socket) {
 
         socket.on('newPlayer', data => {
             // with theses new players they can be stored in key value 
             // pairs in a global object
-            console.log(`This is player ${socket.id}`);
-
+            console.log(`New player add: ${socket.id}`);
             // the player's socket id is made a property of the 
             // data recevied ( which is passed in the client )
             players[socket.id] = data;
-
-            /* 
-            
-                Ex: player.x_cood() = 80
-                player {} => player {
-                    socket.id : x: 80
-                }
-
-            */
-
-            console.log(`Spawned ${data}`)
+            console.log(`Spawned ${data.x}`)
             console.log(`There are ${Object.keys(players).length} players in the server`);
             console.log(`players dictionary: `, players);
-
             // let's send to the client to update the dictionaries of the players
             socket.emit('updatePlayers', players)
-        })
-
+        });
         // disconnecting
         // "disconnect" is a reserve string keyword for the socket's methods
 
@@ -136,10 +104,8 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
             socket.emit('updatePlayers', players)
         });
 
-        // clients aren't aware of the client's conenction or disconnection
-        // so for the front end we have to broadcast those events
+    }
 
-    });
 }).catch(err => {
     console.log('failed')
     console.log(err)

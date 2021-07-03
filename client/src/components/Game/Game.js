@@ -1,7 +1,6 @@
 
-import { useEffect, useRef } from 'react';
-
-import useEngine from '../../ulits/engine';
+import { useEffect } from 'react';
+import engine from '../../ulits/engine';
 
 // this is can be used with a proxy later on
 
@@ -9,11 +8,11 @@ import useEngine from '../../ulits/engine';
 
 const Game = () => {
 
-    // engine here 
+    useEffect(() => {
+        // engine here 
+        engine();
+    }, [])
 
-    useEngine();
-
-    
 
     return (
         <div>

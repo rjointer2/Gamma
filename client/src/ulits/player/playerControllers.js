@@ -3,7 +3,7 @@
 
 export function input() {
     // jumping 
-    if(controller.up && this.jumping == false) {
+    if(controller.up && this.jumping === false) {
         this.y_velocity -= 20;
         this.jumping = true;
     }
@@ -53,7 +53,7 @@ export let controller = {
     
         // state of the key
 
-        let key_state = (event.type == "keydown") ? true : false;
+        let key_state = (event.type === "keydown") ? true : false;
 
         switch(event.keyCode) {
 
