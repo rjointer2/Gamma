@@ -24,7 +24,7 @@ return (
             <NavLink to='/Games' activeStyle>
             Games
             </NavLink>
-            <NavLink to='/SignOut' activeStyle>
+            <NavLink to='/Sign-in' activeStyle>
             Sign Out
             </NavLink>
         </NavMenu>
