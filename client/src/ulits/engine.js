@@ -26,6 +26,9 @@ const engine = () => {
 
 
         // make a game logic function here to catch the emit of the socket
+
+        // here will where the player can use the key controller functions
+        // here will be the game loop
 }
 
 // Here We Export the Game
