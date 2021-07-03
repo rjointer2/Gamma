@@ -5,6 +5,7 @@
 const _PORT = process.env.PORT || 3001;
 
 
+
 // modules here
 
 require('dotenv').config(); // .env file should be in the root folder
@@ -26,13 +27,19 @@ const { authMiddleware } = require('./utils/auth');
 // Express will be invoked in the top level of the file and 
 // stored in a instance of appServer 
 const app = express();
+
 const appServer = app.listen(_PORT, () => { 
     // appServer will be passed in 
     // the HOF's arg              
     console.log('listening');
 });
+appServer.listen(_PORT,() => {
+    console.log(`Now listening on localhost:${_PORT}`)
+});
+
+
 const { ApolloServer } = require('apollo-server-express');
-const io = require('socket.io')(appServer, {
+const io = require('socket.io')(server, {
     // from here the server is instantiated with from the app 
     // instance created in the top level
     cors: {origin: `http://localhost:${_PORT}`}
@@ -157,4 +164,10 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     console.log('failed')
     console.log(err)
 });
+
+
+
+
+  
+
 

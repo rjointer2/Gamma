@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Page, Container, TextArea, Button, Form, MyRow, MyMessage, PartnerRow, PartnerMessage, particles } from "./ChatStyles";
+import { Page, Container, TextArea, Button, Form, MyRow, MyMessage, PartnerRow, PartnerMessage } from "./ChatStyles";
 import { io}  from "socket.io-client";
 import Image from "./ImageChat";
+import './Chat.css'
 import Particles from 'react-particles-js';
 
 const particlesOptions = {
@@ -10,7 +11,7 @@ const particlesOptions = {
         value: 30,
         density: {
           enable: true,
-          value_area: 800
+          value_area: 500
         }
       }
     }
@@ -119,6 +120,8 @@ const Chat = () => {
         
          <Page>
            <Container>
+             <Particles className="particles" params={particlesOptions} />
+
                 {messages.map(renderMessages) }
            </Container>
            <Form onSubmit={sendMessage}>
