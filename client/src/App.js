@@ -16,7 +16,7 @@ import SignUp from './pages/SignUp/SignUp';
 function App() {
   return (
     <Router>
-      <Navbar />
+      <Navbar/>
       <Switch>
         <Route exact path="/" component={Home}/>
       </Switch>
