@@ -1,3 +1,0 @@
-
-// the canvas and content
-
