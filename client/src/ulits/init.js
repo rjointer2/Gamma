@@ -1,8 +1,24 @@
+
+import { io } from 'socket.io';
+
 import { controller } from "./controller";
 import { drawSquare } from "./draw";
 import { input } from "./input";
 
 const init = (canvas, context) => {
+
+    /* 
+    
+        TODO's 
+
+        connection creates new instantaion of square for each player 
+        make collision methods
+        squares can shoot
+    
+    */
+
+    // PLAYER INSTANTIATION
+    // ____________________
 
     let SQUARES = [];
 
@@ -34,22 +50,44 @@ const init = (canvas, context) => {
     let blue = new Rectangle(32, 32, true, 0, 200, 0, 0, '#3477eb', 'blue');
 
 
+
+
+
+
+
+
+    // CLIENT SOCKETS
+    // ____________________
+
+    
+
+
+
+
+
+
+
+    // ENGINE
+    // ____________________
+
     function engine() {
 
+        // Fills Canvas / Context aand repaint background
         context.fillStyle = '#202020';
         context.fillRect(0, 0, 320, 180);
 
         // now for each created render it on in the engine
         SQUARES.forEach((square) => {
-            square.input()
+            square.input();
             square.drawSquare(context);
         })
 
-        requestAnimationFrame(engine)
+        requestAnimationFrame(engine);
     }
 
-    requestAnimationFrame(engine)
+    requestAnimationFrame(engine);
 
+    // controls
     window.addEventListener("keydown", controller.keyListener);
     window.addEventListener("keyup", controller.keyListener);
 
