@@ -1,6 +1,7 @@
 
 import { io }  from "socket.io-client";
 
+import { disconnectPlayer } from "./disconnectPlayer";
 import { controller } from "./controller";
 import { drawSquare } from "./draw";
 import { input } from "./input";
@@ -75,14 +76,27 @@ const init = (canvas, context) => {
 
     // client will listen for this event then
     socket.on('updatePlayers', data => {
+        let playerExist = {}
         // cnavas is clear for no stack accidently
         context.clearRect(0, 0, 320, 180);
         for(let id in data) {
             clientPlayers[id] = new Rectangle(
                 data[id].height, data[id].width, data[id].jumping, data[id].x_velocity, data[id].x, data[id].y_velocity, data[id].y, data[id].color, data[id].name 
             )
-            console.log('test')
+            playerExist[id] = true
         }
+        
+
+        // for disconnects
+        for(let id in clientPlayers) {
+            // remove from global array
+            if(!playerExist[id]) {
+                clientPlayers[id].disconnectPlayer(SQUARES);
+                delete clientPlayers[id];
+            }
+        }
+
+
     })
 
 
