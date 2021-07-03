@@ -9,15 +9,20 @@ import engine from '../../ulits/engine';
 const Game = () => {
 
     useEffect(() => {
+        const canvas = document.querySelector('canvas');
+        const context = canvas.getContext('2d');
         // engine here 
-        engine();
+        engine(canvas, context);
     }, [])
 
 
     return (
         <div>
             {/* THIS IS WHERE THE GAME'S SCREEN IS HELD */}
-           <canvas></canvas>
+           <canvas height="180" width="320"  style={{
+               border: '1px solid red',
+               background: 'gray'
+           }}></canvas>
         </div>
     )
 }
