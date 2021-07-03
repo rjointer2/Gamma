@@ -1,6 +1,11 @@
 import { io }  from "socket.io-client";
 const socket = io('/', {'force new connection': true});
 
+// to send as little data as possible a global var can be set detect
+// the key if being held
+
+let isKeyBeingPressed = false;
+
 function emitUserInputs(obj) {
     console.log(obj)
     let userInputs = {
@@ -26,18 +31,31 @@ export let controller = {
 
             case 37: // left key
             controller.left = key_state;
+            if(!controller.left) {
+                isKeyBeingPressed = true
+            }
             break;
             case 38: // up key
             controller.up = key_state;
+            if(!controller.up) {
+                isKeyBeingPressed = true
+            }
             break;
             case 39: // right key
             controller.right = key_state;
+            if(!controller.right) {
+                isKeyBeingPressed = true
+            }
             break;
 
         }
         // we have to send the input to the server
-        console.log('test')
-        emitUserInputs(controller);
+        // if the key is being pressed set back to false and this should send less data
+        if(isKeyBeingPressed) {
+            emitUserInputs(controller);
+            isKeyBeingPressed = false
+        }
+        
     }
 
 }
