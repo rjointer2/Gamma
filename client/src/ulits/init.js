@@ -78,13 +78,10 @@ const init = (canvas, context) => {
         // cnavas is clear for no stack accidently
         context.clearRect(0, 0, 320, 180);
         for(let id in data) {
-            // if the client isn't added yet then make new square
-            if(data[id] !== undefined && id !== socket.id) {
-                clientPlayers[id] = new Rectangle(
-                    data[id].height, data[id].width, data[id].jumping, data[id].x_velocity, data[id].x, data[id].y_velocity, data[id].y, data[id].color, data[id].name 
-                )
-                console.log('test')
-            }
+            clientPlayers[id] = new Rectangle(
+                data[id].height, data[id].width, data[id].jumping, data[id].x_velocity, data[id].x, data[id].y_velocity, data[id].y, data[id].color, data[id].name 
+            )
+            console.log('test')
         }
     })
 

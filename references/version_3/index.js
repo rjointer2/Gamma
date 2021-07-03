@@ -34,7 +34,26 @@ context.canvas.width = 320;
 
 
 
+let playerExist = {}
 
+        for(let id in data) {
+            // if the client isn't added yet then make new square
+            if(clientPlayers[id] === undefined && id !== socket.id) {
+                clientPlayers[id] = new Rectangle(
+                    data[id].height, data[id].width, data[id].jumping, data[id].x_velocity, data[id].x, data[id].y_velocity, data[id].y, data[id].color, data[id].name 
+                )
+                playerExist[id] = true
+            }
+        }
+
+        // for disconnects
+        for(let id in clientPlayers) {
+            // remove from global array
+            if(!playerExist[id]) {
+                clientPlayers[id].disconnectPlayer(SQUARES);
+                delete clientPlayers[id];
+            }
+        }
 
 
 
