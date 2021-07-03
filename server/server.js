@@ -86,8 +86,10 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
 
             if(Object.keys(players).length === 0 ) {
                 data.x = 80;
+                data.firstPlayer = 'first_player'
             } else {
                 data.x = 200;
+                data.firstPlayer = 'second_player'
             }
             
 
@@ -96,7 +98,7 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
             console.log(`There are ${Object.keys(players).length} players in the server`);
             console.log(`players dictionary: `, players);
             // let's send to the client to update the dictionaries of the players
-            io.emit('updatePlayers', players)
+            io.emit('updatePlayers', players);
         });
         // disconnecting
         // "disconnect" is a reserve string keyword for the socket's methods
@@ -109,6 +111,11 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
             // let's send to the client to update the dictionaries of the players
             io.emit('updatePlayers', players)
         });
+
+        // user inputs here
+        socket.on('userInputs', data => {
+            console.log(data)
+        } )
 
     }
 

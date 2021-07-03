@@ -14,9 +14,13 @@ const init = (canvas, context) => {
     
         TODO's 
 
-        connection creates new instantaion of square for each player 
+        completed : connection creates new instantaion of square for each player
+        seperate controls
+        sync movemnet both clients 
         make collision methods
         squares can shoot
+        lost health
+        win and lose conditions
     
     */
 
@@ -31,7 +35,7 @@ const init = (canvas, context) => {
     let SQUARES = [];
 
     // Rectangle Class
-    let Rectangle = function(height, width, jumping, x_velocity, x, y_velocity, y, color, name ) {
+    let Rectangle = function(height, width, jumping, x_velocity, x, y_velocity, y, color, name, firstPlayer ) {
         // regular properties to be used later
         // dimessions
         this.height = height;
@@ -46,6 +50,7 @@ const init = (canvas, context) => {
         // characteristics / comestics
         this.color = color;
         this.name = name;
+        this.firstPlayer = firstPlayer;
         // With the square class, every it's instanisated push in the ref of the SQUARE arr
         SQUARES.push(this);
     }
@@ -68,7 +73,7 @@ const init = (canvas, context) => {
     // ____________________
 
     let playerSettings = {
-        height: 32, width: 32, jumping: true, x_velocity: 0, x: 0, y_velocity: 0, y: 0, color: 'red', name: 'red' 
+        height: 32, width: 32, jumping: true, x_velocity: 0, x: 0, y_velocity: 0, y: 0, color: 'red', name: 'red', firstPlayer: null
     }
 
     
@@ -81,7 +86,7 @@ const init = (canvas, context) => {
         context.clearRect(0, 0, 320, 180);
         for(let id in data) {
             clientPlayers[id] = new Rectangle(
-                data[id].height, data[id].width, data[id].jumping, data[id].x_velocity, data[id].x, data[id].y_velocity, data[id].y, data[id].color, data[id].name 
+                data[id].height, data[id].width, data[id].jumping, data[id].x_velocity, data[id].x, data[id].y_velocity, data[id].y, data[id].color, data[id].name, data[id].firstPlayer 
             )
             playerExist[id] = true
         }
