@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react';
-import engine from '../../ulits/engine';
+import init from '../../ulits/init';
 
 // this is can be used with a proxy later on
 
@@ -11,8 +11,8 @@ const Game = () => {
     useEffect(() => {
         const canvas = document.querySelector('canvas');
         const context = canvas.getContext('2d');
-        // engine here 
-        engine(canvas, context);
+        // init here 
+        init(canvas, context);
     }, [])
 
 
