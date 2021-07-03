@@ -51,7 +51,7 @@ const init = (canvas, context) => {
     }
 
     Rectangle.prototype = {
-        drawSquare, input, controller
+        drawSquare, input, controller, disconnectPlayer
     }
 
     /* let red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
