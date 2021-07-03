@@ -7,12 +7,13 @@ const socket = io('/', {'force new connection': true});
 let isKeyBeingPressed = false;
 
 function emitUserInputs(obj) {
-    console.log(obj)
+    console.log()
     let userInputs = {
         left: controller.left,
         right: controller.right,
         up: controller.up,
     }
+    console.log(controller.left)
     // now we will send the userInputs
     socket.emit('userInputs', userInputs)
 }

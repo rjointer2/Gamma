@@ -1,9 +1,9 @@
-import { controller, controller1 } from "./controller";
+import { controller } from "./controller";
 
 export function input() {
 
     // jumping 
-    if(controller.up && this.jumping == false ) {
+    if(controller.up && this.jumping == false && this.firstPlayer == 'first_player') {
         this.y_velocity -= 20;
         this.jumping = true;
     }

@@ -1,6 +1,7 @@
 
 import { useEffect } from 'react';
-import init from '../../ulits/init';
+import { init } from '../../ulit/init';
+
 
 // this is can be used with a proxy later on
 

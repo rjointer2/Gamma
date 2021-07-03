@@ -6,7 +6,9 @@ import { controller } from "./controller";
 import { drawSquare } from "./draw";
 import { input } from "./input";
 
+
 const init = (canvas, context) => {
+
 
     const socket = io('/', {'force new connection': true});
 
@@ -61,7 +63,7 @@ const init = (canvas, context) => {
 
     /* let red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
     let blue = new Rectangle(32, 32, true, 0, 200, 0, 0, '#3477eb', 'blue'); */
-
+    let red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
 
 
 
@@ -105,6 +107,10 @@ const init = (canvas, context) => {
     })
 
 
+    socket.on('userInputsUpdated', data => {
+       console.log(data)
+       controller.left = data.left
+    })
 
 
 
@@ -117,6 +123,9 @@ const init = (canvas, context) => {
         // Fills Canvas / Context aand repaint background
         context.fillStyle = '#202020';
         context.fillRect(0, 0, 320, 180);
+
+        /* red.drawSquare(context);
+        red.input(); */
 
         // now for each created render it on in the engine
         SQUARES.forEach((square) => {

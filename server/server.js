@@ -114,7 +114,10 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
 
         // user inputs here
         socket.on('userInputs', data => {
-            console.log(data)
+            console.log(data);
+            // now we stored the inpits to the players dictionary and now we 
+            // can send the client this data
+            socket.broadcast.emit('userInputsUpdated', data)
         } )
 
     }
