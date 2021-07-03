@@ -77,6 +77,11 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
 
     function connected(socket) {
 
+        socket.on('controller_state', data => {
+            console.log(data)
+            socket.broadcast.emit('updateClientPlayerPosition', data)
+        })
+
         socket.on('newPlayerJoined', data => {
             console.log(`${data.name} joined the server!`)
             // with theses new players they can be stored in key value 
@@ -112,13 +117,6 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
             io.emit('updatePlayers', players)
         });
 
-        // user inputs here
-        socket.on('userInputs', data => {
-            console.log(data);
-            // now we stored the inpits to the players dictionary and now we 
-            // can send the client this data
-            socket.broadcast.emit('userInputsUpdated', data)
-        } )
 
     }
 

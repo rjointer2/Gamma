@@ -1,8 +1,17 @@
 
+import { io }  from "socket.io-client";
+
 import { draw } from "./draw";
 import { controller, userController } from "./userController";
 
 export const init = (canvas, context) => {
+
+    const socket = io('/', {'force new connection': true});
+
+    // CLIENT INSTANTIATION
+    // ____________________
+
+    let clientPlayers = {};
 
 
     // PLAYER INSTANTIATION
@@ -32,9 +41,52 @@ export const init = (canvas, context) => {
             SQUARES.push(this);
         }
     }
-    
 
-    let red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red')
+
+    /* 
+    
+        when a new player hit the client sent the controller event to the]
+        server when the controller's state is change
+    
+    */
+
+        let playerSettings = {
+            height: 32, width: 32, jumping: true, x_velocity: 0, x: 0, y_velocity: 0, y: 0, color: 'red', name: 'red', firstPlayer: null
+        }
+
+        socket.emit('newPlayerJoined', playerSettings);
+
+    // client will listen for this event then
+        socket.on('updatePlayers', data => {
+        let playerExist = {}
+        // cnavas is clear for no stack accidently
+        context.clearRect(0, 0, 320, 180);
+        for(let id in data) {
+            clientPlayers[id] = new Rectangle(
+                data[id].height, data[id].width, data[id].jumping, data[id].x_velocity, data[id].x, data[id].y_velocity, data[id].y, data[id].color, data[id].name, data[id].firstPlayer 
+            )
+            playerExist[id] = true
+        }
+        
+
+        // for disconnects
+        for(let id in clientPlayers) {
+            // remove from global array
+            if(!playerExist[id]) {
+                clientPlayers[id].disconnectPlayer(SQUARES);
+                delete clientPlayers[id];
+            }
+        }
+
+
+    })
+
+        socket.on('updateClientPlayerPosition', data => {
+            controller.left = data.left
+            controller.up = data.up
+            controller.right = data.right
+        })
+    
 
     // ENGINE
     // ____________________
@@ -50,8 +102,8 @@ export const init = (canvas, context) => {
     
         // now for each created render it on in the engine
         SQUARES.forEach((square) => {
-            draw(red, context);
-            userController(red, canvas);
+            draw(square, context);
+            userController(square, canvas);
         })
     
         requestAnimationFrame(engine);

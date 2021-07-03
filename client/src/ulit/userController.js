@@ -1,3 +1,7 @@
+import { io } from "socket.io-client";
+
+const socket = io('/', {'force new connection': true});
+
 
 export function userController(player, canvas) {
 
@@ -61,7 +65,6 @@ export let controller = {
             // so the server has to make it server
             case 37: // left key
             controller.left = key_state;
-            console.log(controller.left)
             break;
             case 38: // up key
             controller.up = key_state;
@@ -70,8 +73,15 @@ export let controller = {
             controller.right = key_state;
             break;
 
-
         }
+        emitControllerStateToServer(controller)
+        emitControllerStateToServer({left: false, right: false, up: false}) 
     }
 
+}
+
+// this will fire on state change of the key 
+
+function emitControllerStateToServer(state) {
+    socket.emit('controller_state', state )
 }
