@@ -7,40 +7,39 @@ ______________________________
 Hung
 ______________________
 
-
+Footer
+Friendlist
 
 
 Roody
 ______________________
 
-Work on making the game playable over a socket.io
-Shoot animation and collison test
-
-Models
-___________
-
-Users
-Chat
-Friends 
-
-
-
+Arrangement of the server
+Finish Game mutli aspect
 
 
 
 Muhammad
 ______________________
 
-Front End with login and sign up components
+
 
 
 Senait
 ______________________
 
-Lead on the Server Side Development architecture
-Controllers and GraphQL stuff
+Clean up public folder
 
 Plans Today
+
+
+
+
+
+
+
+
+
 
 
 Front End
@@ -51,12 +50,12 @@ Make Pages => Make Sign Up, Sign In, Forgot Password Pages
 components
 ___________
 
-Navbar
-Footer
-Sign In 
-Game Console
-Chat 
-Friendlist
+Navbar -> Done
+Footer -> In progress
+Sign In -> In progress
+Game Console -> In progress
+Chat -> In progress
+Friendlist -> In progress
 
 
 
@@ -76,9 +75,7 @@ ___________
 Backend
 _____________________________________________________________________
 
-Make Sever Connection
-Make DB -> DB Gamma
-Scripts
+Arrangement of the server
 
 
 
