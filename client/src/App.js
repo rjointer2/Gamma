@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar/Navbar";
 import Game from './components/Game/Game';
 import Chat from './components/Chat/Chat';
+import Footer from './components/Footer/Footer';
 
 // Pages
 
@@ -34,7 +35,7 @@ function App() {
        <Route exact path="/signup" component={SignUp}/>
       </Switch>
       <Chat />    
-      {/* FOOTER HERE */}    
+      <Footer />    
     </Router>
   );
 }
