@@ -3,7 +3,6 @@ import { Page, Container, TextArea, Button, Form, MyRow, MyMessage, PartnerRow, 
 import { io}  from "socket.io-client";
 import Image from "./ImageChat";
 import './Chat.css'
-import Particles from 'react-particles-js';
 
 const particlesOptions = {
     particles: {
@@ -24,10 +23,22 @@ const Chat = () => {
     const [message, setMessage] = useState("");
     const [file, setFile] = useState();
 
-    const socketRef = useRef();
+    const element = useRef();
+
+    console.log(element.current)
+
+    const socket = io('/', {'force new connection': true});
 
     useEffect(() => {
-        socketRef.current = io.connect('/');
+        socket.on('test', data =>  console.log(data))
+    }, [])
+
+    /* const socketRef = useRef();
+
+    useEffect(() => {
+        socketRef.current = io.connect('/localhost:3001');
+
+        
 
         // set eventhandlers that the above socket will listen to
 
@@ -68,7 +79,7 @@ const Chat = () => {
 
         }
          
-     }
+     } */
 
      function handleChange(e) {
          setMessage(e.target.value)
@@ -119,15 +130,29 @@ const Chat = () => {
    return (
         
          <Page>
-           <Container>
-             <Particles className="particles" params={particlesOptions} />
-
+           <Container ref={element}>
                 {messages.map(renderMessages) }
            </Container>
-           <Form onSubmit={sendMessage}>
+           <Form /* onSubmit={sendMessage} */>
               <TextArea value={message} onChange={handleChange} placeholder="Type your messages here" />
               <input onChange={selectFile} type="file" />
-              <Button className='f3 link dim black underline pa3 pointer'>Send</Button>
+              <Button className='f3 link dim black underline pa3 pointer' onClick={(e) => {
+                  e.preventDefault()
+              }}>Send</Button>
+
+              {/* 
+              
+              form type="submit"
+              refresh, reload component, sideeffect
+
+              function handleEvent() {
+                  // complex code here
+              }
+              
+              button onClick={() => handleEvent}
+              
+              
+              */}
            </Form>
          </Page>
          
