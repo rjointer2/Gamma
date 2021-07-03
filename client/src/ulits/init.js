@@ -1,11 +1,13 @@
 
-import { io } from 'socket.io';
+import { io }  from "socket.io-client";
 
 import { controller } from "./controller";
 import { drawSquare } from "./draw";
 import { input } from "./input";
 
 const init = (canvas, context) => {
+
+    const socket = io('/', {'force new connection': true});
 
     /* 
     
@@ -16,6 +18,11 @@ const init = (canvas, context) => {
         squares can shoot
     
     */
+
+    // CLIENT INSTANTIATION
+    // ____________________
+
+    let clientPlayers = {};
 
     // PLAYER INSTANTIATION
     // ____________________
@@ -59,8 +66,12 @@ const init = (canvas, context) => {
     // CLIENT SOCKETS
     // ____________________
 
-    
+    let playerSettings = {
+        height: 32, width: 32, jumping: true, x_velocity: 0, x: 80, y_velocity: 0, y: 0, color: 'red', name: 'red' 
+    }
 
+    
+    socket.emit('newPlayerJoined', playerSettings)
 
 
 

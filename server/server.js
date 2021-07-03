@@ -78,11 +78,9 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     function connected(socket) {
 
         socket.on('newPlayerJoined', data => {
-            console.log(`new player joined ${socket.id}`)
-            socket.emit('queuePlayerInClient', data)
-            /* // with theses new players they can be stored in key value 
+            console.log(`${data.name} joined the server!`)
+            // with theses new players they can be stored in key value 
             // pairs in a global object
-            console.log(`New player add: ${socket.id}`);
             // the player's socket id is made a property of the 
             // data recevied ( which is passed in the client )
             players[socket.id] = data;
@@ -90,18 +88,18 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
             console.log(`There are ${Object.keys(players).length} players in the server`);
             console.log(`players dictionary: `, players);
             // let's send to the client to update the dictionaries of the players
-            socket.emit('updatePlayers', players) */
+            io.emit('updatePlayers', players)
         });
         // disconnecting
         // "disconnect" is a reserve string keyword for the socket's methods
 
         socket.on('disconnect', function() {
-            /* delete players[socket.id];
+            delete players[socket.id];
             console.log(`${socket.id} left the server`)
             console.log(`There are ${Object.keys(players).length} players in the server`);
 
             // let's send to the client to update the dictionaries of the players
-            socket.emit('updatePlayers', players) */
+            io.emit('updatePlayers', players)
         });
 
     }

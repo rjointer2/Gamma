@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Page, Container, TextArea, Button, Form, MyRow, MyMessage, PartnerRow, PartnerMessage } from "./ChatStyles";
-import { io}  from "socket.io-client";
+import { io }  from "socket.io-client";
 import Image from "./ImageChat";
 import './Chat.css'
 
