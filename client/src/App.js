@@ -1,16 +1,20 @@
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+
 // Components
 
 import Navbar from "./components/Navbar/Navbar";
 import Game from './components/Game/Game';
+import Chat from './components/Chat/Chat';
 
 // Pages
 
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
+
+
 
 
 function App() {
@@ -28,7 +32,8 @@ function App() {
       </Switch>
       <Switch>
        <Route exact path="/signup" component={SignUp}/>
-      </Switch>    
+      </Switch>
+      <Chat />    
       {/* FOOTER HERE */}    
     </Router>
   );
