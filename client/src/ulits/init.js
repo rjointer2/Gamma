@@ -53,8 +53,8 @@ const init = (canvas, context) => {
         drawSquare, input, controller
     }
 
-    let red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
-    let blue = new Rectangle(32, 32, true, 0, 200, 0, 0, '#3477eb', 'blue');
+    /* let red = new Rectangle(32, 32, true, 0, 80, 0, 0, '#eb4334', 'red');
+    let blue = new Rectangle(32, 32, true, 0, 200, 0, 0, '#3477eb', 'blue'); */
 
 
 
@@ -67,11 +67,26 @@ const init = (canvas, context) => {
     // ____________________
 
     let playerSettings = {
-        height: 32, width: 32, jumping: true, x_velocity: 0, x: 80, y_velocity: 0, y: 0, color: 'red', name: 'red' 
+        height: 32, width: 32, jumping: true, x_velocity: 0, x: 0, y_velocity: 0, y: 0, color: 'red', name: 'red' 
     }
 
     
-    socket.emit('newPlayerJoined', playerSettings)
+    socket.emit('newPlayerJoined', playerSettings);
+
+    // client will listen for this event then
+    socket.on('updatePlayers', data => {
+        // cnavas is clear for no stack accidently
+        context.clearRect(0, 0, 320, 180);
+        for(let id in data) {
+            // if the client isn't added yet then make new square
+            if(data[id] !== undefined && id !== socket.id) {
+                clientPlayers[id] = new Rectangle(
+                    data[id].height, data[id].width, data[id].jumping, data[id].x_velocity, data[id].x, data[id].y_velocity, data[id].y, data[id].color, data[id].name 
+                )
+                console.log('test')
+            }
+        }
+    })
 
 
 

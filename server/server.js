@@ -83,6 +83,14 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
             // pairs in a global object
             // the player's socket id is made a property of the 
             // data recevied ( which is passed in the client )
+
+            if(Object.keys(players).length === 0 ) {
+                data.x = 80;
+            } else {
+                data.x = 200;
+            }
+            
+
             players[socket.id] = data;
             console.log(`Spawned ${data.x}`)
             console.log(`There are ${Object.keys(players).length} players in the server`);
