@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -7,7 +6,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from "./components/Navbar/Navbar";
 import Game from './components/Game/Game';
+import FriendList from './components/FriendList/FriendList';
 import Chat from './components/Chat/Chat';
+import Footer from './components/Footer/Footer';
 
 // Pages
 
@@ -17,10 +18,6 @@ import SignUp from './pages/SignUp/SignUp';
 
 
 
-=======
-import logo from './logo.svg';
-import './App.css';
->>>>>>> main
 
 function App() {
   return (
@@ -38,8 +35,9 @@ function App() {
       <Switch>
        <Route exact path="/signup" component={SignUp}/>
       </Switch>
+      <FriendList/>
       <Chat />    
-      {/* FOOTER HERE */}    
+      <Footer />    
     </Router>
   );
 }
