@@ -1,11 +1,6 @@
 
-
 import styled from 'styled-components';
 
-// palette
-
-const primary = "#5C458B" // purple
-const white = "#fff" // white
 
 export const Container = styled.div`
     display: flex;

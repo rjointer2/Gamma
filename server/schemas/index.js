@@ -8,12 +8,12 @@
 
 const typeDefs = require('./typeDefs');
 const logInResolvers = require('./resolvers/logInResolvers');
-const userResolvers = require('./resolvers/logInResolvers');
+const userResolvers = require('./resolvers/userResolvers');
 
 // merge the resolver in a rootResolver
 
 const rootResolver = {
-    ...userResolver,
+    ...userResolvers,
     ...logInResolvers
 }
 

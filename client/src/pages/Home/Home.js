@@ -1,4 +1,3 @@
-import { LoginWrapper } from "../Login/LoginStyles";
 
 import Navbar from '../../components/Navbar/Navbar'
 

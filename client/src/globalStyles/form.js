@@ -18,7 +18,7 @@ export const SignContainer = styled.div`
 
 `;
 
-export const Form = styled.div`
+export const Form = styled.form`
     padding-top: 20px;
     display: flex;
     justify-content: center;
