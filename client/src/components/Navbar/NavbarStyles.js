@@ -4,7 +4,7 @@ import styled from 'styled-components';
   
 // Navbar wrapper
 export const Nav = styled.nav`
-  background: #5C458B;
+  background: linear-gradient(#5C458B 20%, white);
   height: 90px;
   display: flex;
   justify-content: space-between;
