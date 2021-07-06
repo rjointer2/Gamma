@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-
-// Components
-
-import Navbar from "./components/Navbar/Navbar";
-import Game from './components/Game/Game';
-import Chat from './components/Chat/Chat';
 
 // Pages
 
@@ -17,28 +9,19 @@ import SignUp from './pages/SignUp/SignUp';
 
 
 
-=======
-import logo from './logo.svg';
-import './App.css';
->>>>>>> main
 
 function App() {
   return (
     <Router>
-      <Navbar/>
       <Switch>
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/home" component={Home}/>
       </Switch>
       <Switch>
         <Route exact path="/login" component={Login}/>
       </Switch>
       <Switch>
-        <Route exact path="/game" component={Game}/>
-      </Switch>
-      <Switch>
        <Route exact path="/signup" component={SignUp}/>
-      </Switch>
-      <Chat />    
+      </Switch>  
       {/* FOOTER HERE */}    
     </Router>
   );
