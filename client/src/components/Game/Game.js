@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react';
-import { init } from '../../../../references/ulit/init';
+import { init } from '../../ulits/init'
 
 
 // this is can be used with a proxy later on
@@ -20,7 +20,7 @@ const Game = () => {
     return (
         <div>
             {/* THIS IS WHERE THE GAME'S SCREEN IS HELD */}
-           <canvas height="180" width="320"  style={{
+           <canvas height="200" width="600"  style={{
                border: '1px solid red',
                background: 'gray'
            }}></canvas>

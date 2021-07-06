@@ -69,7 +69,7 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     //on => receives data
 
     // global object
-    let client = {}
+    const players = []
 
 
     // When the client request hit the server, the socket is instantiated
@@ -77,14 +77,17 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
 
     function connected(socket) {
 
-        socket.on('newClient', data => {
-            client[socket.id] = data;
-            console.og(`${player} joined`)
-        })
+        socket.emit('init', {
+            // pass the socket id to make a player dictionary with it as a key
+            // and player to get each player on conenct
+            id: socket.id, clients: players
+        });
 
-        socket.on('key_state', data => {
-            console.log(data)
-        })
+        // on the connection of the new player send all the client 
+        // plain object sent on the server and tell everyone else to
+        // receive a new player obj and the client side dynamincally cast 
+        // the methods as well
+        socket.on("new_player", obj => socket.broadcast.emit("new_player", obj))
 
     }
 
