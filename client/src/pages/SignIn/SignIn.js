@@ -3,6 +3,7 @@
 import { useMutation } from '@apollo/client';
 
 import { LOGIN_USER } from '../../ulit/mutation/loginMutation';
+import AuthClient from '../../ulit/auth/authClient';
 
 
 // Styles and Assest 
@@ -43,8 +44,15 @@ const SignIn = () => {
         let condition = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
         if(!userFormData.username.match(condition) && !userFormData.password.match(condition)) return false;
     
-        console.log('test')
-        
+        try {
+            const { data } = await login({
+              variables: { ...userFormData } 
+            })
+      
+            AuthClient.login(data.login.token)
+        } catch (err) {
+              console.error(err);
+        }
     }
 
     return (
@@ -52,53 +60,49 @@ const SignIn = () => {
            <SignContainer>
                 <Container>
                     <Wrapper>
-                            <Row>
-                                <Column1>
-                                    <Form>
-                                        <Row>
+                        <Row>
+                            <Column1>
+                                <Form onSubmit={requestToSignIn}>
+                                    <Title>
+                                        Welcome Back
+                                    </Title>
+                                        <Row> 
                                             <Column1>
-                                                <Title>
-                                                    Welcome Back
-                                                </Title>
-                                                    <Row> 
-                                                        <Column1>
-                                                            <InputContainer>
-                                                                <Text>
-                                                                    Enter Your Username
-                                                                </Text>
-                                                                <Input 
-                                                                    type='cc-csc'
-                                                                    autocomplete="on"
-                                                                    placeholder='Enter username'
-                                                                    name='username'
-                                                                    onChange={updateStateUIProps}
-                                                                    value={userFormData.username}
-                                                                    required
-                                                                />
-                                                            </InputContainer>
-                                                            <InputContainer>
-                                                                <Text>
-                                                                    Enter Your Password
-                                                                </Text>
-                                                                <Input 
-                                                                    type='cc-csc'
-                                                                    placeholder='Enter password'
-                                                                    name='password'
-                                                                    onChange={updateStateUIProps}
-                                                                    value={userFormData.password}
-                                                                    autocomplete="on"
-                                                                    required
-                                                                />
-                                                            </InputContainer>
-                                                        </Column1>
-                                                    </Row>
-                                                    <ButtonWrapper>
-                                                        <Button onClick={requestToSignIn}>
-                                                            Sign In!
-                                                        </Button>
-                                                    </ButtonWrapper>
+                                                <InputContainer>
+                                                    <Text>
+                                                        Enter Your Username
+                                                    </Text>
+                                                    <Input 
+                                                        type='cc-csc'
+                                                        autocomplete="on"
+                                                        placeholder='Enter username'
+                                                        name='username'
+                                                        onChange={updateStateUIProps}
+                                                        value={userFormData.username}
+                                                        required
+                                                    />
+                                                </InputContainer>
+                                                <InputContainer>
+                                                    <Text>
+                                                        Enter Your Password
+                                                    </Text>
+                                                    <Input 
+                                                        type='cc-csc'
+                                                        placeholder='Enter password'
+                                                        name='password'
+                                                        onChange={updateStateUIProps}
+                                                        value={userFormData.password}
+                                                        autocomplete="on"
+                                                        required
+                                                    />
+                                                </InputContainer>
                                             </Column1>
                                         </Row>
+                                        <ButtonWrapper>
+                                            <Button onClick={requestToSignIn} type="submit">
+                                                Sign In!
+                                            </Button>
+                                        </ButtonWrapper>
                                     </Form>
                                 </Column1>
                                 <Column2>
