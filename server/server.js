@@ -69,7 +69,7 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     //on => receives data
 
     // global object
-    let players = {}
+    let client = {}
 
 
     // When the client request hit the server, the socket is instantiated
@@ -77,46 +77,14 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
 
     function connected(socket) {
 
-        socket.on('controller_state', data => {
-            console.log(data)
-            socket.broadcast.emit('updateClientPlayerPosition', data)
+        socket.on('newClient', data => {
+            client[socket.id] = data;
+            console.og(`${player} joined`)
         })
 
-        socket.on('newPlayerJoined', data => {
-            console.log(`${data.name} joined the server!`)
-            // with theses new players they can be stored in key value 
-            // pairs in a global object
-            // the player's socket id is made a property of the 
-            // data recevied ( which is passed in the client )
-
-            if(Object.keys(players).length === 0 ) {
-                data.x = 80;
-                data.firstPlayer = 'first_player'
-            } else {
-                data.x = 200;
-                data.firstPlayer = 'second_player'
-            }
-            
-
-            players[socket.id] = data;
-            console.log(`Spawned ${data.x}`)
-            console.log(`There are ${Object.keys(players).length} players in the server`);
-            console.log(`players dictionary: `, players);
-            // let's send to the client to update the dictionaries of the players
-            io.emit('updatePlayers', players);
-        });
-        // disconnecting
-        // "disconnect" is a reserve string keyword for the socket's methods
-
-        socket.on('disconnect', function() {
-            delete players[socket.id];
-            console.log(`${socket.id} left the server`)
-            console.log(`There are ${Object.keys(players).length} players in the server`);
-
-            // let's send to the client to update the dictionaries of the players
-            io.emit('updatePlayers', players)
-        });
-
+        socket.on('key_state', data => {
+            console.log(data)
+        })
 
     }
 
