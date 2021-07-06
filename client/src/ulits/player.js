@@ -22,6 +22,8 @@ export class Rectangle {
     }
 
     draw(context) {
-        
+        context.beginPath();
+        context.fillRect(this.x, this.y, this.width, this.height);
+        context.fillStyle = this.color;
     }
 };
