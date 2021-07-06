@@ -3,6 +3,7 @@ import { SignUpContainer, Input, Form, InputContainer } from "./SignUpStyles";
 import { Title, Text  } from '../../globalStyles/text';
 
 import signUpSVG from '../../assets/signUpSVG.svg'
+import { Img, ImgWrapper } from "../../globalStyles/img";
 
 
 const SignUp = ({  }) => {
@@ -56,7 +57,9 @@ const SignUp = ({  }) => {
                             </SignUpContainer>
                         </Column1>
                         <Column2>
-                            
+                            <ImgWrapper>
+                                <Img src={signUpSVG} />
+                            </ImgWrapper>
                         </Column2>
                     </Row>
                 </Wrapper>
