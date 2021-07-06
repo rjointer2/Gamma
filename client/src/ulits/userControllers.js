@@ -14,7 +14,7 @@ export const userControllers = (
         if(e.keyCode === 37) direction = "left";
         if(e.keyCode === 38) direction = "up";
         if(e.keyCode === 39) direction = "right";
-        if(e.keyCode === 40) direction = "left";
+        if(e.keyCode === 40) direction = "down";
 
         player.move(direction);
         emitSocket.emit('move_player', direction);
@@ -26,7 +26,7 @@ export const userControllers = (
         if(e.keyCode === 37) direction = "left";
         if(e.keyCode === 38) direction = "up";
         if(e.keyCode === 39) direction = "right";
-        if(e.keyCode === 40) direction = "left";
+        if(e.keyCode === 40) direction = "down";
 
         player.stop(direction);
         emitSocket.emit('stop_player', direction);

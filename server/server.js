@@ -69,7 +69,7 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
     //on => receives data
 
     // global object
-    const players = []
+    const players = [];
 
 
     // When the client request hit the server, the socket is instantiated
@@ -87,7 +87,13 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
         // plain object sent on the server and tell everyone else to
         // receive a new player obj and the client side dynamincally cast 
         // the methods as well
-        socket.on("new_player", obj => socket.broadcast.emit("new_player", obj))
+        socket.on("new_player", obj => socket.broadcast.emit("new_player", obj));
+
+        // now we catch the move player event from the client's controllers but emit to every
+        // client to move only the client's object with the correct socket id's dictonary
+        socket.on("move_player", direction => socket.broadcast.emit('move_player', {id: socket.id}));
+
+        socket.on("stop_player", direction => socket.broadcast.emit('move_player', {id: socket.id}));
 
     }
 

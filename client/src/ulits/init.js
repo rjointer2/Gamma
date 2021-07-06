@@ -1,6 +1,6 @@
 import {io} from 'socket.io-client';
 import { Rectangle } from './player';
-import { userController } from './userControllers';
+import { userControllers } from './userControllers';
 
 
 export function init(canvas, context) {
@@ -13,10 +13,11 @@ export function init(canvas, context) {
     socket.on('init', ({id, clients}) => {
 
         // pass in player 
-        const player = new Rectangle({id});
+        let player = new Rectangle(32, 32, 80, 80, 'red', 'hero');
+        console.log(player)
 
         // user controllers
-        userController(player, socket)
+        userControllers(player, socket)
 
         // send the server a plain object 
         socket.emit("new_player", player);
@@ -24,7 +25,7 @@ export function init(canvas, context) {
         // now we have tp pass a plain obj and instanise it because
         // server won't get a define class object with methods
         // so on new connection cast that plain obj with the client's props
-        socket.on("new_player", obj => player.push(new Rectangle(obj)));
+        socket.on("new_player", obj => players.push(new Rectangle(obj)));
 
         // we have to listen for the control of the client now
         // how the key is or isn't pressed
@@ -45,7 +46,7 @@ export function init(canvas, context) {
         const engine = () => {
             // size of canvas
             context.fillStyle = '#202020';
-            context.fillRect(0, 0, 320, 180);
+            context.fillRect(0, 0, 600, 200);
 
             // return a instanisted rectangle object with the draw method
             players.forEach(obj => obj.draw(context))
