@@ -5,7 +5,6 @@ import styled from 'styled-components';
 // palette
 
 const primary = "#5C458B" // purple
-const secondary = "#f0cccc" // biege
 const white = "#fff" // white
 
 export const Container = styled.div`
