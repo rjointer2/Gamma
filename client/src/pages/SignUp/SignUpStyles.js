@@ -3,13 +3,12 @@ import styled from "styled-components";
 
 const primary = "#d45d83" // light Pink
 const secondary = "#f0cccc" // biege
-const white = "#fff" // white
-
 
 export const SignUpContainer = styled.div`
 
     display: flex;
     justify-content: center;
+    padding-top: 10%;
 
 
     @media screen and (max-width: 768px) {
