@@ -1,29 +1,51 @@
 
 // Rectangle Class
 export class Rectangle {
-    constructor(height, width, jumping, x_velocity, x, y_velocity, y, color, name, ducking ) {
-        // regular properties to be used later
-        // dimessions
-        this.height = height;
-        this.width = width;
-        // coords
-        this.x = x; // height poisitioning
-        this.y = y; // left and right / y position
-        // physics
-        this.jumping = jumping; // a boolean to tell if the rectangle isn't grounded
-        this.x_velocity = x_velocity;
-        this.y_velocity = y_velocity;
-        // characteristics / comestics
+    constructor(height, width, x, y, color, name ) {
+
+        // position and coord
+        this.x = x;
+        this.y = y;
+        this.w = width;
+        this.h = height;
+
+        // physical stats
+
+        this.speed = 10;
+
+        // characteristics
+
+        this.id = id;
         this.color = color;
+
+        // this obj will be a bool to determine if the rectangle is moving
+        this.moving = {};
+        this.isMain = main;
         this.name = name;
-        this.ducking = ducking;
-        this.orginalHeight = height;
-        this.moving = {}
     }
 
     draw(context) {
+        // any keys release will be false 
+        
+        if (this.moving.right) this.x += this.speed;
+        if (this.moving.left) this.x -= this.speed;
+        if (this.moving.up) this.y -= this.speed;
+        if (this.moving.down) this.y += this.speed;
+
         context.beginPath();
         context.fillRect(this.x, this.y, this.width, this.height);
         context.fillStyle = this.color;
     }
+
+    move(dir) {
+        // set the property of moving to true
+        this.moving[dir] = true
+    }
+
+    stop(dir) {
+        // set the property of moving to true
+        this.moving[dir] = false
+    }
+
+
 };
