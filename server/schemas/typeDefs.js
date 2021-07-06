@@ -2,16 +2,24 @@ const { gql } = require('apollo-server-express');
 
 // setting the type definition/ schemas
 const typeDefs = gql`
-  
-    type User {
-        _id: ID
-        username: String
-        email: String
-    }
 
     type Query {
         me: User
         users: [User]
+    }
+    
+    type User {
+        _id: ID!
+        username: String
+        email: String
+        friends: [Friends]
+        chats: [Chats]
+    }
+
+    type Friend {
+        _id: ID!
+        username: String
+        friendsWith: [Friends]
     }
 
     type Auth {
