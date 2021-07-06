@@ -31,7 +31,7 @@ const SignUp = ({  }) => {
                                                         </InputContainer>
                                                         <InputContainer>
                                                             <Text>
-                                                                Confirm Password
+                                                                Username
                                                             </Text>
                                                             <Input />
                                                         </InputContainer>
@@ -39,17 +39,18 @@ const SignUp = ({  }) => {
                                                     <Column2>
                                                         <InputContainer>
                                                             <Text>
-                                                               Username
+                                                               Password
                                                             </Text>
                                                             <Input />
                                                         </InputContainer>
                                                         <InputContainer>
                                                             <Text>
-                                                                Password
+                                                                Confirm Password
                                                             </Text>
                                                             <Input />
                                                         </InputContainer>
                                                     </Column2>
+                                                    Button Here
                                                 </Row>
                                         </Column1>
                                     </Row>

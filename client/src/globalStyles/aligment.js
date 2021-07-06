@@ -53,11 +53,13 @@ export const Row = styled.div`
 export const Column1 = styled.div`
     margin-bottom: 15px;
     grid-area: col1;
+    padding: 10px;
 `;
 
 export const Column2 = styled.div`
     margin-bottom: 15px;
     grid-area: col2;
+    padding: 10px;
 `;
 
 export const FlexWrapper = styled.div`
