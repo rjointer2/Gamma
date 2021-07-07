@@ -34,22 +34,23 @@ const io = require('socket.io')(appServer, {
 
 // schema, resolver, typeDefs here
 
-/* const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: authMiddleware
-}); */
+const server = new ApolloServer({
+    // Type Definitions Here
+    typeDefs,
+    // Resolvers Here
+    resolvers,
+    // Middleware Here
+    context: authMiddleware
+});
 
 // Middleware
+
+server.applyMiddleware({ app });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "../client/build")));
-
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-});
 
 // Database connection
 
@@ -62,50 +63,14 @@ app.get("/", (req, res) => {
 
 mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kufxl.mongodb.net/${process.env.DB}?retryWrites=true&w=majority` || 'http://localhost:3001', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
 }).then(() => {
 
     //emit => sends data
     //on => receives data
-
-    // global object
-    let players = {}
-
-
-    // When the client request hit the server, the socket is instantiated
-    io.on('connection', connected);
-
-    function connected(socket) {
-
-        socket.emit('test', 'hi');
-
-
-        socket.on('newPlayer', data => {
-            // with theses new players they can be stored in key value 
-            // pairs in a global object
-            console.log(`New player add: ${socket.id}`);
-            // the player's socket id is made a property of the 
-            // data recevied ( which is passed in the client )
-            players[socket.id] = data;
-            console.log(`Spawned ${data.x}`)
-            console.log(`There are ${Object.keys(players).length} players in the server`);
-            console.log(`players dictionary: `, players);
-            // let's send to the client to update the dictionaries of the players
-            socket.emit('updatePlayers', players)
-        });
-        // disconnecting
-        // "disconnect" is a reserve string keyword for the socket's methods
-
-        socket.on('disconnect', function() {
-            delete players[socket.id];
-            console.log(`${socket.id} left the server`)
-            console.log(`There are ${Object.keys(players).length} players in the server`);
-
-            // let's send to the client to update the dictionaries of the players
-            socket.emit('updatePlayers', players)
-        });
-
-    }
+    
 
 }).catch(err => {
     console.log('failed')

@@ -18,6 +18,9 @@ return (
             <NavLink to='/Favorite' activeStyle>
             Favorite
             </NavLink>
+            <NavLink to='/Favorite' activeStyle>
+            Chats
+            </NavLink>
             <NavLink to='/Invite' activeStyle>
             Invite
             </NavLink>

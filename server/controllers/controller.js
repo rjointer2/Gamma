@@ -34,6 +34,7 @@ model.exports = {
     async Login({ body }, res) {
         const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email}] });
         if (!user) {
+            // on the client side display some kind of ui / modal for the user to know client couldm't find match
             return res.status(400).json({ message: "Can't find this user" })
         }
 

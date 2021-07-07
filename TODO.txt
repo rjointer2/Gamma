@@ -7,15 +7,26 @@ ______________________________
 Hung
 ______________________
 
-Footer
-Friendlist
+nabvar -> add a friend to chat
+navbar -> have invite to chat
 
+chatResolver functions
 
 Roody
 ______________________
 
-Arrangement of the server
-Finish Game mutli aspect
+clean up some of those styles in the chat 
+make a socket for joining chat rooms 
+
+userResolver 
+friendResolver
+
+client fetch => users => ALL USERS to the client side
+
+search bar => find a user ( options to friend and chat );
+
+redux implementation
+
 
 
 
@@ -28,18 +39,9 @@ ______________________
 Senait
 ______________________
 
-Clean up public folder
+
 
 Plans Today
-
-
-
-
-
-
-
-
-
 
 
 Front End
