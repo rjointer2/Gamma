@@ -5,9 +5,16 @@ import {
     NavTitle,
     NavMenu
 } from './NavbarStyles';
+
+import SearchModal from '../SearchModal/SearchModal';
     
 // Navbar component
 const Navbar = () => {
+
+    // const SearchModal = () => {
+
+    // }
+
 return (
     <>
     <Nav>
@@ -15,14 +22,11 @@ return (
             Gamma
         </NavTitle>
         <NavMenu>
-            <NavLink to='/Favorite' activeStyle>
-            Favorite
-            </NavLink>
-            <NavLink to='/Favorite' activeStyle>
+            <NavLink to='/Chats' activeStyle>
             Chats
             </NavLink>
-            <NavLink to='/Invite' activeStyle>
-            Invite
+            <NavLink to='/Add-a-friend' onClick={SearchModal}>
+            Add A Friend
             </NavLink>
             <NavLink to='/Games' activeStyle>
             Games
