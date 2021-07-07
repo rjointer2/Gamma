@@ -1,3 +1,11 @@
+
+// apollo client and mutations
+import { useMutation } from '@apollo/client';
+
+// Sign up mutation 
+import { SIGN_UP_USER } from '../../ulit/mutation/loginMutation';
+import AuthClient from '../../ulit/auth/authClient';
+
 import { Row, Column1, Container, Wrapper, Column2 } from "../../globalStyles/aligment";
 import { Title, Text  } from '../../globalStyles/text';
 
