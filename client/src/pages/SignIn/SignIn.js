@@ -48,15 +48,13 @@ const SignIn = () => {
             const { data } = await login({
               variables: { ...userFormData } 
             })
-
-            console.log(data)
       
             AuthClient.login(data.login.token)
         } catch (err) {
             console.log('?')
             // we ccan use this in development but it
             // it shouldn't be used in production for the client to see
-            console.error(err);
+            console.error(err.message);
         }
     }
 
