@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 //const db = require('./config/connection');
 // import our typeDefs and resolvers
@@ -51,6 +52,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.use(cors());
 
 // Database connection
 
