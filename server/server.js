@@ -34,22 +34,23 @@ const io = require('socket.io')(appServer, {
 
 // schema, resolver, typeDefs here
 
-/* const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: authMiddleware
-}); */
+const server = new ApolloServer({
+    // Type Definitions Here
+    typeDefs,
+    // Resolvers Here
+    resolvers,
+    // Middleware Here
+    context: authMiddleware
+});
 
 // Middleware
+
+server.applyMiddleware({ app });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "../client/build")));
-
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-});
 
 // Database connection
 

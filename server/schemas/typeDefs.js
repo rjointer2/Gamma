@@ -12,14 +12,13 @@ const typeDefs = gql`
         _id: ID!
         username: String
         email: String
-        friends: [Friends]
-        chats: [Chats]
+        friends: [Friend]
     }
 
     type Friend {
         _id: ID!
         username: String
-        friendsWith: [Friends]
+        friendsWith: [Friend]
     }
 
     type Auth {
