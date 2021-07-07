@@ -2,6 +2,10 @@
 // apollo client and mutations
 import { useMutation } from '@apollo/client';
 
+// Auth Class Helper
+import authClient from '../../ulit/auth/authClient';
+
+
 // Sign up mutation 
 import { SIGN_UP_USER } from '../../ulit/mutation/loginMutation';
 import AuthClient from '../../ulit/auth/authClient';
@@ -13,11 +17,15 @@ import signUpSVG from '../../assets/signUpSVG.svg';
 import { Img, ImgWrapper } from "../../globalStyles/img";
 import { Form, Input, InputContainer, SignContainer } from "../../globalStyles/form";
 import { useState } from 'react';
+import { Button, ButtonWrapper } from '../../globalStyles/buttons';
 
 
 // add the 
 
 const SignUp = ({  }) => {
+
+    // mutation
+    const [addUser, { error }] = useMutation(SIGN_UP_USER);
 
     // state object of the sign up form
     const [formData, setFormData] = useState({ email: '', username: '', password: '' });
@@ -40,11 +48,20 @@ const SignUp = ({  }) => {
         if(!formData.username.match(condition) && !formData.password.match(condition)) return false;
 
         try {
-            
+            // destructure the data from the state into the addUser's query variables
+            const { data } = await addUser({
+                // send a new copy of the state's object props
+                variables: { ...formData }
+            });
+            // if successful on add the user login them in using the auth class object
+            // witht the new user's token as the arg
+            console.log('success')
         } catch (err) {
-
+            console.log(err.message);
         }
 
+        // reset the state to empty strings
+        setFormData({ email: '', username: '', password: '' })
     }
 
 
@@ -55,7 +72,7 @@ const SignUp = ({  }) => {
                     <Wrapper>
                         <Row>
                             <Column1>
-                                <Form>
+                                <Form onSubmit={requestToSignUp}>
                                     <Row>
                                         <Column1>
                                             <Title>
@@ -70,7 +87,7 @@ const SignUp = ({  }) => {
                                                             <Input 
                                                                 type='cc-csc'
                                                                 placeholder='Enter email'
-                                                                name='password'
+                                                                name='email'
                                                                 onChange={updateStateUIProps}
                                                                 value={formData.email}
                                                                 autocomplete="on"
@@ -84,7 +101,7 @@ const SignUp = ({  }) => {
                                                             <Input 
                                                                 type='cc-csc'
                                                                 placeholder='Enter username'
-                                                                name='password'
+                                                                name='username'
                                                                 onChange={updateStateUIProps}
                                                                 value={formData.username}
                                                                 autocomplete="on"
@@ -114,13 +131,16 @@ const SignUp = ({  }) => {
                                                             <Input 
                                                                 type='cc-csc'
                                                                 placeholder='Enter password'
-                                                                name='password'
                                                                 autocomplete="on"
                                                                 required 
                                                             />
                                                         </InputContainer>
                                                     </Column2>
-                                                    Button Here
+                                                    <ButtonWrapper>
+                                                        <Button type="submit">
+                                                            Button Here
+                                                        </Button>
+                                                    </ButtonWrapper>
                                                 </Row>
                                         </Column1>
                                     </Row>
