@@ -63,12 +63,13 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 
 mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kufxl.mongodb.net/${process.env.DB}?retryWrites=true&w=majority` || 'http://localhost:3001', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
 }).then(() => {
 
     //emit => sends data
     //on => receives data
-
     
 
 }).catch(err => {

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 const white = "#fff" // white
 
+// regular images
+
 export const ImgWrapper = styled.div`
     max-width: 555px;
     height: 100%;
@@ -25,6 +27,8 @@ export const FlexImgPosition = styled.div`
         margin-left: 40px;
     }
 `;
+
+// these are for svg's
 
 export const IconWrapper = styled.div`
     display: flex;
