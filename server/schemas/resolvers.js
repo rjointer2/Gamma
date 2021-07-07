@@ -29,17 +29,23 @@ let resolvers = {
     Mutation: {
         addUser: async (parent, args) => {
 
-            const user = await User.create(args);
-            console.log(user)
-            const token = signToken(user);
+            
+        
 
-            if(!token) {
-                console.log(token)
+            try {
+                const user = await User.create(args);
+                console.log(user)
+                const token = signToken(user);
+
+                if(!token) {
+                    console.log(token)
+                }
+
+                return { token, user };
+            } catch(err) {
+                throw new AuthenticationError('tesdvdsvdsvsdvsvsdvdst')
             }
-
-            return { token, user };
         },
-
         login: async (parent, { username, password }) => {
             console.log('test')
             const user = await User.findOne({ username });
