@@ -1,14 +1,13 @@
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-// Pages
+// components
+import Footer from './components/Footer/Footer';
 
+// Pages
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
-
-
-
 
 function App() {
   return (
@@ -22,7 +21,7 @@ function App() {
       <Switch>
        <Route exact path="/signup" component={SignUp}/>
       </Switch>  
-      {/* FOOTER HERE */}    
+      <Footer />
     </Router>
   );
 }
