@@ -18,6 +18,7 @@ import { Img, ImgWrapper } from "../../globalStyles/img";
 import { Form, Input, InputContainer, SignContainer } from "../../globalStyles/form";
 import { useState } from 'react';
 import { Button, ButtonWrapper } from '../../globalStyles/buttons';
+import Modal from '../../components/Modal/Modal';
 
 
 // add the 
@@ -40,12 +41,25 @@ const SignUp = ({  }) => {
         setFormData({ ...formData, [name]: value})
     }
 
+    // error modal here
+
+    const [modal, setModel] = useState(false)
+    // flips bool
+    const openModal = () => setModel(prevState => !prevState)
+
+    // modal data we will send to the component Modal
+    let modalData = { error: error, message1: '', message2: '', callback: '' }
+
+
     // function to set form's input value on onChange and send a sign up request mutation
     const requestToSignUp = async event => {
         event.preventDefault();
 
         let condition = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
-        if(!formData.username.match(condition) && !formData.password.match(condition)) return false;
+        if(!formData.username.match(condition) && !formData.password.match(condition)) {
+            openModal()
+            return false;
+        };
 
         try {
             // destructure the data from the state into the addUser's query variables
@@ -62,11 +76,13 @@ const SignUp = ({  }) => {
 
         // reset the state to empty strings
         setFormData({ email: '', username: '', password: '' })
-    }
+    };
 
+// { modal && <Modal {...modalData}/> }
 
     return (
         <div>
+        { true && <Modal {...modalData}/> }
            <SignContainer>
                 <Container>
                     <Wrapper>
@@ -153,7 +169,7 @@ const SignUp = ({  }) => {
                             </Column2>
                         </Row>
                     </Wrapper>
-            </Container>
+                </Container>
            </SignContainer>
         </div>
     )
