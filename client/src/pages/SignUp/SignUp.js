@@ -2,13 +2,11 @@
 // apollo client and mutations
 import { useMutation } from '@apollo/client';
 
-// Auth Class Helper
-import authClient from '../../ulit/auth/authClient';
-
-
 // Sign up mutation 
 import { SIGN_UP_USER } from '../../ulit/mutation/loginMutation';
 import AuthClient from '../../ulit/auth/authClient';
+
+// styles
 
 import { Row, Column1, Container, Wrapper, Column2 } from "../../globalStyles/aligment";
 import { Title, Text  } from '../../globalStyles/text';
@@ -20,10 +18,16 @@ import { useState } from 'react';
 import { Button, ButtonWrapper } from '../../globalStyles/buttons';
 import Modal from '../../components/Modal/Modal';
 
+// hooks
+
+import { useLocation } from 'react-router-dom';
+
 
 // add the 
 
 const SignUp = ({  }) => {
+
+    let location = useLocation()
 
     // mutation
     const [addUser, { error }] = useMutation(SIGN_UP_USER);
@@ -69,109 +73,104 @@ const SignUp = ({  }) => {
             });
             // if successful on add the user login them in using the auth class object
             // witht the new user's token as the arg
-            console.log('success')
+            console.log('success');
+            AuthClient.login(data.addUser.token)
         } catch (err) {
-            setModalData({ error: '', message1: '', message2: '', closeModal: openModal })
+            setModalData({ error: err.message, message1: '', message2: '', closeModal: openModal })
             openModal()
         }
-
-        /* // reset the state to empty strings
-        setFormData({ email: '', username: '', password: '' }) */
     };
 
-// { modal && <Modal {...modalData}/> }
 
     return (
         <div>
         { modal && <Modal {...modalData} prop={modal, setModalData}/> }
-           <SignContainer>
-                <Container>
-                    <Wrapper>
-                        <Row>
-                            <Column1>
-                                <Form onSubmit={requestToSignUp}>
-                                    <Row>
-                                        <Column1>
-                                            <Title>
-                                                Sign Up Today!
-                                            </Title>
-                                                <Row> 
-                                                    <Column1>
-                                                        <InputContainer>
-                                                            <Text>
-                                                                Email
-                                                            </Text>
-                                                            <Input 
-                                                                type='cc-csc'
-                                                                placeholder='Enter email'
-                                                                name='email'
-                                                                onChange={updateStateUIProps}
-                                                                value={formData.email}
-                                                                autocomplete="on"
-                                                                required
-                                                            />
-                                                        </InputContainer>
-                                                        <InputContainer>
-                                                            <Text>
-                                                                Username
-                                                            </Text>
-                                                            <Input 
-                                                                type='cc-csc'
-                                                                placeholder='Enter username'
-                                                                name='username'
-                                                                onChange={updateStateUIProps}
-                                                                value={formData.username}
-                                                                autocomplete="on"
-                                                                required
-                                                            />
-                                                        </InputContainer>
-                                                    </Column1>
-                                                    <Column2>
-                                                        <InputContainer>
-                                                            <Text>
-                                                                Password
-                                                            </Text>
-                                                            <Input 
-                                                                type='cc-csc'
-                                                                placeholder='Enter password'
-                                                                name='password'
-                                                                onChange={updateStateUIProps}
-                                                                value={formData.password}
-                                                                autocomplete="on"
-                                                                required
-                                                            />
-                                                        </InputContainer>
-                                                        <InputContainer>
-                                                            <Text>
-                                                                Confirm Password
-                                                            </Text>
-                                                            <Input 
-                                                                type='cc-csc'
-                                                                placeholder='Enter password'
-                                                                autocomplete="on"
-                                                                required 
-                                                            />
-                                                        </InputContainer>
-                                                    </Column2>
-                                                    <ButtonWrapper>
-                                                        <Button type="submit">
-                                                            Button Here
-                                                        </Button>
-                                                    </ButtonWrapper>
-                                                </Row>
-                                        </Column1>
-                                    </Row>
-                                </Form>
-                            </Column1>
-                            <Column2>
-                                <ImgWrapper>
-                                    <Img src={signUpSVG} />
-                                </ImgWrapper>
-                            </Column2>
-                        </Row>
-                    </Wrapper>
-                </Container>
-           </SignContainer>
+        <Container>
+            <Wrapper>
+                <Row>
+                    <Column1>
+                        <Form onSubmit={requestToSignUp}>
+                            <Row>
+                                <Column1>
+                                    <Title>
+                                        Sign Up Today!
+                                    </Title>
+                                        <Row> 
+                                            <Column1>
+                                                <InputContainer>
+                                                    <Text>
+                                                        Email
+                                                    </Text>
+                                                    <Input 
+                                                        type='cc-csc'
+                                                        placeholder='Enter email'
+                                                        name='email'
+                                                        onChange={updateStateUIProps}
+                                                        value={formData.email}
+                                                        autocomplete="on"
+                                                        required
+                                                    />
+                                                </InputContainer>
+                                                <InputContainer>
+                                                    <Text>
+                                                        Username
+                                                    </Text>
+                                                    <Input 
+                                                        type='cc-csc'
+                                                        placeholder='Enter username'
+                                                        name='username'
+                                                        onChange={updateStateUIProps}
+                                                        value={formData.username}
+                                                        autocomplete="on"
+                                                        required
+                                                    />
+                                                </InputContainer>
+                                            </Column1>
+                                            <Column2>
+                                                <InputContainer>
+                                                    <Text>
+                                                        Password
+                                                    </Text>
+                                                    <Input 
+                                                        type='cc-csc'
+                                                        placeholder='Enter password'
+                                                        name='password'
+                                                        onChange={updateStateUIProps}
+                                                        value={formData.password}
+                                                        autocomplete="on"
+                                                        required
+                                                    />
+                                                </InputContainer>
+                                                <InputContainer>
+                                                    <Text>
+                                                        Confirm Password
+                                                    </Text>
+                                                    <Input 
+                                                        type='cc-csc'
+                                                        placeholder='Enter password'
+                                                        autocomplete="on"
+                                                        required 
+                                                    />
+                                                </InputContainer>
+                                            </Column2>
+                                            <ButtonWrapper>
+                                                <Button type="submit">
+                                                    Button Here
+                                                </Button>
+                                            </ButtonWrapper>
+                                        </Row>
+                                </Column1>
+                            </Row>
+                        </Form>
+                    </Column1>
+                    <Column2>
+                        <ImgWrapper>
+                            <Img src={signUpSVG} />
+                        </ImgWrapper>
+                    </Column2>
+                </Row>
+            </Wrapper>
+        </Container>
         </div>
     )
 }

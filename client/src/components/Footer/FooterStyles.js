@@ -1,6 +1,6 @@
 import styled from 'styled-components';
     
-// Navbar wrapper
+ /* the footer is fixed and may stick behind styles */
 export const FooterBar = styled.div`
     position: fixed;
     bottom: 0;

@@ -8,7 +8,8 @@ class AuthClient {
     login(idToken) {
         // Saves user token to localStorage
         localStorage.setItem('id_token', idToken);
-        window.location.assign('/');
+        // go to home page
+        window.location.assign('/home');
       }
 }
 

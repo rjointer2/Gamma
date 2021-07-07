@@ -43,7 +43,7 @@ let resolvers = {
 
                 return { token, user };
             } catch(err) {
-                throw new AuthenticationError('tesdvdsvdsvsdvsvsdvdst')
+                throw new AuthenticationError(err.message)
             }
         },
         login: async (parent, { username, password }) => {

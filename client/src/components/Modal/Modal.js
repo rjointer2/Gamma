@@ -21,19 +21,23 @@ export default function Modal(modalData) {
                 <Text>
                     Message: {modalData.message1}
                     <br/><br/>
-                    {modalData.error !== '' && <div>
-                        Error was: modalData.error
-                    </div>}
                     <br/><br/>
+                </Text>
+                {modalData.error !== '' && <div style={{
+                    color: "red"
+                }}>
+                    Error was: {modalData.error}
+                </div>}
+                <Text>
                     Message: {modalData.message2}
                     <br/>
                     <br/>
-                    <ButtonWrapper>
+                </Text>
+                <ButtonWrapper>
                         <Button onClick={modalData.closeModal}>
                             Close Modal
                         </Button>
-                    </ButtonWrapper>
-                </Text>
+                </ButtonWrapper>
             </ModalWrapper>
         </ModalBackground>
     )
