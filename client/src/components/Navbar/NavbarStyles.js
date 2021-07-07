@@ -7,6 +7,7 @@ export const Nav = styled.nav`
   background: linear-gradient(#5C458B 20%, white);
   height: 90px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: 0.2rem calc((100vw - 1000px) / 2);
 `;
