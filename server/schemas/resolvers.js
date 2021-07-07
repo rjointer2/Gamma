@@ -5,7 +5,6 @@ const { AuthenticationError } = require('apollo-server-express');
 let resolvers = {
     Query: {
         me: async (parent, args, context) => {
-            console.log('yest')
             if(context.user) {
                 const userData = await User.findOne({ _id: context.user._id }).select('-__v -password')
                 .populate('')
@@ -64,15 +63,3 @@ let resolvers = {
 }
 
 module.exports = resolvers;
-
-
-/* 
-
-return {
-                token: 'hi',
-                user: {
-                    _id: "hi"
-                }
-            }
-
-*/
