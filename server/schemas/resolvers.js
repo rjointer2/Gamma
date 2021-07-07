@@ -28,10 +28,6 @@ let resolvers = {
 
     Mutation: {
         addUser: async (parent, args) => {
-
-            
-        
-
             try {
                 const user = await User.create(args);
                 console.log(user)
@@ -47,7 +43,6 @@ let resolvers = {
             }
         },
         login: async (parent, { username, password }) => {
-            console.log('test')
             const user = await User.findOne({ username });
 
             if (!user) {

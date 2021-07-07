@@ -18,9 +18,12 @@ import { useState } from 'react';
 import { Button, ButtonWrapper } from '../../globalStyles/buttons';
 import Modal from '../../components/Modal/Modal';
 
+import { Link } from 'react-router-dom';
+
 // hooks
 
 import { useLocation } from 'react-router-dom';
+
 
 
 // add the 
@@ -61,6 +64,8 @@ const SignUp = ({  }) => {
 
         let condition = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
         if(!formData.username.match(condition) || !formData.password.match(condition)) {
+            setModalData({ error: 'Must Contain Numbers and Letters', message1: 'Error Made!', message2: 'Please Try Again', closeModal: openModal })
+            openModal()
             return false;
         };
 
@@ -167,6 +172,11 @@ const SignUp = ({  }) => {
                         <ImgWrapper>
                             <Img src={signUpSVG} />
                         </ImgWrapper>
+
+                        Have an Account? <br/>
+                        <Link to="/signin">
+                            Sign In Here!
+                        </Link>
                     </Column2>
                 </Row>
             </Wrapper>
