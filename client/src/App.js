@@ -7,12 +7,15 @@ import { setContext } from '@apollo/client/link/context';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-// Pages
+// components
+import Footer from './components/Footer/Footer';
 
+// Pages
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+
 
 
 // set the headers here
@@ -58,9 +61,10 @@ function App() {
         <Switch>
           <Route exact path="/signin" component={SignIn}/>
         </Switch> 
-        {/* FOOTER HERE */}    
+        <Footer />
       </Router>
     </ApolloProvider>
+
   );
 }
 
