@@ -40,10 +40,6 @@ const SignIn = () => {
     const requestToSignIn = async event => {
         event.preventDefault();
     
-        // if the username 
-        let condition = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
-        if(!userFormData.username.match(condition) && !userFormData.password.match(condition)) return false;
-    
         try {
             const { data } = await login({
               variables: { ...userFormData } 
@@ -76,7 +72,6 @@ const SignIn = () => {
                                                         Enter Your Username
                                                     </Text>
                                                     <Input 
-                                                        type='cc-csc'
                                                         autocomplete="on"
                                                         placeholder='Enter username'
                                                         name='username'
