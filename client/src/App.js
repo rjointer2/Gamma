@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // components
 import Footer from './components/Footer/Footer';
-import FriendList from './components/FriendList/FriendList';
+// import FriendList from './components/FriendList/FriendList';
 
 // Pages
 import Home from './pages/Home/Home';
@@ -62,7 +62,7 @@ function App() {
         <Switch>
           <Route exact path="/signin" component={SignIn}/>
         </Switch> 
-        <FriendList />
+        {/* <FriendList /> */}
         <Footer />
       </Router>
     </ApolloProvider>

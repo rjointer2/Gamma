@@ -9,10 +9,10 @@ const Home = () => {
     return (
         <div>
             <Navbar />
-            { true && <Modal/> }
+            {/* { true && <Modal/> } */}
             <Container>
                 <div>
-                    hi
+                    
                 </div>
             </Container>
         </div>
