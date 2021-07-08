@@ -68,15 +68,15 @@ const getUserByUsername = async username => {
                 username: user.password,
                 email: user.email,
                 // and another helper to get the friends
-                freinds: /* helper function for here */ ""
+                freinds: /* getFriendsByUsername */ ""
 
                 /* 
                 
-                    so the friends list will be a array of usernames
-                    ["a", "b", "c"] and when "a" is iterated 
-                    we return a user object
+                    so the friends list will be a dictionary of usernames
+                    and ObjectId's, we will get a user once in the helper
+                    function and then use map to return a new array of 
+                    every user in the dictionary
 
-                    we need a mutation to add friends
                 
                 */
             }

@@ -16,6 +16,7 @@ let resolvers = {
         },
         
         // get all users
+        // this is be redone after the helpers are made
         users: async () => {
             return User.find()
             .select('-__v -password')
