@@ -5,10 +5,7 @@ import {
     ModalClose
 } from './SearchModalStyles';
 
-const SearchModal = (modalData) => {
-
-    console.log(modalData)
-    // console.log(showModal)
+const SearchModal = ({ openModal }) => {
 
     return (
         // The Modal
@@ -19,11 +16,11 @@ const SearchModal = (modalData) => {
                     <ModalContent>
                     Some text in the Modal..
                     </ModalContent>
-                    <ModalClose onClick={modalData.callback}>
+                    <ModalClose onClick={openModal}>
                         &times;
                     </ModalClose>
                 </ModalWrapper>
-            </ModalBackground>
+            </ModalBackground> 
         </>
     );
 };
