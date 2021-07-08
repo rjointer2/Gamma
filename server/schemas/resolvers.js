@@ -6,10 +6,6 @@ const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
-// helpers
-const { getFriendsByID } = require('../helpers/helpers');
-
-
 let resolvers = {
     Query: {
         me: async (parent, args, context) => {
@@ -31,7 +27,7 @@ let resolvers = {
                     return {
                         _id: user.id,
                         username: user.username,
-                        friends: getFriendsByID.bind(this, user.friends),
+                        friends: user.friends,
                         email: user.email,
                         password: user.password,
                     }
