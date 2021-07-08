@@ -24,6 +24,6 @@ const SearchModal = (modalData) => {
             </ModalBackground>
         </>
     );
-};
+}
 
 export default SearchModal;
