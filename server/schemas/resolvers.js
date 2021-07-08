@@ -47,6 +47,7 @@ let resolvers = {
                 throw new AuthenticationError(err.message)
             }
         },
+
         login: async (parent, { username, password }) => {
             const user = await User.findOne({ username });
 
@@ -64,9 +65,10 @@ let resolvers = {
             const token = signToken(user);
             return { token, user }
         },
+
         addFriendToUser: async (parent, {username, friendUsername}) => {
 
-            if( !username || !friendUsername ) throw new Error("Field or fields are filled");
+            if( !username || !friendUsername ) throw new Error("Field or fields aren't filled");
 
             const user = await User.findOne({ username });
             const friend = await User.findOne({ username: friendUsername });
@@ -78,6 +80,7 @@ let resolvers = {
             
             for(let i = 0; i <= user.length; i++ ) {
                 let friendList = JSON.parse(users[i].friends);
+                //save the friend by the id as a key and username as value
                 friendList[users[i]._id] = users[i].username;
                 users[i].friends = JSON.stringify(friendList);
                 await users[i].save();
@@ -88,6 +91,25 @@ let resolvers = {
                 friends: user.friends
             }
             
+        },
+
+        removeFriendsFromUser: async (parent, {username, friendUsername}) => {
+
+            // get the user's friend diction and delete the value
+
+            if( !username || !friendUsername ) throw new Error("Field or fields aren't filled");
+
+            const user = await User.findOne({ username });
+            const friend = await User.findOne({ username: friendUsername });
+            // if friend doesn't exist
+            if(!user || !friend) throw new Error(`Entry or entries don't exist`);
+
+            delete user[friendUsername];
+            delete friend[username];
+
+            await user.save();
+            await friend.save();
+
         }
    }
 }
