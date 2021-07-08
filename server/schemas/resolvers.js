@@ -1,6 +1,14 @@
+
+// Modals
 const { User } = require('../models');
+
+// auth middleware
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
+
+// helpers
+const { getFriendsByID } = require('../helpers/helpers');
+
 
 let resolvers = {
     Query: {
@@ -18,10 +26,18 @@ let resolvers = {
         // get all users
         // this is be redone after the helpers are made
         users: async () => {
-            return User.find()
-            .select('-__v -password')
-            .populate('Friend')
-            .populate('Chat');
+            try {
+                return User.find().then(users => users.map(user => {
+                    return {
+                        username: args.username,
+                        friends: getFriendsByID.bind(this, user.friends),
+                        email: args.email,
+                        password: args.password,
+                    }
+                }))
+            } catch(err) {
+                console.log(err)
+            }
         },
 
     },

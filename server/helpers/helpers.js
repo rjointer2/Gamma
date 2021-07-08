@@ -100,3 +100,9 @@ const getFriendsByID = async obj => {
 const getChatsCreatedByUsername = async username => {
 
 }
+
+
+module.exports = {
+    getFriendsByID,
+    getUserByUsername
+}
