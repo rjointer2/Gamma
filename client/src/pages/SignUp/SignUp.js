@@ -89,7 +89,7 @@ const SignUp = ({  }) => {
 
     return (
         <div>
-        { modal && <Modal {...modalData} prop={modal, setModalData}/> }
+        { modal && <Modal {...modalData} /> }
         <Container>
             <Wrapper>
                 <Row>
