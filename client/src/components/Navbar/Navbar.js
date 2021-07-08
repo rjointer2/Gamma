@@ -32,18 +32,21 @@ return (
         </NavTitle>
         <NavMenu>
             <NavLink to='/Add-a-friend' onClick={(e)=> {
+
                 e.preventDefault();
                 openModal();
             }}>
             Add A Friend
+
             </NavLink>
             <NavLink to='/Sign-in'>
                 Sign Out
+
             </NavLink>
         </NavMenu>
     </Nav>
     </>
-);
+  );
 }
 
 export default Navbar;

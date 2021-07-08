@@ -5,21 +5,27 @@ export const ChatContainer = styled.div`
     align-items: center;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap-reverse;
-    min-height: 400px;
-    width: 650px;
-    margin: 25px auto;
-    border: 1px solid blue;
+    flex-wrap: wrap;
+    height: 400px;
+    width: 670px;
+    margin: auto;
+    // border: 2px solid #5C458B;
+
+    @media screen and (max-width: 768px) {
+        width: auto;
+        
+    }
 `;
 
 // Navbar Title "Gamma" styling
 export const BffList = styled.div`
     // border: 1px solid blue;
+    margin-left: -20px;
 `;
 
 // Wrapper for the links
 export const Chatbox = styled.div`
-    border: 1px solid red;
+    border: 2px solid #5C458B;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,17 +36,18 @@ export const Chatbox = styled.div`
 `;
 
 export const TargetedUser = styled.div`
-    border: 1px solid brown;
+    // border: 1px solid brown;
     color: #C5C8D5;
-    background-color: #5C458B
-    height: 60px;
+    background-color: #5C458B;
+    height: 50px;
     font-size: large;
     align-items: center;
+    text-align: center;
     padding: 10px;
 `;
 
 export const MessageWindow = styled.div`
-    border: 1px solid pink;
+    border: 1px solid #5C458B;
     align-items: center;
     padding: 10px;
     height: 220px;
@@ -50,12 +57,12 @@ export const InputField = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 3px solid blue;
+    // border: 3px solid blue;
 `;
 
 export const InputText = styled.input`
     align-items: center;
-    border: 1px solid red;
+    border: 1px solid #5C458B;
     height: 3rem;
     width: stretch;
     padding: 10px;
@@ -64,7 +71,7 @@ export const InputText = styled.input`
 
 export const SendButton = styled.button`
     align-items: center;
-    border: 2px solid blue;
+    border: 1px solid blue;
     height: 3rem;
     width: 4rem;
 
