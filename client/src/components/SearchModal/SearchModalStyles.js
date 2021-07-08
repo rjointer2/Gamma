@@ -7,18 +7,17 @@ const primary = "#5C458B";
 // modal wrapper
 export const ModalBackground = styled.div`
     display: flex; 
-    position: fixed; 
-    z-index: 20; 
+    z-index: 1; 
     // top: 0;
-    // transform: translate(-70%);
+    transform: translate(-50%);
     position: absolute;
-    top: 35%;
-    left: 66%;
-    margin-right: -50%;
+    top: 15%;
+    // left: 56%;
+    // margin-right: -50%;
     transform: translate(-50%, -50%)
-    // overflow: auto; 
-    // background-color: rgb(0,0,0); 
-    // background-color: rgba(0,0,0,0.4); 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
 `;
 
 export const ModalWrapper = styled.div`
