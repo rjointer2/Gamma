@@ -32,9 +32,9 @@ return (
             Gamma
         </NavTitle>
         <NavMenu>
-            <NavLink to='/Chats' activeStyle>
+            {/* <NavLink to='/Chats' activeStyle>
             Chats
-            </NavLink>
+            </NavLink> */}
             <NavLink to='/Add-a-friend' activeStyle onClick={(e)=> {
                 e.preventDefault();
                 setModalData({ error: '', message1: '', message2: '', callback: openModal })
@@ -44,9 +44,9 @@ return (
             { showModal && <SearchModal {...modalData} /> }
                  
             </NavLink>
-            <NavLink to='/Games' activeStyle>
+            {/* <NavLink to='/Games' activeStyle>
             Games
-            </NavLink>
+            </NavLink> */}
             <NavLink to='/Sign-in' activeStyle>
             Sign Out
             </NavLink>

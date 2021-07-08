@@ -2,8 +2,11 @@ import {
     ModalBackground,
     ModalWrapper,
     ModalContent,
-    ModalClose
+    ModalClose,
+    Input
 } from './SearchModalStyles';
+
+// import { MDBCol, MDBFormInline, MDBIcon } from "mdbreact";
 
 const SearchModal = (modalData) => {
 
@@ -17,7 +20,16 @@ const SearchModal = (modalData) => {
                 {/* Modal content */}
                 <ModalWrapper>
                     <ModalContent>
-                    Some text in the Modal..
+                    {/* <InputContainer> */}
+                        {/* <Input 
+                            // type='cc-csc'
+                            placeholder='Search username'
+                            name='username'
+                            autocomplete="on"
+                        /> */}
+                    {/* </InputContainer> */}
+                        <Input type="text" placeholder="Search.." />
+
                     </ModalContent>
                     <ModalClose onClick={modalData.callback}>
                         &times;
