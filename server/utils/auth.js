@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const secret = 'mysupersecret';
 const expiration = '2h';
 
-module.exports - {
+module.exports = {
 
     //funtion for our authenticated routes
     authMiddleware: function ({req}) {

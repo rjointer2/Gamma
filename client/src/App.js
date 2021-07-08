@@ -1,46 +1,67 @@
-<<<<<<< HEAD
+
+// apollo graphql client provide and cacher
+
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-
-// Components
-
-import Navbar from "./components/Navbar/Navbar";
-import Game from './components/Game/Game';
-import Chat from './components/Chat/Chat';
+// components
+import Footer from './components/Footer/Footer';
+// import FriendList from './components/FriendList/FriendList';
 
 // Pages
-
 import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
+import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 
 
 
-=======
-import logo from './logo.svg';
-import './App.css';
->>>>>>> main
+// set the headers here
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+// for testing graphql interface
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+
+
+
 
 function App() {
   return (
-    <Router>
-      <Navbar/>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-      </Switch>
-      <Switch>
-        <Route exact path="/login" component={Login}/>
-      </Switch>
-      <Switch>
-        <Route exact path="/game" component={Game}/>
-      </Switch>
-      <Switch>
-       <Route exact path="/signup" component={SignUp}/>
-      </Switch>
-      <Chat />    
-      {/* FOOTER HERE */}    
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <Switch>
+          <Route exact path="/home" component={Home}/>
+        </Switch>
+        <Switch>
+          <Route exact path="/" component={SignUp}/>
+        </Switch> 
+        <Switch>
+          <Route exact path="/signin" component={SignIn}/>
+        </Switch> 
+        {/* <FriendList /> */}
+        <Footer />
+      </Router>
+    </ApolloProvider>
   );
 }
 
