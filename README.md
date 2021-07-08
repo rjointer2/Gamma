@@ -1,7 +1,19 @@
-## Interactive MERN SPA Project 3 - Team Project
+<p align="center"> 
+  <img src="https://i.ibb.co/T1B2pf5/Mern-logo-repo.png" alt="Mern-logo-repo">
+</p>
 
-### Project Called Gamma
-Real-time Chat Application
+<h1 align="center">Real-Time Chat 👋</h1>
+
+<p align="center">
+    <img src="https://img.shields.io/badge/javascript-yellow" />
+    <img src="https://img.shields.io/badge/mongoDB-purple" />
+    <img src="https://img.shields.io/badge/express-red" />
+    <img src="https://img.shields.io/badge/react-green" />
+    <img src="https://img.shields.io/badge/node-gray" />
+    <img src="https://img.shields.io/badge/graphQL-yellow" />
+    <img src="https://img.shields.io/badge/apollo-blue" />
+</p>
+  
 
 ### Application Summary
 
