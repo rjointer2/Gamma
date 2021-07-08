@@ -9,6 +9,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import ChatWindow from '../../components/Chat/ChatWindow';
 
 
+
 // token here
 const token = AuthClient.loggedIn() ? AuthClient.getToken() : null;
 // if the log in is true then get the token from local Storage and if falsy
