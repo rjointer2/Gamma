@@ -56,7 +56,7 @@ const getUserByUsername = async username => {
                 _id: "N/A",
                 username: "N/A",
                 email: "N/A",
-                friends: /* helper function for here */ "N/A"
+                friends: "N/A"
             }
         }
     
@@ -67,18 +67,8 @@ const getUserByUsername = async username => {
                 _id: user.username,
                 username: user.password,
                 email: user.email,
-                // and another helper to get the friends
-                friends: /* getFriendsByUsername */ ""
-
-                /* 
-                
-                    so the friends list will be a dictionary of usernames
-                    and ObjectId's, we will get a user once in the helper
-                    function and then use map to return a new array of 
-                    every user in the dictionary
-
-                
-                */
+                // sending the friend dictionary for the helper to destructure
+                friends: getFriendsByID.bind(this, user.friends)
             }
         }
     
@@ -90,18 +80,19 @@ const getUserByUsername = async username => {
 
 const getFriendsByID = async obj => {
 
-    // create an array of keys / id's from the object
-    Object.keys(obj).map( key => {
-        return {
-            _id: key.id,
-            email: key.email,
-            username: key.username,
-            friends: /* getByUsername */
-        }
-    })
-
-
-    
+    try {
+        // create an array of keys / id's from the object
+        Object.keys(obj).map( key => {
+            return {
+                _id: key.id,
+                email: key.email,
+                username: key.username,
+                friends: getUserByUsername.bind(this, key.username)
+            }
+        })
+    } catch (err) {
+        throw new Error(err)
+    }
 
 }
 
