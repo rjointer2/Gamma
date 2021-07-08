@@ -76,20 +76,28 @@ let resolvers = {
             // if friend doesn't exist
             if(!user || !friend) throw new Error(`Entry or entries don't exist`);
 
-            let users = [user, friend]
-            
-            for(let i = 0; i <= user.length; i++ ) {
-                let friendList = JSON.parse(users[i].friends);
-                //save the friend by the id as a key and username as value
-                friendList[users[i]._id] = users[i].username;
-                users[i].friends = JSON.stringify(friendList);
-                await users[i].save();
-            }
+            let counter = 1;
+
+            async function addToFriendListWhileSwap(a, b) {
+
+                let friendList = JSON.parse(a.friends);
+                friendList[b._id] = b.username;
+                a.friends = JSON.stringify(friendList);
+                await a.save();
+                counter++;
+                console.log(a, b)
+
+                if(counter <= 2) {
+                    addToFriendListWhileSwap(b, a)
+                }
+                
+            } addToFriendListWhileSwap(user, friend);
 
             return {
                 username: username,
                 friends: user.friends
             }
+
             
         },
 
@@ -104,11 +112,17 @@ let resolvers = {
             // if friend doesn't exist
             if(!user || !friend) throw new Error(`Entry or entries don't exist`);
 
-            delete user[friendUsername];
-            delete friend[username];
+            // to the delete the diction we the have to get the id of the
+            // the friend and place it's in the key
+            console.log(user.friends[friend.id])
+            console.log(friend.id)
 
-            await user.save();
-            await friend.save();
+
+            return {
+                _id: user.id,
+                username: user.username,
+                friends: user.friends,
+            }
 
         }
    }
