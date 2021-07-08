@@ -81,6 +81,7 @@ let resolvers = {
             async function addToFriendListWhileSwap(a, b) {
 
                 let friendList = JSON.parse(a.friends);
+                // after parsing we make the dictionary from the ObjectID and username
                 friendList[b._id] = b.username;
                 a.friends = JSON.stringify(friendList);
                 await a.save();
@@ -88,6 +89,7 @@ let resolvers = {
                 console.log(a, b)
 
                 if(counter <= 2) {
+                    // recursively call the function with args swapped
                     addToFriendListWhileSwap(b, a)
                 }
                 
@@ -114,9 +116,21 @@ let resolvers = {
 
             // to the delete the diction we the have to get the id of the
             // the friend and place it's in the key
-            console.log(user.friends[friend.id])
-            console.log(friend.id)
 
+            let counter = 1;
+
+            async function deleteFriendFromUserWhileSwap(a, b) {
+                parsedFriendList = JSON.parse(a.friends);
+                delete parsedFriendList[b.id];
+                a.friends = JSON.stringify(parsedFriendList);
+                await a.save();
+                counter++;
+                console.log(a, b);
+
+                if(counter <= 2) {
+                    deleteFriendFromUserWhileSwap(b, a);
+                }
+            } deleteFriendFromUserWhileSwap(user, friend);
 
             return {
                 _id: user.id,
