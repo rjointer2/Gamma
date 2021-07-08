@@ -14,7 +14,7 @@ const Navbar = ({click}) => {
             {/* logo */}
             <div className="navbar_logo">
                 <h2>
-                    Gamma Chat App
+                    Gamma Chat Application
                 </h2>
             </div>
             {/* Links */}
@@ -63,3 +63,4 @@ export default Navbar;
                     }) }
                     </ul>
 */
+
