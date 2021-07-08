@@ -1,12 +1,13 @@
 
 // Auth Client Ulits
-import AuthClient from '../../ulit/auth/AuthClient';
+
 
 
 // Components
 
 import Navbar from '../../components/Navbar/Navbar'
 import ChatWindow from '../../components/Chat/ChatWindow';
+import AuthClient from '../../ulit/auth/AuthClient';
 
 
 
