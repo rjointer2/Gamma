@@ -129,7 +129,8 @@ const Chat = () => {
 
    return (
         
-         <Page>
+        //  <Page>
+        <>
            <Container ref={element}>
                 {messages.map(renderMessages) }
            </Container>
@@ -154,7 +155,8 @@ const Chat = () => {
               
               */}
            </Form>
-         </Page>
+         {/* </Page> */}
+        </>
          
     
     )

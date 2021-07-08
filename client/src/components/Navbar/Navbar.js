@@ -15,14 +15,11 @@ return (
             Gamma
         </NavTitle>
         <NavMenu>
-            <NavLink to='/Favorite' activeStyle>
-            Favorite
-            </NavLink>
-            <NavLink to='/Favorite' activeStyle>
+            <NavLink to='/Chats' activeStyle>
             Chats
             </NavLink>
-            <NavLink to='/Invite' activeStyle>
-            Invite
+            <NavLink to='/Add-a-friend' activeStyle>
+            Add A Friend
             </NavLink>
             <NavLink to='/Games' activeStyle>
             Games
