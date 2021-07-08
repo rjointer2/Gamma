@@ -15,8 +15,12 @@ const cors = require('cors');
 //const db = require('./config/connection');
 // import our typeDefs and resolvers
 
-const { typeDefs, resolvers } = require('./schemas');
-const { authMiddleware } = require('./utils/auth');
+const typeDefs = require('./schemas/typeDefs');
+const resolvers = require('./schemas/resolvers');
+const authMiddleware = require('./utils/auth');
+
+
+console.log(resolvers)
 
 // Express will be invoked in the top level of the file and 
 // stored in a instance of appServer 

@@ -9,10 +9,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // components
 import Footer from './components/Footer/Footer';
+// import FriendList from './components/FriendList/FriendList';
 
 // Pages
 import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 
@@ -53,14 +53,12 @@ function App() {
           <Route exact path="/home" component={Home}/>
         </Switch>
         <Switch>
-          <Route exact path="/login" component={Login}/>
-        </Switch>
-        <Switch>
           <Route exact path="/" component={SignUp}/>
         </Switch> 
         <Switch>
           <Route exact path="/signin" component={SignIn}/>
         </Switch> 
+        {/* <FriendList /> */}
         <Footer />
       </Router>
     </ApolloProvider>
