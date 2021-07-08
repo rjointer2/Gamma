@@ -34,6 +34,6 @@ return (
     </Nav>
     </>
 );
-};
+}
 
 export default Navbar;
