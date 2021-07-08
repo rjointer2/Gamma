@@ -36,7 +36,10 @@ return (
             <NavLink to='/Chats' activeStyle>
             Chats
             </NavLink>
-            <NavLink to='/Add-a-friend' activeStyle onClick={openModal}>
+            <NavLink to='/Add-a-friend' activeStyle onClick={(e)=> {
+                e.preventDefault();
+                openModal();
+            }}>
             Add A Friend
                 <SearchModal showModal={showModal} setShowModal={setShowModal} />
                 

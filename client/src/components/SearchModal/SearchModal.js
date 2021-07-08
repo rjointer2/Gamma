@@ -9,17 +9,18 @@ const SearchModal = (showModal, setShowModal) => {
     return (
         // The Modal
         <>
-            {showModal ? (
             <ModalBackground>
+                
                 {/* Modal content */}
-                <ModalWrapper showModal={showModal}>
+                <ModalWrapper>
                     <ModalContent>
                     Some text in the Modal..
                     </ModalContent>
-                    <ModalClose onClick={() => setShowModal(prev => !prev)}>&times;</ModalClose>
+                    <ModalClose 
+                        onClick={() => setShowModal(prev => !prev)}>&times;
+                    </ModalClose>
                 </ModalWrapper>
-            </ModalBackground> )
-            : null}
+            </ModalBackground>
         </>
     );
 };
