@@ -1,7 +1,6 @@
 
 const User = require('../models/User');
 const Chat = require('../models/Chat');
-const Friends = require('../models/Friends');
 
 /* 
 
@@ -83,6 +82,7 @@ const getFriendsByID = async obj => {
     try {
         // create an array of keys / id's from the object
         Object.keys(obj).map( key => {
+            console.log(getUserByUsername.bind(this, key.username))
             return {
                 _id: key.id,
                 email: key.email,

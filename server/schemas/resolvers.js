@@ -25,14 +25,15 @@ let resolvers = {
         
         // get all users
         // this is be redone after the helpers are made
-        users: async () => {
+        users: async (parent, args, context) => {
             try {
                 return User.find().then(users => users.map(user => {
                     return {
-                        username: args.username,
+                        _id: user.id,
+                        username: user.username,
                         friends: getFriendsByID.bind(this, user.friends),
-                        email: args.email,
-                        password: args.password,
+                        email: user.email,
+                        password: user.password,
                     }
                 }))
             } catch(err) {
