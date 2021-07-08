@@ -68,26 +68,24 @@ let resolvers = {
 
             if( !username || !friendUsername ) throw new Error("Field or fields are filled");
 
-            // not efficient but okay for now
             const user = await User.findOne({ username });
-            const friend = await User.findOne({ username:friendUsername });
+            const friend = await User.findOne({ username: friendUsername });
 
             // if friend doesn't exist
             if(!user || !friend) throw new Error(`Entry or entries don't exist`);
 
-            // add friend in the friend array
-            let friendList = JSON.parse(user.friends);
-
-            friendList[friend._id] = friendUsername;
-            console.log(friendList)
-
-            user.friendList = JSON.stringify(friendList);
-
-            await user.save();
+            let users = [user, friend]
             
+            for(let i = 0; i <= user.length; i++ ) {
+                let friendList = JSON.parse(users[i].friends);
+                friendList[users[i]._id] = users[i].username;
+                users[i].friends = JSON.stringify(friendList);
+                await users[i].save();
+            }
+
             return {
                 username: username,
-                friends: user.friendList
+                friends: user.friends
             }
             
         }
