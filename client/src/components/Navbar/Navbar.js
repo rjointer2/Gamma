@@ -52,17 +52,6 @@ const Navbar = ({click}) => {
 
 export default Navbar;
 
-/*
-<ul className="navbar_links">
-                    { SidebarData.map((val, link) => {
-                        <li>
-                            <Link to={val.link} className='nav_link'>
-                                {val.icon}
-                            </Link>
-                        </li>
-                    }) }
-                    </ul>
-*/
 
 
 
