@@ -4,10 +4,11 @@ export const ChatContainer = styled.div`
     // background: linear-gradient(#5C458B 20%, white);
     align-items: center;
     display: flex;
-    justify-content: space-evenly;
-    height: 400px;
-    width: 700px;
-    margin: auto;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+    min-height: 400px;
+    width: 650px;
+    margin: 25px auto;
     border: 1px solid blue;
 `;
 

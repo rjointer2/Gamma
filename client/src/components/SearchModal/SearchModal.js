@@ -8,6 +8,7 @@ import {
 const SearchModal = (modalData) => {
 
     console.log(modalData)
+    // console.log(showModal)
 
     return (
         // The Modal
@@ -18,7 +19,8 @@ const SearchModal = (modalData) => {
                     <ModalContent>
                     Some text in the Modal..
                     </ModalContent>
-                    <ModalClose onClick={modalData.callback} >&times;
+                    <ModalClose onClick={modalData.callback}>
+                        &times;
                     </ModalClose>
                 </ModalWrapper>
             </ModalBackground>
