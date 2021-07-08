@@ -3,7 +3,7 @@
 import { useMutation } from '@apollo/client';
 
 import { LOGIN_USER } from '../../ulit/mutation/loginMutation';
-import AuthClient from '../../ulit/auth/authClient';
+import AuthClient from '../../ulit/auth/AuthClient';
 
 
 // Styles and Assest 
