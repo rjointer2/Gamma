@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 
 // Sign up mutation 
 import { SIGN_UP_USER } from '../../ulit/mutation/loginMutation';
-import AuthClient from '../../ulit/auth/authClient';
+import AuthClient from '../../ulit/auth/AuthClient';
 
 // styles
 
@@ -22,15 +22,12 @@ import { Link } from 'react-router-dom';
 
 // hooks
 
-import { useLocation } from 'react-router-dom';
 
 
 
 // add the 
 
 const SignUp = ({  }) => {
-
-    let location = useLocation()
 
     // mutation
     const [addUser, { error }] = useMutation(SIGN_UP_USER);

@@ -11,31 +11,28 @@ Gamma can help drive productivity, Return on Investment (ROI) and efficiency in 
 Designers are leading the charge on how people are connecting and building relationships with the internet, providing a new layer of communication and decision making through smart chat app design. I hope to showcase a few in-app messaging examples from real companies that are solving real problems.
 
 ### Technogies & Tools Used:
+
+HTML
+CSS
+JavaScript
+React 
+apollo - client 
 MongoDB and mongoose
 Express
-React 
-Node
 Node.js
 socket.io
-apollo server
-Apollo Boost
+socket.io - client 
 apollo server express
 graphQl
 JWT (JSON Web Token)
 bcrypt
-sequelize
-JSX
-JavaScript
-CSS
-REACT bootsrap
-REACT
-HTML, CSS, React Bootstrap
 dotenv
 Heroku
 
 ## Design Consideration
 
 ## Use Cases - Ref 
+
 Case Study: Thumbtack In-App Chat
 I’m going to speculate that Thumbtacks massive growth is related to two prime things they did incredibly well with their user experience. First, they designed a fantastic onboarding experience, and they leveraged chat in their application as the central communication system. I think this makes them have one of the best in application chat designs.
 #### Ref-2: Case Study: Instagram Direct Chat
@@ -47,7 +44,6 @@ I’m going to speculate that Thumbtacks massive growth is related to two prime 
 
 2.	As Business Owner, I want to see a list of all my chat threads in one place so that I can quickly resume with my previous chats.
  
-3. As Business Owner, I want to be able to share media files (images, song, videos, contact any my current location) from my gallery app to my contact list in chat so that I can have multimedia rich communication with my contacts.
 
 ## Installation Guideline
 

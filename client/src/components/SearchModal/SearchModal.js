@@ -6,13 +6,7 @@ import {
     Input
 } from './SearchModalStyles';
 
-// import { MDBCol, MDBFormInline, MDBIcon } from "mdbreact";
-
-const SearchModal = (modalData) => {
-
-    console.log(modalData)
-    // console.log(showModal)
-
+const SearchModal = ({ openModal }) => {
     return (
         // The Modal
         <>
@@ -31,11 +25,11 @@ const SearchModal = (modalData) => {
                         <Input type="text" placeholder="Search.." />
 
                     </ModalContent>
-                    <ModalClose onClick={modalData.callback}>
+                    <ModalClose onClick={openModal}>
                         &times;
                     </ModalClose>
                 </ModalWrapper>
-            </ModalBackground>
+            </ModalBackground> 
         </>
     );
 };

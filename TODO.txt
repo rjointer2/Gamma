@@ -7,19 +7,17 @@ ______________________________
 Hung
 ______________________
 
-nabvar -> add a friend to chat
-navbar -> have invite to chat
 
-chatResolver functions
 
 Roody
 ______________________
 
-
-
-
-
-
+auth the routes
+chat and socket server
+broadcast.emit
+redux
+overview
+then production
 
 
 
