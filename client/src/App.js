@@ -12,7 +12,6 @@ import Footer from './components/Footer/Footer';
 
 // Pages
 import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 
@@ -51,9 +50,6 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/home" component={Home}/>
-        </Switch>
-        <Switch>
-          <Route exact path="/login" component={Login}/>
         </Switch>
         <Switch>
           <Route exact path="/" component={SignUp}/>
