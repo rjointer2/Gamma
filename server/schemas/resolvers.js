@@ -69,8 +69,9 @@ let resolvers = {
             if( !username || !friendUsername ) throw new Error("Field or fields are filled");
             // not efficient but okay for now
             const user = await User.findOne({ username });
-            const friend = await User.findOne({ friendUsername });
+            const friend = await User.findOne({ username: friendUsername });
             // if friend doesn't exist
+            console.log(user, friend)
             if(!user || !friend) throw new Error(`Entry or entries don't exist`);
             // add friend in the friend array
             const friendArray = JSON.parse(user.friends);
