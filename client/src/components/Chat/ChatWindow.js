@@ -12,10 +12,15 @@ import {
 
 import FriendList from "../FriendList/FriendList";
 
+
+
+
+
 const ChatWindow = () => {
 
    return (
         <Div>
+            
            <ChatContainer>
                <BffList>  {/*Friends List */}
                     <FriendList /> 
@@ -29,7 +34,7 @@ const ChatWindow = () => {
                     </MessageWindow>
                     <InputField> {/* bottom input/send container */}
                         <InputText type="text" placeholder=
-                        "sa something....." /> {/* input field */}
+                        "say something....." /> {/* input field */}
                         <SendButton> {/* send button */}
                             Send
                         </SendButton>

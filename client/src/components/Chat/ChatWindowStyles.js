@@ -77,12 +77,13 @@ export const InputText = styled.input`
     padding: 10px;
     flex: 80%;
     font-size: 20px;
+    font-family: cursive;
     
 `;
 
 export const SendButton = styled.button`
     align-items: center;
-    border: 2px solid blue;
+    //border: 2px solid blue;
     background-color: #4b1361;
     color: white;
     height: 50px;
@@ -90,6 +91,7 @@ export const SendButton = styled.button`
     font-size: 18px;
     flex: 20%;
     cursor: pointer;
+    font-family: cursive;
 
 
 

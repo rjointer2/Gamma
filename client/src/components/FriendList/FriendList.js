@@ -6,12 +6,14 @@ import {
     ListContainer,
     FriendRow,
     FriendName,
-    RemoveBtn
+    RemoveBtn,
+    Div
 } from './FriendListStyles';
 
 const FriendList = () => {
 
     return (
+      <Div> 
         <OuterContainer>
             <TitleContainer>
                 <Title>Friends List</Title>
@@ -33,6 +35,7 @@ const FriendList = () => {
                 </FriendRow>
             </ListContainer>
         </OuterContainer>
+ </Div>    
     )
 }
 

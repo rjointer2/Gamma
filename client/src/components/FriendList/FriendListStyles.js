@@ -1,9 +1,16 @@
 import styled from "styled-components";
 
+
+export const Div = styled.div`
+   padding: 0;
+   margin: 0;
+
+`;
+
 // Friends List outer container styling
 export const OuterContainer = styled.div`
   background-color: white;
-  height: 320px;
+  height: 400px;
   width: 300px;
   margin: 20px;
   display: flex;
@@ -22,6 +29,8 @@ export const TitleContainer = styled.div`
   align-items: center;
   height: 60px;
   font-size: large;
+  font-family: cursive;
+
 `;
 
 // Title styling
@@ -37,6 +46,8 @@ export const InviteBtn = styled.button`
     color: #5C458B;
     font-weight: bolder;
     border-radius: 5px;
+    font-family: cursive;
+    cursor: pointer;
 `;
 
 // Button styling for friend list deleteion
@@ -46,6 +57,8 @@ export const RemoveBtn = styled.button`
     color: #5C458B;
     font-weight: bolder;
     border-radius: 5px;
+    cursor: pointer;
+    font-family: cursive;
 `;
 
 // Styling for the actual list of friends
@@ -64,10 +77,12 @@ export const FriendRow = styled.div`
   justify-content: space-between;
   margin-top: 10px;
   align-items: center;
+  font-family: cursive;
 `;
 
 // Styling for the name entry in FriendRow
 export const FriendName = styled.p`
   margin-left: 10px;
   font-size: 1.1rem;
+  font-family: cursive;
 `;
