@@ -40,23 +40,17 @@ const SignIn = () => {
     const requestToSignIn = async event => {
         event.preventDefault();
     
-        // if the username 
-        let condition = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
-        if(!userFormData.username.match(condition) && !userFormData.password.match(condition)) return false;
-    
         try {
             const { data } = await login({
               variables: { ...userFormData } 
             })
-
-            console.log(data)
       
             AuthClient.login(data.login.token)
         } catch (err) {
             console.log('?')
             // we ccan use this in development but it
             // it shouldn't be used in production for the client to see
-            console.error(err);
+            console.error(err.message);
         }
     }
 
@@ -78,7 +72,6 @@ const SignIn = () => {
                                                         Enter Your Username
                                                     </Text>
                                                     <Input 
-                                                        type='cc-csc'
                                                         autocomplete="on"
                                                         placeholder='Enter username'
                                                         name='username'
