@@ -36,7 +36,6 @@ Heroku
 ## Design Consideration
 
 ## Use Cases - Ref 
-(https://getstream.io/blog/in-app-chat/)
 Case Study: Thumbtack In-App Chat
 I’m going to speculate that Thumbtacks massive growth is related to two prime things they did incredibly well with their user experience. First, they designed a fantastic onboarding experience, and they leveraged chat in their application as the central communication system. I think this makes them have one of the best in application chat designs.
 #### Ref-2: Case Study: Instagram Direct Chat
