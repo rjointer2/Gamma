@@ -100,7 +100,6 @@ let resolvers = {
                 username: username,
                 friends: user.friends
             }
-
             
         },
 

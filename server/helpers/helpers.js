@@ -56,7 +56,7 @@ const getUserByUsername = async username => {
                 _id: "N/A",
                 username: "N/A",
                 email: "N/A",
-                freinds: /* helper function for here */ "N/A"
+                friends: /* helper function for here */ "N/A"
             }
         }
     
@@ -68,7 +68,7 @@ const getUserByUsername = async username => {
                 username: user.password,
                 email: user.email,
                 // and another helper to get the friends
-                freinds: /* getFriendsByUsername */ ""
+                friends: /* getFriendsByUsername */ ""
 
                 /* 
                 
@@ -86,5 +86,26 @@ const getUserByUsername = async username => {
         throw new Error(err)
     }
 
+}
+
+const getFriendsByID = async obj => {
+
+    // create an array of keys / id's from the object
+    Object.keys(obj).map( key => {
+        return {
+            _id: key.id,
+            email: key.email,
+            username: key.username,
+            friends: /* getByUsername */
+        }
+    })
+
+
+    
+
+}
+
+
+const getChatsCreatedByUsername = async username => {
 
 }
