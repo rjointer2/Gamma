@@ -30,7 +30,7 @@ let resolvers = {
             try {
                 const user = await User.create({
                     username: args.username,
-                    friends: "[]",
+                    friends: "{}",
                     email: args.email,
                     password: args.password,
                 });
@@ -67,23 +67,27 @@ let resolvers = {
         addFriendToUser: async (parent, {username, friendUsername}) => {
 
             if( !username || !friendUsername ) throw new Error("Field or fields are filled");
+
             // not efficient but okay for now
             const user = await User.findOne({ username });
-            const friend = await User.findOne({ username: friendUsername });
+            const friend = await User.findOne({ username:friendUsername });
+
             // if friend doesn't exist
-            console.log(user, friend)
             if(!user || !friend) throw new Error(`Entry or entries don't exist`);
+
             // add friend in the friend array
-            const friendArray = JSON.parse(user.friends);
-            friendArray.push(friendUsername);
-            const stringedFriendArray = JSON.stringify(friendArray);
-            user.friends = stringedFriendArray;
-            // save the document
+            let friendList = JSON.parse(user.friends);
+
+            friendList[friend._id] = friendUsername;
+            console.log(friendList)
+
+            user.friendList = JSON.stringify(friendList);
+
             await user.save();
             
             return {
                 username: username,
-                friends: user.friends
+                friends: user.friendList
             }
             
         }
