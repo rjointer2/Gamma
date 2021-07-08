@@ -14,7 +14,7 @@ const Navbar = ({click}) => {
             {/* logo */}
             <div className="navbar_logo">
                 <h2>
-                    Employee Managment System
+                    Gamma Chat App
                 </h2>
             </div>
             {/* Links */}
