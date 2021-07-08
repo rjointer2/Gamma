@@ -6,7 +6,8 @@ import {
     MessageWindow,
     InputField,
     InputText,
-    SendButton
+    SendButton,
+    Div
 } from './ChatWindowStyles';
 
 import FriendList from "../FriendList/FriendList";
@@ -14,7 +15,7 @@ import FriendList from "../FriendList/FriendList";
 const ChatWindow = () => {
 
    return (
-        <>
+        <Div>
            <ChatContainer>
                <BffList>  {/*Friends List */}
                     <FriendList /> 
@@ -27,14 +28,15 @@ const ChatWindow = () => {
                         HelloWorld
                     </MessageWindow>
                     <InputField> {/* bottom input/send container */}
-                        <InputText /> {/* input field */}
+                        <InputText type="text" placeholder=
+                        "sa something....." /> {/* input field */}
                         <SendButton> {/* send button */}
                             Send
                         </SendButton>
                     </InputField>
                </Chatbox>
            </ChatContainer>
-        </>
+        </Div>
     )
 }
 
