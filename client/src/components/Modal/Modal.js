@@ -3,7 +3,7 @@ import { Text } from "../../globalStyles/text";
 import { ModalBackground, ModalWrapper } from "./ModalStyles";
 
 
-export default function Modal(modalData) {
+export default function Modal(modalData, prop) {
 
     /* 
 
@@ -13,6 +13,7 @@ export default function Modal(modalData) {
     message1, meesage, closeModal, error, and callback
 
     */
+
     return (
 
 
