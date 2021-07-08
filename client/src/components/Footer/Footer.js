@@ -26,3 +26,4 @@ return (
 };
 
 export default Footer;
+
