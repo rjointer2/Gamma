@@ -5,6 +5,11 @@ import decode from 'jwt-decode';
 // create a new class to instantiate for a user
 class AuthClient {
 
+  // get user data
+  getProfile() {
+    return decode(this.getToken());
+  }
+
   login(idToken) {
     // Saves user token to localStorage
     localStorage.setItem('id_token_gamma', idToken);
@@ -14,7 +19,7 @@ class AuthClient {
 
   getToken() {
     // Retrieves the user token from localStorage
-    return localStorage.getItem('id_token');
+    return localStorage.getItem('id_token_gamma');
   }
 
   // check if user's logged in
