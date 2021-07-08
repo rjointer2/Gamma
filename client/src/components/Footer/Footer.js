@@ -15,9 +15,9 @@ return (
             &copy; 2021 - Brought to you by Team Gamma
         </CopyRight>
         <TeamLink>
-            <Link as="a" href="https://github.com/rjointer2" target=" ">Roosevelt Jointer</Link> | 
-            <Link as="a" href="https://github.com/senait77" target=" "> Senait Gerezgiher</Link> | 
-            <Link as="a" href="https://github.com/mmtariqk" target=" "> Muhammad Tariq</Link> |
+            <Link as="a" href="https://github.com/rjointer2" target=" ">Roosevelt Jointer</Link> 
+            <Link as="a" href="https://github.com/senait77" target=" "> Senait Gerezgiher</Link> 
+            <Link as="a" href="https://github.com/mmtariqk" target=" "> Muhammad Tariq</Link>
             <Link as="a" href="https://github.com/htang2021" target=" "> Hung Tang</Link>
         </TeamLink>
     </FooterBar>
