@@ -15,21 +15,21 @@ const FriendList = () => {
         <OuterContainer>
             <TitleContainer>
                 <Title>Friends List</Title>
-                <InviteBtn>Invite</InviteBtn>
+                <InviteBtn>Edit</InviteBtn>
             </TitleContainer>
             <ListContainer>
                 {/* {friends} */}
                 <FriendRow>
-                    <FriendName>Friend-1</FriendName>
-                    <RemoveBtn>Delete</RemoveBtn>
+                    <FriendName>username-1</FriendName>
+                    <RemoveBtn>Chat</RemoveBtn>
                 </FriendRow>
                 <FriendRow>
-                    <FriendName>Friend-2</FriendName>
-                    <RemoveBtn>Delete</RemoveBtn>
+                    <FriendName>username-2</FriendName>
+                    <RemoveBtn>Chat</RemoveBtn>
                 </FriendRow>
                 <FriendRow>
-                    <FriendName>Friend-3</FriendName>
-                    <RemoveBtn>Delete</RemoveBtn>
+                    <FriendName>username-3</FriendName>
+                    <RemoveBtn>Chat</RemoveBtn>
                 </FriendRow>
             </ListContainer>
         </OuterContainer>
