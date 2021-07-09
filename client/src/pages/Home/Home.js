@@ -12,6 +12,7 @@ import authClient from '../../ulit/auth/authClient';
 
 
 
+
 // token here
 const token = authClient.loggedIn() ? authClient.getToken() : null;
 // if the log in is true then get the token from local Storage and if falsy
