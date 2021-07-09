@@ -24,7 +24,7 @@ export const BffList = styled.div`
 `;
 
 // Wrapper for the links
-export const Chatbox = styled.div`
+export const Chatbox = styled.form`
     border: 2px solid #5C458B;
     display: flex;
     flex-direction: column;
@@ -51,6 +51,9 @@ export const MessageWindow = styled.div`
     align-items: center;
     padding: 10px;
     height: 220px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
 `;
 
 export const InputField = styled.div`

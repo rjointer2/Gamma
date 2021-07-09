@@ -86,7 +86,7 @@ const SignIn = () => {
                                                         Enter Your Password
                                                     </Text>
                                                     <Input 
-                                                        type='cc-csc'
+                                                        type='password'
                                                         placeholder='Enter password'
                                                         name='password'
                                                         onChange={updateStateUIProps}
