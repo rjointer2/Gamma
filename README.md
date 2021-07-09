@@ -61,6 +61,7 @@ Have a high-quality README (with unique name, description, technologies used, sc
 - [User Story](#user-story)
 - [Acceptance Criteria](#acceptance-criteria)
 - [Table of Contents](#table-of-contents)
+- [Technologies-Used](#Technologies-Used)
 - [Available Scripts](#available-scripts)
   - [`npm start`](#npm-start)
   - [`npm test`](#npm-test)
@@ -77,6 +78,28 @@ Have a high-quality README (with unique name, description, technologies used, sc
   - [Deployment](#deployment)
   - [`npm run build` fails to minify](#npm-run-build-fails-to-minify)
 
+
+  ## Technologies-Used
+
+* MongoDB and mongoose
+* Express
+* React 
+* Node
+* socket.io
+* apollo server
+* Apollo Boost
+* apollo-express-server
+* graphQl
+* JWT (JSON Web Token)
+* bcrypt
+* JSX
+* JavaScript
+* CSS
+* REACT bootsrap
+* react-redux
+* HTML
+* dotenv
+* Heroku
 
 
 ## Available Scripts
@@ -134,63 +157,38 @@ No current testing
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Learn More
 
-### Technogies & Tools Used:
-MongoDB and mongoose
-Express
-React 
-Node
-Node.js
-socket.io
-apollo server
-Apollo Boost
-apollo server express
-graphQl
-JWT (JSON Web Token)
-bcrypt
-sequelize
-JSX
-JavaScript
-CSS
-REACT bootsrap
-REACT
-HTML, CSS, React Bootstrap
-dotenv
-Heroku
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Design Consideration
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-## Use Cases - Ref 
-(https://getstream.io/blog/in-app-chat/)
-Case Study: Thumbtack In-App Chat
-I’m going to speculate that Thumbtacks massive growth is related to two prime things they did incredibly well with their user experience. First, they designed a fantastic onboarding experience, and they leveraged chat in their application as the central communication system. I think this makes them have one of the best in application chat designs.
-#### Ref-2: Case Study: Instagram Direct Chat
-#### Ref-3:	In-App Messaging Use Case: Uber Chat
+### Code Splitting
 
-## Acceptance Criteria - Chat App Gamma
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-1.	As a Business Owner, I want to see a list of my contacts who are available on Gamma (Chat App) so that I can start chatting one-on-one with anyone of them. I should also be able to search for a contact from a friend list.
+### Analyzing the Bundle Size
 
-2.	As Business Owner, I want to see a list of all my chat threads in one place so that I can quickly resume with my previous chats.
- 
-3. As Business Owner, I want to be able to share media files (images, song, videos, contact any my current location) from my gallery app to my contact list in chat so that I can have multimedia rich communication with my contacts.
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-## Installation Guideline
+### Making a Progressive Web App
 
-## Testing Guideline
-N/A in the meantime
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Deployed App on Heroku
+### Advanced Configuration
 
-## Licensing
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-## Project Team
+### Deployment
 
-## Contacts
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-Roody
-Senait
-Hung
-Tariq
+### `npm run build` fails to minify
 
-Updated by team Gamma on July 11, 2021
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+
+
+
