@@ -30,7 +30,7 @@ return (
         <NavTitle to='/Sign-in'>
             Gamma
         </NavTitle>
-        <NavLink to='/inprogress'>
+        <NavLink to='/inDevelopment'>
             In Development
         </NavLink>
         <NavMenu>
