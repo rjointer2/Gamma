@@ -3,7 +3,7 @@
 import decode from 'jwt-decode';
 
 // create a new class to instantiate for a user
-class AuthClient {
+class authClient {
 
   // get user data
   getProfile() {
@@ -49,4 +49,4 @@ class AuthClient {
   }
 }
 
-export default new AuthClient()
+export default new authClient()

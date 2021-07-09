@@ -19,7 +19,7 @@ import { Button, ButtonWrapper } from '../../globalStyles/buttons';
 // hooks
 
 import { useState } from 'react';
-import AuthClient from '../../ulit/auth/AuthClient';
+import authClient from '../../ulit/auth/authClient';
 
 const SignIn = () => {
 
@@ -46,7 +46,7 @@ const SignIn = () => {
               variables: { ...userFormData } 
             })
       
-            AuthClient.login(data.login.token)
+            authClient.login(data.login.token)
         } catch (err) {
             console.log('?')
             // we ccan use this in development but it

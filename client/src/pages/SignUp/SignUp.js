@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 
 // Sign up mutation 
 import { SIGN_UP_USER } from '../../ulit/mutation/loginMutation';
-import AuthClient from '../../ulit/auth/AuthClient';
+import authClient from '../../ulit/auth/authClient';
 
 // styles
 
@@ -76,7 +76,7 @@ const SignUp = ({  }) => {
             // if successful on add the user login them in using the auth class object
             // witht the new user's token as the arg
             console.log('success');
-            AuthClient.login(data.addUser.token)
+            authClient.login(data.addUser.token)
         } catch (err) {
             setModalData({ error: err.message, message1: '', message2: '', closeModal: openModal })
             openModal()
