@@ -2,7 +2,7 @@
 // apollo client and mutations
 import { useMutation } from '@apollo/client';
 
-import { LOGIN_USER } from '../../ulit/mutation/loginMutation';
+import { LOGIN_USER } from '../../util/mutation/loginMutation';
 
 
 
@@ -19,7 +19,7 @@ import { Button, ButtonWrapper } from '../../globalStyles/buttons';
 // hooks
 
 import { useState } from 'react';
-import AuthClient from '../../ulit/auth/AuthClient';
+import AuthClient from '../../util/auth/authClient';
 
 const SignIn = () => {
 
@@ -54,6 +54,8 @@ const SignIn = () => {
             console.error(err.message);
         }
     }
+
+
 
     return (
         <div>

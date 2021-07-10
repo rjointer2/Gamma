@@ -3,8 +3,8 @@
 import { useMutation } from '@apollo/client';
 
 // Sign up mutation 
-import { SIGN_UP_USER } from '../../ulit/mutation/loginMutation';
-import AuthClient from '../../ulit/auth/AuthClient';
+import { SIGN_UP_USER } from '../../util/mutation/loginMutation';
+import AuthClient from '../../util/auth/authClient';
 
 // styles
 
@@ -134,7 +134,7 @@ const SignUp = ({  }) => {
                                                         Password
                                                     </Text>
                                                     <Input 
-                                                        type='cc-csc'
+                                                        type='password'
                                                         placeholder='Enter password'
                                                         name='password'
                                                         onChange={updateStateUIProps}
@@ -148,7 +148,7 @@ const SignUp = ({  }) => {
                                                         Confirm Password
                                                     </Text>
                                                     <Input 
-                                                        type='cc-csc'
+                                                        type='password'
                                                         placeholder='Enter password'
                                                         autocomplete="on"
                                                         required 
