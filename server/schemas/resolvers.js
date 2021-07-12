@@ -2,6 +2,8 @@
 // Modals
 const { User } = require('../models');
 
+const { addUser } = require('./addUser')
+
 // auth middleware
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
@@ -40,27 +42,7 @@ let resolvers = {
     },
 
     Mutation: {
-        addUser: async (parent, args) => {
-            try {
-                const user = await User.create({
-                    username: args.username,
-                    friends: "{}",
-                    email: args.email,
-                    password: args.password,
-                });
-                console.log(user);
-                console.log(args)
-                const token = signToken(user);
-
-                if(!token) {
-                    console.log(token)
-                }
-
-                return { token, user };
-            } catch(err) {
-                throw new AuthenticationError(err.message)
-            }
-        },
+        addUser,
 
         login: async (parent, { username, password }) => {
             const user = await User.findOne({ username });
