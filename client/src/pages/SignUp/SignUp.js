@@ -18,9 +18,10 @@ import { useState } from 'react';
 import { Button, ButtonWrapper } from '../../globalStyles/buttons';
 import Modal from '../../components/Modal/Modal';
 
-import { Link } from 'react-router-dom';
 
 // hooks
+
+import { Link, useHistory } from 'react-router-dom';
 
 
 
@@ -28,6 +29,8 @@ import { Link } from 'react-router-dom';
 // add the 
 
 const SignUp = ({  }) => {
+
+    const history = useHistory();
 
     // mutation
     const [addUser, { error }] = useMutation(SIGN_UP_USER);
@@ -76,7 +79,8 @@ const SignUp = ({  }) => {
             // if successful on add the user login them in using the auth class object
             // witht the new user's token as the arg
             console.log('success');
-            authClient.login(data.addUser.token)
+            authClient.login(data.addUser.token);
+            history.push('/home')
         } catch (err) {
             setModalData({ error: err.message, message1: '', message2: '', closeModal: openModal })
             openModal()

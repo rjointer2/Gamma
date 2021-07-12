@@ -5,7 +5,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 
 
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // components
 import Footer from './components/Footer/Footer';
@@ -43,10 +43,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// token here
-const token = authClient.loggedIn() ? authClient.getToken() : null;
-// if the log in is true then get the token from local Storage and if falsy
-// we can direct the user the sign in page "/"
+
 
 
 
@@ -61,11 +58,7 @@ function App() {
           <Route exact path="/inDevelopment" component={inDevelopment}/>
         </Switch>
         <Switch>
-          <Route exact path="/" component={SignUp}>
-            {
-              token ? <Redirect to="/home"/> : <SignUp />
-            }
-          </Route>
+          <Route exact path="/" component={SignUp}/>
         </Switch> 
         <Switch>
           <Route exact path="/signin" component={SignIn}/>

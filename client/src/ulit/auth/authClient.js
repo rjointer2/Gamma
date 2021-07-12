@@ -14,7 +14,7 @@ class authClient {
     // Saves user token to localStorage
     localStorage.setItem('id_token_gamma', idToken);
     // go to home page
-    window.location.assign('/home');
+    //window.location.assign('/home');
   }
 
   getToken() {
