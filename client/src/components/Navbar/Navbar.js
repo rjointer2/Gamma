@@ -23,37 +23,30 @@ const Navbar = () => {
     };
 
 
-    const [modalData, setModalData] = useState({ error: '', message1: '', message2: '', callback: '' })
-
 return (
     <>
+    { showModal && <SearchModal openModal={openModal} /> }
     <Nav>
-        <NavTitle to='/Sign-in' activeStyle>
+        <NavTitle to='/Sign-in'>
             Gamma
         </NavTitle>
         <NavMenu>
-            <NavLink to='/Chats' activeStyle>
-            Chats
-            </NavLink>
-            <NavLink to='/Add-a-friend' activeStyle onClick={(e)=> {
+            <NavLink to='/Add-a-friend' onClick={(e)=> {
+
                 e.preventDefault();
-                setModalData({ error: '', message1: '', message2: '', callback: openModal })
                 openModal();
             }}>
             Add A Friend
-            { showModal && <SearchModal {...modalData} /> }
-                 
+
             </NavLink>
-            <NavLink to='/Games' activeStyle>
-            Games
-            </NavLink>
-            <NavLink to='/Sign-in' activeStyle>
-            Sign Out
+            <NavLink to='/Sign-in'>
+                Sign Out
+
             </NavLink>
         </NavMenu>
     </Nav>
     </>
-);
+  );
 }
 
 export default Navbar;
