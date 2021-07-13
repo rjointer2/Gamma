@@ -33,53 +33,7 @@ const Chat = () => {
         socket.on('test', data =>  console.log(data))
     }, [])
 
-    /* const socketRef = useRef();
-
-    useEffect(() => {
-        socketRef.current = io.connect('/localhost:3001');
-
-        
-
-        // set eventhandlers that the above socket will listen to
-
-        socketRef.current.on("your  id", id => {
-            setYourID(id);
-        })
-
-        socketRef.current.on("message", (message) => {
-            receivedMessages(message);
-        })
-    });
-
-     function receivedMessages(message) {
-         setMessages(oldMsgs => [...oldMsgs,message]);
-     }
-  
-     function sendMessage(e) {
-         e.PreventDefault();
-         if (file) {
-            const messageObject = {
-               id: yourID,
-               type: "file",
-               body: file,
-               MimeType: file.type,
-               fileName: file.name
-            };
-            setMessage("");
-            setFile();
-            socketRef.current.emit("send message", messageObject);
-         } else { 
-             const messageObject = {
-             id: yourID,
-             type: "text",
-             body: message,
-         };
-         setMessage("");
-         socketRef.current.emit("send message", messageObject);
-
-        }
-         
-     } */
+   
 
      function handleChange(e) {
          setMessage(e.target.value)
@@ -128,8 +82,7 @@ const Chat = () => {
      }
 
    return (
-        
-        //  <Page>
+
         <>
            <Container ref={element}>
                 {messages.map(renderMessages) }
@@ -140,22 +93,7 @@ const Chat = () => {
               <Button className='f3 link dim black underline pa3 pointer' onClick={(e) => {
                   e.preventDefault()
               }}>Send</Button>
-
-              {/* 
-              
-              form type="submit"
-              refresh, reload component, sideeffect
-
-              function handleEvent() {
-                  // complex code here
-              }
-              
-              button onClick={() => handleEvent}
-              
-              
-              */}
            </Form>
-         {/* </Page> */}
         </>
          
     
