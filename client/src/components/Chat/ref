@@ -40,7 +40,7 @@ const ChatWindow = () => {
         socket.emit('joined_server', user);
         appendMessageOnClient('You Joined');
         socket.emit('new-user', user);
-        socket.on('chat-message', data => appendMessageOnClient(data));
+        socket.on('chat-message', data => appendMessageOnClient(`${data.name}: ${data.message}`));
         socket.on('user-connected', data => appendMessageOnClient(`${data} connected to server`));
 
 
@@ -87,5 +87,3 @@ const ChatWindow = () => {
             </>
         )
 }
-
-export default ChatWindow;
