@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // components
 import Footer from './components/Footer/Footer';
-import inDevelopment from './components/inDevelopment/inDevelopment';
 // import FriendList from './components/FriendList/FriendList';
 
 // Pages
@@ -53,9 +52,6 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/home" component={Home}/>
-        </Switch>
-        <Switch>
-          <Route exact path="/inDevelopment" component={inDevelopment}/>
         </Switch>
         <Switch>
           <Route exact path="/" component={SignUp}/>

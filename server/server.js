@@ -80,8 +80,7 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
         socket.on("send message", body => {
             io.emit("message", body)
         })
-    })
-        
+    })      
 
 }).catch(err => {
     console.log('failed')

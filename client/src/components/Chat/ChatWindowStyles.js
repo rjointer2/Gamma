@@ -56,7 +56,7 @@ export const MessageWindow = styled.div`
     flex-direction: column-reverse;
 `;
 
-export const InputField = styled.div`
+export const InputField = styled.form`
     display: flex;
     align-items: center;
     justify-content: space-between;
