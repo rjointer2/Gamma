@@ -1,3 +1,8 @@
+
+import { useState } from 'react';
+
+// styles
+
 import {
     OuterContainer,
     TitleContainer,
@@ -9,17 +14,36 @@ import {
     RemoveBtn
 } from './FriendListStyles';
 
-const FriendList = () => {
+const FriendList = ({friendsOfUser}) => {
+
+    const [chatData, setChatData] = useState({})
+
+    // if chat btn is clicked open the chat and send the props of the 
+    // to that component
 
     return (
         <OuterContainer>
             <TitleContainer>
                 <Title>Friends List</Title>
-                <InviteBtn>Edit</InviteBtn>
             </TitleContainer>
             <ListContainer>
                 {/* {friends} */}
-                <FriendRow>
+
+                {friendsOfUser.map(friendOfUser => <FriendRow>
+                    <FriendName>{friendOfUser}</FriendName>
+                </FriendRow>)}
+
+            </ListContainer>
+        </OuterContainer>
+    )
+}
+
+export default FriendList;
+
+
+/* 
+
+<FriendRow>
                     <FriendName>username-1</FriendName>
                     <RemoveBtn>Chat</RemoveBtn>
                 </FriendRow>
@@ -31,9 +55,5 @@ const FriendList = () => {
                     <FriendName>username-3</FriendName>
                     <RemoveBtn>Chat</RemoveBtn>
                 </FriendRow>
-            </ListContainer>
-        </OuterContainer>
-    )
-}
 
-export default FriendList;
+*/

@@ -19,9 +19,12 @@ import { Button, ButtonWrapper } from '../../globalStyles/buttons';
 // hooks
 
 import { useState } from 'react';
-import AuthClient from '../../ulit/auth/AuthClient';
+import { useHistory } from 'react-router-dom';
+import authClient from '../../ulit/auth/authClient';
 
 const SignIn = () => {
+
+    const history = useHistory();
 
     // update the state's properties in this state object
     const [userFormData, setUserFormData] = useState({ username: '', password: '' });
@@ -46,7 +49,8 @@ const SignIn = () => {
               variables: { ...userFormData } 
             })
       
-            AuthClient.login(data.login.token)
+            authClient.login(data.login.token);
+            history.push('/home');
         } catch (err) {
             console.log('?')
             // we ccan use this in development but it
@@ -86,7 +90,7 @@ const SignIn = () => {
                                                         Enter Your Password
                                                     </Text>
                                                     <Input 
-                                                        type='cc-csc'
+                                                        type='password'
                                                         placeholder='Enter password'
                                                         name='password'
                                                         onChange={updateStateUIProps}

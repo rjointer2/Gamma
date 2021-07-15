@@ -41,7 +41,6 @@ return (
             </NavLink>
             <NavLink to='/Sign-in'>
                 Sign Out
-
             </NavLink>
         </NavMenu>
     </Nav>

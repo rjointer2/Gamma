@@ -73,7 +73,13 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
 
     //emit => sends data
     //on => receives data
-    
+
+    io.on("connection", socket => {
+        socket.emit("your id", socket.id);
+        socket.on("send message", body => {
+            io.emit("message", body)
+        })
+    })      
 
 }).catch(err => {
     console.log('failed')
