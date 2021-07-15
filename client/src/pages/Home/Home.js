@@ -20,10 +20,6 @@ const token = authClient.loggedIn() ? authClient.getToken() : null;
 
 const Home = () => {
 
-    if(!token) {
-        window.location.assign('/signin');
-    }
-
     return (
         <div>
             <Navbar />
