@@ -48,7 +48,7 @@ I’m going to speculate that Thumbtacks massive growth is related to two prime 
 https://gammaucb.herokuapp.com/
 
 ## Licensing
-Please reference the [LICENSE]('./LICENSE') link.
+Please reference the [LICENSE](./LICENSE) link.
 
 ## Project Team Contacts
 [Roosevelt Jointer](https://github.com/rjointer2/) | 
