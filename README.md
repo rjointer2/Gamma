@@ -7,6 +7,9 @@ Real-time Chat Application
 
 Gamma can help drive productivity, Return on Investment (ROI) and efficiency in every industry in this era of digitalization. Creating a chat application is always an interesting thing to do. And it is a good way to learn a lot because you are creating some interactions with your application. In-app chat typically means private, bidirectional chat and direct messaging between or more people within a software application. As you know with the release of a few technologies, we can create such an application without any hassle. It is easier than ever. So, we have created a real-time chat app that is powered by Socket.IO and Mern Stack. This is a web application that allows multiple users to have a private and public chat. This app allows one to one chat online and its fast and easy to use, because it's very user friendly. 
 
+### Deployed On Heroku
+https://gammaucb.herokuapp.com/
+
 #### Chat Delivers on the Need for Direct Communication
 Designers are leading the charge on how people are connecting and building relationships with the internet, providing a new layer of communication and decision making through smart chat app design. I hope to showcase a few in-app messaging examples from real companies that are solving real problems.
 
