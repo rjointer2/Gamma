@@ -21,12 +21,17 @@ const SearchModal = ({ openModal }) => {
 
     const [foundUser, setFoundUser] = useState();
 
+    // const { loading, data } = useQuery(QUERY_USER, {
+    //     variables: { username: searchField }
+    // });
+
+    // if(loading) console.log('loading...');
+    // if (!data) console.log('no data!');
+
     // Function call when username search button is clicked
     const goFetch = async () => {
-
         // search input field value assignment
         let searchField = document.getElementById("queryUser").value;
-
         try {
             // Query to the graphql server endpoint for a single user
             const userSearch = await fetch('/graphql', {
@@ -48,7 +53,6 @@ const SearchModal = ({ openModal }) => {
             });
             // assign query result object to a variable after promise fulfills
             const searchResult = await userSearch.json();
-
             // conditional whether or not query result property matches the search input value
             if (searchResult.data.user.username === searchField) {
                 console.log('Searched user found:', searchField);
@@ -63,12 +67,14 @@ const SearchModal = ({ openModal }) => {
         }
     }
 
-    const { loading, data } = useQuery(QUERY_USER, {
-        variables: { username: searchField }
-    });
+    // const { loading, data } = useQuery(QUERY_USER, {
+    //     variables: { username: searchField }
+    // });
 
-    if(loading) console.log('loading...');
-    if (!data) console.log('no data!');
+    // if(loading) console.log('loading...');
+    // if (!data) console.log('no data!');
+
+
 
     // fetch('/graphql', {
     //     method: 'POST',
@@ -84,7 +90,7 @@ const SearchModal = ({ openModal }) => {
     // console.log(data);
 
 
-    // const { loading, data } = useQuery(QUERY_USER);
+    // const { loading, data } = useQuery(QUERY_USERS);
     // console.log(data);
 
 
@@ -121,6 +127,7 @@ const SearchModal = ({ openModal }) => {
                     <SearchResult>
                         {foundUser ? 'Username found!' : 'Username not found!'}
                         <br/>
+                        {/* <AddFriendButton onClick={addFriend}> */}
                         <AddFriendButton>
                             Add Friend
                         </AddFriendButton>
