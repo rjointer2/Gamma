@@ -1,0 +1,89 @@
+import {
+    ChatContainer,
+    BffList,
+    Chatbox,
+    TargetedUser,
+    MessageWindow,
+    InputField,
+    InputText,
+    SendButton
+} from './ChatWindowStyles';
+
+// components
+import FriendList from "../FriendList/FriendList";
+
+// socket.io
+import { io } from 'socket.io-client';
+
+// Hooks
+import { useEffect, useRef, useState } from 'react';
+
+// hooks
+
+const ChatWindow = () => {
+
+    const messageWindow = useRef();
+
+    const [roomID, setRoomID] = useState(null);
+    const [message, setMessage] = useState('');
+
+    const socket = io('/');
+
+    // mock users
+    const user = 'Test';
+    const friendsOfUser = ['John', 'Sam'];
+
+    console.log(message)
+
+    useEffect(() => {
+        // joins server
+        socket.emit('joined_server', user);
+        appendMessageOnClient('You Joined');
+        socket.emit('new-user', user);
+        socket.on('chat-message', data => appendMessageOnClient(`${data.name}: ${data.message}`));
+        socket.on('user-connected', data => appendMessageOnClient(`${data} connected to server`));
+
+
+    }, []);
+
+    function appendMessageOnClient(message) {
+        // make a new div of the message
+        const messageDiv = document.createElement('div');
+        messageDiv.innerText = message;
+        messageWindow.current.prepend(messageDiv);
+        //messageWindow.current.children
+    }
+
+    return (
+            <>
+            <ChatContainer>
+                <BffList>  {/*Friends List */}
+                        <FriendList friendsOfUser={friendsOfUser}/> 
+                </BffList> 
+                <Chatbox> {/* 2-way chat window */}
+                        <TargetedUser> {/* username */}
+                            username
+                        </TargetedUser>
+                        {/* pass a prop on here on the chat */}
+                        <MessageWindow ref={messageWindow}> {/* message window */}
+                            
+                        </MessageWindow>
+                        <InputField> {/* bottom input/send container */}
+                            <InputText 
+                                onChange={event => setMessage(event.target.value)}
+                                value={message}
+                            /> {/* input field */}
+                            <SendButton type="submit" onClick={(e) => {
+                                e.preventDefault();
+                                // the state to the server
+                                socket.emit('send_message', message);
+                                appendMessageOnClient(`You wrote: ${message}`)
+                            }}>
+                                Send
+                            </SendButton>
+                        </InputField>
+                </Chatbox>
+            </ChatContainer>
+            </>
+        )
+}

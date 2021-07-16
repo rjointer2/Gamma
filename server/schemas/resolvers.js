@@ -51,11 +51,11 @@ let resolvers = {
                 console.log(user);
                 console.log(args)
                 const token = signToken(user);
-
+        
                 if(!token) {
                     console.log(token)
                 }
-
+        
                 return { token, user };
             } catch(err) {
                 throw new AuthenticationError(err.message)

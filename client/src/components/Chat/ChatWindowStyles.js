@@ -42,10 +42,14 @@ export const BffList = styled.div`
 `;
 
 // Wrapper for the links
+<<<<<<< HEAD
 export const Chatbox = styled.div`
 <<<<<<< HEAD
     border: 3px double #2B0638;
 =======
+=======
+export const Chatbox = styled.form`
+>>>>>>> 59c33d015b2fa3105a90c99477681a63170ba60f
     border: 2px solid #5C458B;
 >>>>>>> 62bc4db0ce92a083bd39cbea85fc69cf75056814
     display: flex;
@@ -83,14 +87,21 @@ export const MessageWindow = styled.div`
 >>>>>>> 62bc4db0ce92a083bd39cbea85fc69cf75056814
     align-items: center;
     padding: 10px;
+<<<<<<< HEAD
     height: 400px;
     display: flex;
     font-family: cursive;
     font-weight: 300;
     font-size: 17px;
+=======
+    height: 220px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+>>>>>>> 59c33d015b2fa3105a90c99477681a63170ba60f
 `;
 
-export const InputField = styled.div`
+export const InputField = styled.form`
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"> 
   <img src="https://i.ibb.co/T1B2pf5/Mern-logo-repo.png" alt="Mern-logo-repo">
 </p>
@@ -16,14 +17,23 @@
     <img src="https://img.shields.io/badge/apollo-blue" />
 </p>
   
+=======
+# Interactive MERN SPA Project 3 - Team Project
+
+## Project Gamma
+Real-time Chat Application
+
+## Application Summary
+>>>>>>> 59c33d015b2fa3105a90c99477681a63170ba60f
 
 ## Description
 
 🔍Gamma (A MERN stack application) can help drive productivity, Return on Investment (ROI) and efficiency in every industry in this era of digitalization. Creating a chat application is always an interesting thing to do. And it is a good way to learn a lot because you are creating some interactions with your application. In-app chat typically means private, bidirectional chat and direct messaging between or more people within a software application. As you know with the release of a few technologies, we can create such an application without any hassle. It is easier than ever. So, we have created a real-time chat app that is powered by Socket.IO and Mern Stack. This is a web application that allows multiple users to have a private and public chat. This app allows one to one chat online and its fast and easy to use, because it's very user friendly. 
 
-#### Chat Delivers on the Need for Direct Communication
+### Chat Delivers on the Need for Direct Communication
 Designers are leading the charge on how people are connecting and building relationships with the internet, providing a new layer of communication and decision making through smart chat app design. I hope to showcase a few in-app messaging examples from real companies that are solving real problems.
 
+<<<<<<< HEAD
 **[Deployed Application]()**
   
 💻 Below is a screenshot of the application:
@@ -170,6 +180,13 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/co
 ### Analyzing the Bundle Size
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+=======
+## Technogies & Tools Used:
+
+HTML | CSS | JavaScript | React | Apollo - client MongoDB and Mongoose | Express | 
+Node.js | socket.io | socket.io - client | Apollo server express | GraphQL | 
+JWT (JSON Web Token) | bcrypt | dotenv | Heroku  
+>>>>>>> 59c33d015b2fa3105a90c99477681a63170ba60f
 
 ### Making a Progressive Web App
 
@@ -185,6 +202,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 ### `npm run build` fails to minify
 
+<<<<<<< HEAD
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 
@@ -192,3 +210,30 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
+=======
+## Testing Guideline
+- Landing page successfully loaded with Sign-Up and Sign-In option
+- User account can be created successfully
+- User is able to sign in with the new account created
+- Signed in user is able to add a friend
+- User is able to initiate a chat with a friend
+- User can sign-out successfully
+- Footer is fixed with individual's GitHub links
+- Application is responsive  
+
+## Deployed App on Heroku
+https://gammaucb.herokuapp.com/
+
+## Licensing
+Please reference the [LICENSE](./LICENSE) link.
+
+## Project Team Contacts
+[Roosevelt Jointer](https://github.com/rjointer2/) | 
+[Senait Gerezgiher](https://github.com/senait77) | 
+[Muhammad Tariq](https://github.com/mmtariqk) | 
+[Hung Tang](https://github.com/htang2021)
+
+
+
+Updated by team Gamma on July 14, 2021
+>>>>>>> 59c33d015b2fa3105a90c99477681a63170ba60f

@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 
 // Sign up mutation 
 import { SIGN_UP_USER } from '../../ulit/mutation/loginMutation';
-import AuthClient from '../../ulit/auth/AuthClient';
+import authClient from '../../ulit/auth/authClient';
 
 // styles
 
@@ -18,9 +18,10 @@ import { useState } from 'react';
 import { Button, ButtonWrapper } from '../../globalStyles/buttons';
 import Modal from '../../components/Modal/Modal';
 
-import { Link } from 'react-router-dom';
 
 // hooks
+
+import { Link, useHistory } from 'react-router-dom';
 
 
 
@@ -28,6 +29,8 @@ import { Link } from 'react-router-dom';
 // add the 
 
 const SignUp = ({  }) => {
+
+    const history = useHistory();
 
     // mutation
     const [addUser, { error }] = useMutation(SIGN_UP_USER);
@@ -76,7 +79,8 @@ const SignUp = ({  }) => {
             // if successful on add the user login them in using the auth class object
             // witht the new user's token as the arg
             console.log('success');
-            AuthClient.login(data.addUser.token)
+            authClient.login(data.addUser.token);
+            history.push('/home')
         } catch (err) {
             setModalData({ error: err.message, message1: '', message2: '', closeModal: openModal })
             openModal()
@@ -134,7 +138,7 @@ const SignUp = ({  }) => {
                                                         Password
                                                     </Text>
                                                     <Input 
-                                                        type='cc-csc'
+                                                        type='password'
                                                         placeholder='Enter password'
                                                         name='password'
                                                         onChange={updateStateUIProps}
@@ -148,7 +152,7 @@ const SignUp = ({  }) => {
                                                         Confirm Password
                                                     </Text>
                                                     <Input 
-                                                        type='cc-csc'
+                                                        type='password'
                                                         placeholder='Enter password'
                                                         autocomplete="on"
                                                         required 
@@ -157,7 +161,7 @@ const SignUp = ({  }) => {
                                             </Column2>
                                             <ButtonWrapper>
                                                 <Button type="submit">
-                                                    Button Here
+                                                    Sign Up
                                                 </Button>
                                             </ButtonWrapper>
                                         </Row>
