@@ -39,7 +39,7 @@ return (
             Add A Friend
 
             </NavLink>
-            <NavLink to='/Sign-in'>
+            <NavLink to='/Signin'>
                 Sign Out
             </NavLink>
         </NavMenu>

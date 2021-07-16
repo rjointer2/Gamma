@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from '@apollo/client';
+import { useState } from 'react';
 import { ADD_FRIEND } from '../../ulit/mutation/addFriendMutation';
 import { QUERY_USER, QUERY_USERS } from '../../ulit/query/userQuery';
 
@@ -8,39 +9,72 @@ import {
     ModalContent,
     ModalClose,
     Input,
-    SearchResult
+    SearchResult,
+    AddFriendButton
 } from './SearchModalStyles';
 
+// modal to search for username - openModal passed from Navbar
 const SearchModal = ({ openModal }) => {
 
     // let searchField = document.getElementById("queryUser").value;
-    let searchField = 'test2';
+    let searchField = '';
 
-    const goFetch = () => {
-        // let searchField = document.getElementById("queryUser").value;
-        console.log("Hello world!" + searchField);
+    const [foundUser, setFoundUser] = useState();
+
+    // const { loading, data } = useQuery(QUERY_USER, {
+    //     variables: { username: searchField }
+    // });
+
+    // if(loading) console.log('loading...');
+    // if (!data) console.log('no data!');
+
+    // Function call when username search button is clicked
+    const goFetch = async () => {
+        // search input field value assignment
+        let searchField = document.getElementById("queryUser").value;
+        try {
+            // Query to the graphql server endpoint for a single user
+            const userSearch = await fetch('/graphql', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: `query user($username: String!) {
+                        user(username: $username) {
+                            username
+                        }
+                    }`,
+                    variables: `{
+                        "username": "${searchField}"
+                    }`
+                })
+            });
+            // assign query result object to a variable after promise fulfills
+            const searchResult = await userSearch.json();
+            // conditional whether or not query result property matches the search input value
+            if (searchResult.data.user.username === searchField) {
+                console.log('Searched user found:', searchField);
+                setFoundUser(true);
+            } else {
+                setFoundUser(false);
+            }
+        } catch (err) {
+            console.log(err);
+            console.log("No username found in the database!")
+            setFoundUser(false);
+        }
     }
 
-    const { loading, data } = useQuery(QUERY_USER, {
-        variables: { username: searchField }
-    });
+    // const { loading, data } = useQuery(QUERY_USER, {
+    //     variables: { username: searchField }
+    // });
 
-    if(loading) console.log('loading...');
-    if (!data) console.log('no data!');
+    // if(loading) console.log('loading...');
+    // if (!data) console.log('no data!');
 
-    fetch('/graphql', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-            QUERY_USER,
-            // variables: { searchField }
-        })
-    }).then(r=> r.json())
-        .then(data => console.log('data returned:', data));
-    
+
 
     // fetch('/graphql', {
     //     method: 'POST',
@@ -56,7 +90,7 @@ const SearchModal = ({ openModal }) => {
     // console.log(data);
 
 
-    // const { loading, data } = useQuery(QUERY_USER);
+    // const { loading, data } = useQuery(QUERY_USERS);
     // console.log(data);
 
 
@@ -91,11 +125,12 @@ const SearchModal = ({ openModal }) => {
             
                     </ModalContent>
                     <SearchResult>
-                        Matching Result!
+                        {foundUser ? 'Username found!' : 'Username not found!'}
                         <br/>
-                        <button>
+                        {/* <AddFriendButton onClick={addFriend}> */}
+                        <AddFriendButton>
                             Add Friend
-                        </button>
+                        </AddFriendButton>
                     </SearchResult>
                     <ModalClose onClick={openModal}>
                         &times;
