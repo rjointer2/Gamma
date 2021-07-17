@@ -33,7 +33,7 @@ export const ModalWrapper = styled.div`
 `;
 
 //  General content of the modal
-export const ModalContent = styled.div`
+export const ModalContent = styled.form`
     // background-color: #fefefe;
     background-color: ${primary};
     margin: 15% auto; 

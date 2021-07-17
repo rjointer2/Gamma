@@ -13,9 +13,87 @@ import {
     AddFriendButton
 } from './SearchModalStyles';
 
-const friendsList = [];
-// modal to search for username - openModal passed from Navbar
 const SearchModal = ({ openModal }) => {
+
+    // query to get all user then filter users by the client specifics
+    // then gen in the modal
+    const { data, loading, error } = useQuery(QUERY_USERS);
+
+    const [ input, setInput ] = useState('');
+
+
+    const goFetch = async (e) => {
+        e.preventDefault();
+
+        
+        console.log(data)
+    }
+    
+    console.log(data)
+    console.log(error)
+        
+    /* const friendsList = [];
+    // modal to search for username - openModal passed from Navbar
+    // Add Friend button to invoke this function to write friend 
+    // to a string or an array (design decision)
+    const addFriendToList = () => {
+        if (searchField) {
+            console.log(`${searchField} is added to the DB!`);
+            friendsList.push(searchField);
+            console.log(friendsList);
+        }
+    }
+ */
+    // conditionally render if searched username is found where 
+    // Add Friend buttonm is displayed
+    /* const userIsFound = () => {
+        return (
+            <>
+                Username found!
+                <br></br>
+                <AddFriendButton onClick={addFriendToList}>
+                    Add Friend
+                </AddFriendButton>
+            </>
+        );
+    } */
+    console.log(input)
+
+    return (
+        // The Modal
+        <>
+            <ModalBackground>
+                {/* Modal content */}
+                <ModalWrapper>
+                    <ModalContent onSubmit={goFetch} >
+                        <Input id="queryUser" 
+                            type="text"
+                            placeholder="Search.." 
+                            value={input} 
+                            onChange={(e) => setInput(e.target.value)}
+                            />
+                        <button type="submit">Search</button>
+                    </ModalContent>
+                    <SearchResult>
+                        {/* {foundUser ? userIsFound() : 'Username not found!'} */}
+                    </SearchResult>
+                    <ModalClose onClick={openModal}>
+                        &times;
+                    </ModalClose>
+                </ModalWrapper>
+            </ModalBackground> 
+        </>
+    );
+};
+
+export default SearchModal;
+
+
+
+
+
+/* 
+
 
     // let searchField = document.getElementById("queryUser").value;
     let searchField = '';
@@ -68,50 +146,7 @@ const SearchModal = ({ openModal }) => {
         }
     }
 
-    // Add Friend button to invoke this function to write friend 
-    // to a string or an array (design decision)
-    const addFriendToList = () => {
-        if (searchField) {
-            console.log(`${searchField} is added to the DB!`);
-            friendsList.push(searchField);
-            console.log(friendsList);
-        }
-    }
 
-    // conditionally render if searched username is found where 
-    // Add Friend buttonm is displayed
-    const userIsFound = () => {
-        return (
-            <>
-                Username found!
-                <br></br>
-                <AddFriendButton onClick={addFriendToList}>
-                    Add Friend
-                </AddFriendButton>
-            </>
-        );
-    }
 
-    return (
-        // The Modal
-        <>
-            <ModalBackground>
-                {/* Modal content */}
-                <ModalWrapper>
-                    <ModalContent>
-                        <Input id="queryUser" type="text" placeholder="Search.." />
-                        <button onClick={goFetch}>Search</button>
-                    </ModalContent>
-                    <SearchResult>
-                        {foundUser ? userIsFound() : 'Username not found!'}
-                    </SearchResult>
-                    <ModalClose onClick={openModal}>
-                        &times;
-                    </ModalClose>
-                </ModalWrapper>
-            </ModalBackground> 
-        </>
-    );
-};
 
-export default SearchModal;
+*/
