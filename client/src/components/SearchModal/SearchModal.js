@@ -25,12 +25,14 @@ const SearchModal = ({ openModal }) => {
     const goFetch = async (e) => {
         e.preventDefault();
 
-        
-        console.log(data)
-    }
+        console.log(
+            data.users.filter( user => user.username === input )
+        )
+    };
+
     
-    console.log(data)
-    console.log(error)
+
+
         
     /* const friendsList = [];
     // modal to search for username - openModal passed from Navbar
@@ -57,7 +59,6 @@ const SearchModal = ({ openModal }) => {
             </>
         );
     } */
-    console.log(input)
 
     return (
         // The Modal
