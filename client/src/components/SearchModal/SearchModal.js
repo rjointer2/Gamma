@@ -31,7 +31,7 @@ const SearchModal = ({ openModal }) => {
     // Function call when username search button is clicked
     const goFetch = async () => {
         // search input field value assignment
-        let searchField = document.getElementById("queryUser").value;
+        searchField = document.getElementById("queryUser").value;
         try {
             // Query to the graphql server endpoint for a single user
             const userSearch = await fetch('/graphql', {
@@ -74,8 +74,6 @@ const SearchModal = ({ openModal }) => {
     // if(loading) console.log('loading...');
     // if (!data) console.log('no data!');
 
-
-
     // fetch('/graphql', {
     //     method: 'POST',
     //     headers: {
@@ -112,6 +110,25 @@ const SearchModal = ({ openModal }) => {
     //         }
     //     }
     // })
+    const addFriendToList = () => {
+        if (searchField) {
+            console.log(`${searchField} is added to the DB!`);
+        }
+        // console.log("add friend button clicked");
+
+    }
+
+    const userIsFound = () => {
+        return (
+            <>
+                Username found!
+                <br></br>
+                <AddFriendButton onClick={addFriendToList}>
+                    Add Friend
+                </AddFriendButton>
+            </>
+        );
+    }
 
     return (
         // The Modal
@@ -122,15 +139,9 @@ const SearchModal = ({ openModal }) => {
                     <ModalContent>
                         <Input id="queryUser" type="text" placeholder="Search.." />
                         <button onClick={goFetch}>Search</button>
-            
                     </ModalContent>
                     <SearchResult>
-                        {foundUser ? 'Username found!' : 'Username not found!'}
-                        <br/>
-                        {/* <AddFriendButton onClick={addFriend}> */}
-                        <AddFriendButton>
-                            Add Friend
-                        </AddFriendButton>
+                        {foundUser ? userIsFound() : 'Username not found!'}
                     </SearchResult>
                     <ModalClose onClick={openModal}>
                         &times;
