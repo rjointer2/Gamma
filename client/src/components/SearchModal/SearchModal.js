@@ -13,6 +13,7 @@ import {
     AddFriendButton
 } from './SearchModalStyles';
 
+const friendsList = [];
 // modal to search for username - openModal passed from Navbar
 const SearchModal = ({ openModal }) => {
 
@@ -31,7 +32,7 @@ const SearchModal = ({ openModal }) => {
     // Function call when username search button is clicked
     const goFetch = async () => {
         // search input field value assignment
-        let searchField = document.getElementById("queryUser").value;
+        searchField = document.getElementById("queryUser").value;
         try {
             // Query to the graphql server endpoint for a single user
             const userSearch = await fetch('/graphql', {
@@ -67,51 +68,29 @@ const SearchModal = ({ openModal }) => {
         }
     }
 
-    // const { loading, data } = useQuery(QUERY_USER, {
-    //     variables: { username: searchField }
-    // });
+    // Add Friend button to invoke this function to write friend 
+    // to a string or an array (design decision)
+    const addFriendToList = () => {
+        if (searchField) {
+            console.log(`${searchField} is added to the DB!`);
+            friendsList.push(searchField);
+            console.log(friendsList);
+        }
+    }
 
-    // if(loading) console.log('loading...');
-    // if (!data) console.log('no data!');
-
-
-
-    // fetch('/graphql', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //         QUERY_USERS,
-    //     })
-    // }).then(r=> r.json())
-    //     .then(data => console.log('data returned:', data));
-    // console.log(data);
-
-
-    // const { loading, data } = useQuery(QUERY_USERS);
-    // console.log(data);
-
-
-    // console.log(`Error! ${error}`);
-    // console.log(queryData);
-
-    // const [addFriend, { error }] = useMutation(ADD_FRIEND, {
-    //     update(cache, {data: { addFriend }}) {
-    //         try {
-    //             const { friends } = cache.readQuery({ query: QUERY_USER });
-
-    //             cache.writeQuery({
-    //                 query: QUERY_USER,
-    //                 data: { friends: [addFriend, ...friends] }
-    //             });
-
-    //         } catch (e) {
-    //             console.log(e);
-    //         }
-    //     }
-    // })
+    // conditionally render if searched username is found where 
+    // Add Friend buttonm is displayed
+    const userIsFound = () => {
+        return (
+            <>
+                Username found!
+                <br></br>
+                <AddFriendButton onClick={addFriendToList}>
+                    Add Friend
+                </AddFriendButton>
+            </>
+        );
+    }
 
     return (
         // The Modal
@@ -122,15 +101,9 @@ const SearchModal = ({ openModal }) => {
                     <ModalContent>
                         <Input id="queryUser" type="text" placeholder="Search.." />
                         <button onClick={goFetch}>Search</button>
-            
                     </ModalContent>
                     <SearchResult>
-                        {foundUser ? 'Username found!' : 'Username not found!'}
-                        <br/>
-                        {/* <AddFriendButton onClick={addFriend}> */}
-                        <AddFriendButton>
-                            Add Friend
-                        </AddFriendButton>
+                        {foundUser ? userIsFound() : 'Username not found!'}
                     </SearchResult>
                     <ModalClose onClick={openModal}>
                         &times;
