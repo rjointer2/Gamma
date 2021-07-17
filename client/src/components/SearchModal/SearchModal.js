@@ -13,6 +13,7 @@ import {
     AddFriendButton
 } from './SearchModalStyles';
 
+const friendsList = [];
 // modal to search for username - openModal passed from Navbar
 const SearchModal = ({ openModal }) => {
 
@@ -67,57 +68,18 @@ const SearchModal = ({ openModal }) => {
         }
     }
 
-    // const { loading, data } = useQuery(QUERY_USER, {
-    //     variables: { username: searchField }
-    // });
-
-    // if(loading) console.log('loading...');
-    // if (!data) console.log('no data!');
-
-    // fetch('/graphql', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //         QUERY_USERS,
-    //     })
-    // }).then(r=> r.json())
-    //     .then(data => console.log('data returned:', data));
-    // console.log(data);
-
-
-    // const { loading, data } = useQuery(QUERY_USERS);
-    // console.log(data);
-
-
-    // console.log(`Error! ${error}`);
-    // console.log(queryData);
-
-    // const [addFriend, { error }] = useMutation(ADD_FRIEND, {
-    //     update(cache, {data: { addFriend }}) {
-    //         try {
-    //             const { friends } = cache.readQuery({ query: QUERY_USER });
-
-    //             cache.writeQuery({
-    //                 query: QUERY_USER,
-    //                 data: { friends: [addFriend, ...friends] }
-    //             });
-
-    //         } catch (e) {
-    //             console.log(e);
-    //         }
-    //     }
-    // })
+    // Add Friend button to invoke this function to write friend 
+    // to a string or an array (design decision)
     const addFriendToList = () => {
         if (searchField) {
             console.log(`${searchField} is added to the DB!`);
+            friendsList.push(searchField);
+            console.log(friendsList);
         }
-        // console.log("add friend button clicked");
-
     }
 
+    // conditionally render if searched username is found where 
+    // Add Friend buttonm is displayed
     const userIsFound = () => {
         return (
             <>
