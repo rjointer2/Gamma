@@ -29,10 +29,12 @@ Designers are leading the charge on how people are connecting and building relat
 [Deployed Application](https://gammaucb.herokuapp.com/)
   
 💻 Below is a screenshot of the application:
- 
- [screens-shot](https://github.com/rjointer2/Gamma/blob/development/gamma.png?raw=true)
 
-## User Story
+<p align="center">
+    <img src="./gamma.png" />  
+</p>
+ 
+ ## User Story
 
 ```
 AS a user , I want to chat with my friends in a realtime  
