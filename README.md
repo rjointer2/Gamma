@@ -24,11 +24,11 @@
 🔍Gamma (A MERN stack application) can help drive productivity, Return on Investment (ROI) and efficiency in every industry in this era of digitalization. Creating a chat application is always an interesting thing to do. And it is a good way to learn a lot because you are creating some interactions with your application. In-app chat typically means private, bidirectional chat and direct messaging between or more people within a software application. As you know with the release of a few technologies, we can create such an application without any hassle. It is easier than ever. So, we have created a real-time chat app that is powered by Socket.IO and Mern Stack. This is a web application that allows multiple users to have a private and public chat. This app allows one to one chat online and its fast and easy to use, because it's very user friendly. 
 
 
-💻 Below is the deployed application:
+## 💻 Below is the deployed application:
 
 [Deployed Application](https://gammaucb.herokuapp.com/)
   
-💻 Below is a screenshot of the application:
+## 💻 Below is a screenshot of the application:
 
 <p align="center">
     <img src="./gamma.png" />  
