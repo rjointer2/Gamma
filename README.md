@@ -30,7 +30,7 @@ Designers are leading the charge on how people are connecting and building relat
   
 💻 Below is a screenshot of the application:
  
- [screens-shot](./gamma.png)
+ [screens-shot](https://github.com/rjointer2/Gamma/blob/development/gamma.png?raw=true)
 
 ## User Story
 
