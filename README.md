@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <p align="center"> 
   <img src="https://i.ibb.co/T1B2pf5/Mern-logo-repo.png" alt="Mern-logo-repo">
 </p>
@@ -17,14 +16,6 @@
     <img src="https://img.shields.io/badge/apollo-blue" />
 </p>
   
-=======
-# Interactive MERN SPA Project 3 - Team Project
-
-## Project Gamma
-Real-time Chat Application
-
-## Application Summary
->>>>>>> 59c33d015b2fa3105a90c99477681a63170ba60f
 
 ## Description
 
@@ -33,12 +24,14 @@ Real-time Chat Application
 ### Chat Delivers on the Need for Direct Communication
 Designers are leading the charge on how people are connecting and building relationships with the internet, providing a new layer of communication and decision making through smart chat app design. I hope to showcase a few in-app messaging examples from real companies that are solving real problems.
 
-<<<<<<< HEAD
-**[Deployed Application]()**
+💻 Below is the deployed application:
+
+**[Deployed Application](https://gammaucb.herokuapp.com/)**
   
 💻 Below is a screenshot of the application:
-  
-[Gamma]()
+  <p align="center">
+    <img src="./gamma.png" />  
+ </p>
 
 ## User Story
 
@@ -54,9 +47,6 @@ Use GraphQL with a Node.js and Express.js server.
 Use MongoDB and the Mongoose ODM for the database.
 Use queries and mutations for retrieving, adding, updating, and deleting data.
 Be deployed using Heroku (with data).
-Meet the minimum requirements of a PWA:
-Uses a web manifest
-Uses a service worker for offline functionality
 Is installable
 Have a polished UI.
 Be responsive.
@@ -155,7 +145,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 No current testing
 
 ## Contributing
-:octocat: [Rossevelt Jointer](https://github.com/senait77)
+:octocat: [Rossevelt Jointer](https://github.com/rjointer2)
 :octocat: [Muhammad Tariq](https://github.com/mmtariqk)
 :octocat: [Hung Tang](https://github.com/htang2021)
 :octocat: [Senait Gerezgiher](https://github.com/senait77)
@@ -180,13 +170,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/co
 ### Analyzing the Bundle Size
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-=======
-## Technogies & Tools Used:
-
-HTML | CSS | JavaScript | React | Apollo - client MongoDB and Mongoose | Express | 
-Node.js | socket.io | socket.io - client | Apollo server express | GraphQL | 
-JWT (JSON Web Token) | bcrypt | dotenv | Heroku  
->>>>>>> 59c33d015b2fa3105a90c99477681a63170ba60f
 
 ### Making a Progressive Web App
 
@@ -202,7 +185,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 ### `npm run build` fails to minify
 
-<<<<<<< HEAD
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 
@@ -210,30 +192,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
-=======
-## Testing Guideline
-- Landing page successfully loaded with Sign-Up and Sign-In option
-- User account can be created successfully
-- User is able to sign in with the new account created
-- Signed in user is able to add a friend
-- User is able to initiate a chat with a friend
-- User can sign-out successfully
-- Footer is fixed with individual's GitHub links
-- Application is responsive  
-
-## Deployed App on Heroku
-https://gammaucb.herokuapp.com/
-
-## Licensing
-Please reference the [LICENSE](./LICENSE) link.
-
-## Project Team Contacts
-[Roosevelt Jointer](https://github.com/rjointer2/) | 
-[Senait Gerezgiher](https://github.com/senait77) | 
-[Muhammad Tariq](https://github.com/mmtariqk) | 
-[Hung Tang](https://github.com/htang2021)
-
-
-
-Updated by team Gamma on July 14, 2021
->>>>>>> 59c33d015b2fa3105a90c99477681a63170ba60f
