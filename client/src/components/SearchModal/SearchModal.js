@@ -13,6 +13,7 @@ import {
     AddFriendButton
 } from './SearchModalStyles';
 
+// modal to search for username - openModal passed from Navbar
 const SearchModal = ({ openModal }) => {
 
     // query to get all user then filter users by the client specifics
@@ -20,35 +21,40 @@ const SearchModal = ({ openModal }) => {
     const { data, loading, error } = useQuery(QUERY_USERS);
 
     const [ input, setInput ] = useState('');
-
+    const [ aMatch, setAMatch] = useState('');
 
     const goFetch = async (e) => {
         e.preventDefault();
 
-        console.log(
-            data.users.filter( user => user.username === input )
-        )
+        const foundUser = data.users.filter( user => user.username === input )
+        console.log(foundUser);
+    
+        if (foundUser.length) {
+            console.log(`User ${input} found!`);
+            setAMatch(true);
+        } else {
+            console.log(`User ${input} NOT found!`);
+            setAMatch(false);
+        }
     };
 
     
 
+     const friendsList = [];
 
-        
-    /* const friendsList = [];
-    // modal to search for username - openModal passed from Navbar
     // Add Friend button to invoke this function to write friend 
     // to a string or an array (design decision)
     const addFriendToList = () => {
-        if (searchField) {
-            console.log(`${searchField} is added to the DB!`);
-            friendsList.push(searchField);
+        if (input) {
+            console.log(`${input} is added to the DB!`);
+            friendsList.push(input);
             console.log(friendsList);
         }
     }
- */
+ 
     // conditionally render if searched username is found where 
     // Add Friend buttonm is displayed
-    /* const userIsFound = () => {
+    const userIsFound = () => {
         return (
             <>
                 Username found!
@@ -58,7 +64,7 @@ const SearchModal = ({ openModal }) => {
                 </AddFriendButton>
             </>
         );
-    } */
+    } 
 
     return (
         // The Modal
@@ -76,7 +82,7 @@ const SearchModal = ({ openModal }) => {
                         <button type="submit">Search</button>
                     </ModalContent>
                     <SearchResult>
-                        {/* {foundUser ? userIsFound() : 'Username not found!'} */}
+                        {aMatch ? userIsFound() : `Username ${input} not found!`}
                     </SearchResult>
                     <ModalClose onClick={openModal}>
                         &times;
