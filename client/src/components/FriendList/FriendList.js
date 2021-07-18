@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { useRef, useState } from 'react';
 import authClient from '../../ulit/auth/authClient';
 import { REMOVE_FRIEND } from '../../ulit/mutation/removeFriendMutation';
+import { QUERY_USERS } from '../../ulit/query/userQuery';
 
 // styles
 
@@ -10,7 +11,6 @@ import {
     OuterContainer,
     TitleContainer,
     Title,
-    InviteBtn,
     ListContainer,
     FriendRow,
     FriendName,
@@ -31,7 +31,7 @@ const FriendList = () => {
 
     const removeFriendRequest = async (arg) => {
         try {
-            await removeFriend({
+            await removeFriend(QUERY_USERS, {
                 variables: {
                     "username": currentUser,
                     "friendUsername": arg
