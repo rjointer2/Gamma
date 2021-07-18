@@ -3,7 +3,9 @@
 </p>
 
 <h1 align="center">Real-Time Chat 👋</h1>
-[](https://img.shields.io/badge/license-MIT-Green)
+<p> 
+   <img src="https://img.shields.io/badge/license-MIT-Green" />
+</p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/javascript-yellow" />
@@ -103,10 +105,8 @@ Have a high-quality README (with unique name, description, technologies used, sc
 * Heroku
 
 ## License
- Our app is under MIT license
- ![](https://img.shields.io/badge/license-MIT-Green)
 
-       < MIT License
+   < MIT License ![](https://img.shields.io/badge/license-MIT-Green)
 
         Copyright (c) 2021 Roosevelt ,Senait, Hung ,Muhammed
 
