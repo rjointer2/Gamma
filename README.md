@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">Real-Time Chat 👋</h1>
-![](https://img.shields.io/badge/license-MIT-Green)
+[](https://img.shields.io/badge/license-MIT-Green)
 
 <p align="center">
     <img src="https://img.shields.io/badge/javascript-yellow" />
