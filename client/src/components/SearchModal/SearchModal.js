@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { ADD_FRIEND } from '../../ulit/mutation/addFriendMutation';
 import { QUERY_USER, QUERY_USERS } from '../../ulit/query/userQuery';
 
+import authClient from '../../ulit/auth/authClient';
+
 import {
     ModalBackground,
     ModalWrapper,
@@ -16,18 +18,26 @@ import {
 // modal to search for username - openModal passed from Navbar
 const SearchModal = ({ openModal }) => {
 
+    const currentUser = authClient.getProfile().data.username;
+    console.log(currentUser)
+
+
+    const [ addFriend, { friendError } ] = useMutation(ADD_FRIEND);
+
     // query to get all user then filter users by the client specifics
     // then gen in the modal
     const { data, loading, error } = useQuery(QUERY_USERS);
 
     const [ input, setInput ] = useState('');
     const [ aMatch, setAMatch] = useState('');
+    const [ friend, setFriend] = useState('');
 
     const goFetch = async (e) => {
         e.preventDefault();
 
         const foundUser = data.users.filter( user => user.username === input )
         console.log(foundUser);
+        setFriend(foundUser[0].username);
     
         if (foundUser.length) {
             console.log(`User ${input} found!`);
@@ -40,15 +50,21 @@ const SearchModal = ({ openModal }) => {
 
     
 
-     const friendsList = [];
+    const addFriendToList = async () => {
 
-    // Add Friend button to invoke this function to write friend 
-    // to a string or an array (design decision)
-    const addFriendToList = () => {
-        if (input) {
-            console.log(`${input} is added to the DB!`);
-            friendsList.push(input);
-            console.log(friendsList);
+        try {
+            console.log('test')
+            // call the mutation and passed in the variables the 
+            // current logged in user and the username found
+            await addFriend({
+                variables: {
+                    "username": currentUser,
+                    "friendUsername": friend
+                }
+            })
+        } catch(err) {
+            console.log(err)
+            throw new Error('Something went wrong')
         }
     }
  
@@ -59,6 +75,12 @@ const SearchModal = ({ openModal }) => {
             <>
                 Username found!
                 <br></br>
+                {/* 
+                
+                    the function uses the hook mutation to take the current
+                    username logged in and the friend => username found 
+                    as varaiable in the function => friends now on clien to see
+                */}
                 <AddFriendButton onClick={addFriendToList}>
                     Add Friend
                 </AddFriendButton>
@@ -96,64 +118,3 @@ const SearchModal = ({ openModal }) => {
 export default SearchModal;
 
 
-
-
-
-/* 
-
-
-    // let searchField = document.getElementById("queryUser").value;
-    let searchField = '';
-
-    const [foundUser, setFoundUser] = useState();
-
-    // const { loading, data } = useQuery(QUERY_USER, {
-    //     variables: { username: searchField }
-    // });
-
-    // if(loading) console.log('loading...');
-    // if (!data) console.log('no data!');
-
-    // Function call when username search button is clicked
-    const goFetch = async () => {
-        // search input field value assignment
-        searchField = document.getElementById("queryUser").value;
-        try {
-            // Query to the graphql server endpoint for a single user
-            const userSearch = await fetch('/graphql', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify({
-                    query: `query user($username: String!) {
-                        user(username: $username) {
-                            username
-                        }
-                    }`,
-                    variables: `{
-                        "username": "${searchField}"
-                    }`
-                })
-            });
-            // assign query result object to a variable after promise fulfills
-            const searchResult = await userSearch.json();
-            // conditional whether or not query result property matches the search input value
-            if (searchResult.data.user.username === searchField) {
-                console.log('Searched user found:', searchField);
-                setFoundUser(true);
-            } else {
-                setFoundUser(false);
-            }
-        } catch (err) {
-            console.log(err);
-            console.log("No username found in the database!")
-            setFoundUser(false);
-        }
-    }
-
-
-
-
-*/

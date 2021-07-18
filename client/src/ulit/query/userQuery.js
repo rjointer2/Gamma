@@ -13,6 +13,20 @@ export const QUERY_USERS = gql`
         users {
             _id
             username
+            friends
+        }
+    }
+`;
+
+export const ME = gql`
+    query {
+        me {
+        token
+            user {
+                _id
+                friends
+                username
+            }
         }
     }
 `;
