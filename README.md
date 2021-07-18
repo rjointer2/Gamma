@@ -3,11 +3,10 @@
 </p>
 
 <h1 align="center">Real-Time Chat 👋</h1>
-<p> 
-   <img src="https://img.shields.io/badge/license-MIT-Green" />
-</p>
+
 
 <p align="center">
+    <img src="https://img.shields.io/badge/license-MIT-Green" />
     <img src="https://img.shields.io/badge/javascript-yellow" />
     <img src="https://img.shields.io/badge/mongoDB-purple" />
     <img src="https://img.shields.io/badge/express-red" />
@@ -104,9 +103,9 @@ Have a high-quality README (with unique name, description, technologies used, sc
 * dotenv
 * Heroku
 
-## License
+## License ![](https://img.shields.io/badge/license-MIT-Green)
 
-   < MIT License ![](https://img.shields.io/badge/license-MIT-Green)
+   < MIT License 
 
         Copyright (c) 2021 Roosevelt ,Senait, Hung ,Muhammed
 
