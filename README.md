@@ -21,8 +21,6 @@
 
 🔍Gamma (A MERN stack application) can help drive productivity, Return on Investment (ROI) and efficiency in every industry in this era of digitalization. Creating a chat application is always an interesting thing to do. And it is a good way to learn a lot because you are creating some interactions with your application. In-app chat typically means private, bidirectional chat and direct messaging between or more people within a software application. As you know with the release of a few technologies, we can create such an application without any hassle. It is easier than ever. So, we have created a real-time chat app that is powered by Socket.IO and Mern Stack. This is a web application that allows multiple users to have a private and public chat. This app allows one to one chat online and its fast and easy to use, because it's very user friendly. 
 
-### Chat Delivers on the Need for Direct Communication
-Designers are leading the charge on how people are connecting and building relationships with the internet, providing a new layer of communication and decision making through smart chat app design. I hope to showcase a few in-app messaging examples from real companies that are solving real problems.
 
 💻 Below is the deployed application:
 
@@ -58,25 +56,26 @@ Have a clean repository that meets quality coding standards (file structure, nam
 Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 ```
 ## Table of Contents
-- [Description](#description)
-- [User Story](#user-story)
-- [Acceptance Criteria](#acceptance-criteria)
-- [Table of Contents](#table-of-contents)
+- [Description](#Description)
+- [User Story](#User-story)
+- [Acceptance Criteria](#Acceptance-criteria)
+- [Table of Contents](#Table-of-contents)
 - [Technologies-Used](#Technologies-Used)
-- [Available Scripts](#available-scripts)
+- [LICENSE](#License)
+- [Available Scripts](#Available-scripts)
   - [`npm start`](#npm-start)
   - [`npm test`](#npm-test)
   - [`npm run build`](#npm-run-build)
   - [`npm run eject`](#npm-run-eject)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [Questions](#questions)
-- [Learn More](#learn-more)
+- [Testing](#Testing)
+- [Contributing](#Contributing)
+- [Questions](#Questions)
+- [Learn More](#Learn-more)
   - [Code Splitting](#code-splitting)
   - [Analyzing the Bundle Size](#analyzing-the-bundle-size)
   - [Making a Progressive Web App](#making-a-progressive-web-app)
   - [Advanced Configuration](#advanced-configuration)
-  - [Deployment](#deployment)
+  - [Deployment](#Deployment)
   - [`npm run build` fails to minify](#npm-run-build-fails-to-minify)
 
 
@@ -101,6 +100,31 @@ Have a high-quality README (with unique name, description, technologies used, sc
 * HTML
 * dotenv
 * Heroku
+
+## License
+ Our app is under MIT license
+
+       < MIT License
+
+        Copyright (c) 2021 Roosevelt ,Senait, Hung ,Muhammed
+
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE. >
 
 
 ## Available Scripts
