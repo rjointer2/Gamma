@@ -30,9 +30,6 @@ return (
         <NavTitle to='/Sign-in'>
             Gamma
         </NavTitle>
-        <NavLink to='/inprogress'>
-            In Development
-        </NavLink>
         <NavMenu>
             <NavLink to='/Add-a-friend' onClick={(e)=> {
 
@@ -42,7 +39,7 @@ return (
             Add A Friend
 
             </NavLink>
-            <NavLink to='/Sign-in'>
+            <NavLink to='/Signin'>
                 Sign Out
             </NavLink>
         </NavMenu>

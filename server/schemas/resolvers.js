@@ -18,6 +18,15 @@ let resolvers = {
             }
             throw new AuthenticationError('You are not logged in!');
         },
+
+        // get single user
+        user: async (parent, { username }) => {
+            try {
+                return User.findOne({ username })
+            } catch (err) {
+                console.log(err)
+            }
+        },
         
         // get all users
         // this is be redone after the helpers are made
@@ -48,14 +57,14 @@ let resolvers = {
                     email: args.email,
                     password: args.password,
                 });
-                console.log(user);
-                console.log(args)
+                // console.log(user);
+                // console.log(args)
                 const token = signToken(user);
-
+        
                 if(!token) {
                     console.log(token)
                 }
-
+        
                 return { token, user };
             } catch(err) {
                 throw new AuthenticationError(err.message)

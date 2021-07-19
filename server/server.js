@@ -18,7 +18,6 @@ const typeDefs = require('./schemas/typeDefs');
 const resolvers = require('./schemas/resolvers');
 const authMiddleware = require('./utils/auth');
 
-
 console.log(resolvers)
 
 // Express will be invoked in the top level of the file and 
@@ -80,8 +79,7 @@ mongoose.connect(`mongodb+srv://${process.env.UN}:${process.env.PW}@cluster0.kuf
         socket.on("send message", body => {
             io.emit("message", body)
         })
-    })
-        
+    })      
 
 }).catch(err => {
     console.log('failed')

@@ -2,7 +2,6 @@ import styled from 'styled-components';
     
  /* the footer is fixed and may stick behind styles */
 export const FooterBar = styled.div`
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;

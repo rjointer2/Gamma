@@ -4,37 +4,36 @@ import styled from 'styled-components';
   
 const primary = "#5C458B";
 
-// modal wrapper
+// General modal styling and its positioning
 export const ModalBackground = styled.div`
     display: flex; 
     position: fixed; 
     z-index: 20; 
-    // top: 0;
-    // transform: translate(-70%);
     position: absolute;
     top: 35%;
     left: 66%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
-    // overflow: auto; 
-    // background-color: rgb(0,0,0); 
-    // background-color: rgba(0,0,0,0.4); 
 `;
 
+// Modal wrapper 
 export const ModalWrapper = styled.div`
     width: 350px;
     height: 250px;
     box-shadow: 0 5px 16px rgba(0,0.0,0.2);
     background: #fff;
     color: #000;
-    grid-template-columns: 1fr 1fr;
     position: relative;
     z-index: 10;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 `;
 
-//  styling
-export const ModalContent = styled.div`
+//  General content of the modal
+export const ModalContent = styled.form`
     // background-color: #fefefe;
     background-color: ${primary};
     margin: 15% auto; 
@@ -44,10 +43,9 @@ export const ModalContent = styled.div`
     width: 70%;
 `;
 
-//  styling
+//  styling the close icon X
 export const ModalClose = styled.div`
     color: #aaa;
-    // float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -55,22 +53,34 @@ export const ModalClose = styled.div`
     top: 2%;
     right: 2%;
     padding: 0 8px;
-    // transform: translate(0%, -50%);
-    border: 2px solid purple;
+    // border: 2px solid ${primary};
     border-radius: 5px;
 `;
 
-// export const InputContainer = styled.div`
-//     width: 100%;
-//     padding-right: 5px;
-//     // height: 3rem;
-//     border-radius: 5px;
-// `;
-
+// Input field for search
 export const Input = styled.input`
     border-bottom-color: ${primary};
     font-size: large;
     height: 40px;
     width: 100%;
+    border-radius: 5px;
+`;
+
+// Search result text
+export const SearchResult = styled.div`
+    height: 80px;
+    width: 250px;
+    align-items: center;
+    text-align: center;
+    margin-top: -10%;
+`;
+
+// Add friend button styling
+export const AddFriendButton = styled.button`
+    padding: 5px;
+    margin-top: 15px;
+    background-color: ${primary};
+    color: #C5C8D5;
+    font-weight: bold;
     border-radius: 5px;
 `;

@@ -1,91 +1,175 @@
-import {
-    ChatContainer,
-    BffList,
-    Chatbox,
-    TargetedUser,
-    MessageWindow,
-    InputField,
-    InputText,
-    SendButton
-} from './ChatWindowStyles';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
+import io from "socket.io-client";
 
-// components
+import { Column1, Column2, Container as PageContainer, Row, Wrapper } from '../../globalStyles/aligment';
 import FriendList from "../FriendList/FriendList";
 
-// socket.io
-import { io } from 'socket.io-client';
+const Page = styled.div`
+  display: flex;
+  height: 70vh;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+`;
 
-// Hooks
-import { useEffect, useRef, useState } from 'react';
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  max-height: 500px;
+  overflow: auto;
+  width: 400px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  margin-top: 25px;
+`;
 
-// hooks
+const TextArea = styled.textarea`
+  width: 98%;
+  height: 100px;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-size: 17px;
+  background-color: transparent;
+  border: 1px solid lightgray;
+  outline: none;
+  color: lightgray;
+  letter-spacing: 1px;
+  line-height: 20px;
+  ::placeholder {
+    color: lightgray;
+  }
+`;
+
+const Button = styled.button`
+  width: 100%;
+  border: none;
+  height: 50px;
+  border-radius: 10px;
+  color: #5C458B;
+  font-size: 17px;
+`;
+
+const Form = styled.form`
+  width: 400px;
+`;
+
+const MyRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+`;
+
+const MyMessage = styled.div`
+  width: 45%;
+  background-color: pink;
+  color: #46516e;
+  padding: 10px;
+  margin-right: 5px;
+  text-align: center;
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+`;
+
+const PartnerRow = styled(MyRow)`
+  justify-content: flex-start;
+`;
+
+const PartnerMessage = styled.div`
+  width: 45%;
+  background-color: transparent;
+  color: lightgray;
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin-left: 5px;
+  text-align: center;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+`;
 
 const ChatWindow = () => {
+  const [yourID, setYourID] = useState();
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState("");
 
-    const messageWindow = useRef();
+  const socketRef = useRef();
 
-    const [roomID, setRoomID] = useState(null);
-    const [message, setMessage] = useState('');
+  useEffect(() => {
+    socketRef.current = io.connect('/');
 
-    const socket = io('/');
+    socketRef.current.on("your id", id => {
+      setYourID(id);
+    })
 
-    // mock users
-    const user = 'Test';
-    const friendsOfUser = ['John', 'Sam'];
+    socketRef.current.on("message", (message) => {
+      console.log("here");
+      receivedMessage(message);
+    })
+  }, []);
 
-    console.log(message)
+  function receivedMessage(message) {
+    setMessages(oldMsgs => [...oldMsgs, message]);
+  }
 
-    useEffect(() => {
-        // joins server
-        socket.emit('joined_server', user);
-        appendMessageOnClient('You Joined');
-        socket.emit('new-user', user);
-        socket.on('chat-message', data => appendMessageOnClient(data));
-        socket.on('user-connected', data => appendMessageOnClient(`${data} connected to server`));
+  function sendMessage(e) {
+    e.preventDefault();
+    const messageObject = {
+      body: message,
+      id: yourID,
+    };
+    setMessage("");
+    socketRef.current.emit("send message", messageObject);
+  }
 
+  function handleChange(e) {
+    setMessage(e.target.value);
+  }
 
-    }, []);
+  return (
+    <PageContainer>
+        <Wrapper>
+            <Row>
+                <Column1>
+                    <FriendList />
+                </Column1>
+                <Column2>
+                <Page>
+                    <Container>
+                        {messages.map((message, index) => {
+                        if (message.id === yourID) {
+                            return (
+                            <MyRow key={index}>
+                                <MyMessage>
+                                You Wrote: {message.body}
+                                </MyMessage>
+                            </MyRow>
+                            )
+                        }
+                        return (
+                            <PartnerRow key={index}>
+                            <PartnerMessage>
+                                {message.body}
+                            </PartnerMessage>
+                            </PartnerRow>
+                        )
+                        })}
+                    </Container>
+                    <Form onSubmit={sendMessage}>
+                        <TextArea value={message} onChange={handleChange} placeholder="Say something..." />
+                        <Button>Send</Button>
+                    </Form>
+                    </Page>
+                </Column2>
+            </Row>
+        </Wrapper>
+    </PageContainer>
 
-    function appendMessageOnClient(message) {
-        // make a new div of the message
-        const messageDiv = document.createElement('div');
-        messageDiv.innerText = message;
-        messageWindow.current.prepend(messageDiv);
-        //messageWindow.current.children
-    }
-
-    return (
-            <>
-            <ChatContainer>
-                <BffList>  {/*Friends List */}
-                        <FriendList friendsOfUser={friendsOfUser}/> 
-                </BffList> 
-                <Chatbox> {/* 2-way chat window */}
-                        <TargetedUser> {/* username */}
-                            username
-                        </TargetedUser>
-                        {/* pass a prop on here on the chat */}
-                        <MessageWindow ref={messageWindow}> {/* message window */}
-                            
-                        </MessageWindow>
-                        <InputField> {/* bottom input/send container */}
-                            <InputText 
-                                onChange={event => setMessage(event.target.value)}
-                                value={message}
-                            /> {/* input field */}
-                            <SendButton type="submit" onClick={(e) => {
-                                e.preventDefault();
-                                // the state to the server
-                                socket.emit('send_message', message);
-                                appendMessageOnClient(`You wrote: ${message}`)
-                            }}>
-                                Send
-                            </SendButton>
-                        </InputField>
-                </Chatbox>
-            </ChatContainer>
-            </>
-        )
-}
+  );
+};
 
 export default ChatWindow;
