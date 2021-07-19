@@ -64,21 +64,9 @@ Have a high-quality README (with unique name, description, technologies used, sc
 - [Table of Contents](#Table-of-contents)
 - [Technologies-Used](#Technologies-Used)
 - [LICENSE](#License)
-- [Available Scripts](#Available-scripts)
-  - [`npm start`](#npm-start)
-  - [`npm test`](#npm-test)
-  - [`npm run build`](#npm-run-build)
-  - [`npm run eject`](#npm-run-eject)
 - [Testing](#Testing)
 - [Contributing](#Contributing)
 - [Questions](#Questions)
-- [Learn More](#Learn-more)
-  - [Code Splitting](#code-splitting)
-  - [Analyzing the Bundle Size](#analyzing-the-bundle-size)
-  - [Making a Progressive Web App](#making-a-progressive-web-app)
-  - [Advanced Configuration](#advanced-configuration)
-  - [Deployment](#Deployment)
-  - [`npm run build` fails to minify](#npm-run-build-fails-to-minify)
 
 
   ## Technologies-Used
@@ -126,5 +114,19 @@ Have a high-quality README (with unique name, description, technologies used, sc
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
         SOFTWARE. 
+
+## Testing
+✏️
+
+No current testing
+
+## Questions
+✉️ Contact us with any questions:[GitHub](https://github.com/rjointer2/Gamma)<br />
+
+## Contributing
+:octocat: [Rossevelt Jointer](https://github.com/rjointer2)
+:octocat: [Muhammad Tariq](https://github.com/mmtariqk)
+:octocat: [Hung Tang](https://github.com/htang2021)
+:octocat: [Senait Gerezgiher](https://github.com/senait77)
 
 
