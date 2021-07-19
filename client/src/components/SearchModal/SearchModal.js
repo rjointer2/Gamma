@@ -1,6 +1,9 @@
 import { useMutation, useQuery } from '@apollo/client';
+import { useState } from 'react';
 import { ADD_FRIEND } from '../../ulit/mutation/addFriendMutation';
 import { QUERY_USER, QUERY_USERS } from '../../ulit/query/userQuery';
+
+import authClient from '../../ulit/auth/authClient';
 
 import {
     ModalBackground,
@@ -8,76 +11,82 @@ import {
     ModalContent,
     ModalClose,
     Input,
-    SearchResult
+    SearchResult,
+    AddFriendButton
 } from './SearchModalStyles';
 
+// modal to search for username - openModal passed from Navbar
 const SearchModal = ({ openModal }) => {
 
-    // let searchField = document.getElementById("queryUser").value;
-    let searchField = 'test2';
+    const currentUser = authClient.getProfile().data.username;
+    console.log(currentUser)
 
-    const goFetch = () => {
-        // let searchField = document.getElementById("queryUser").value;
-        console.log("Hello world!" + searchField);
-    }
 
-    const { loading, data } = useQuery(QUERY_USER, {
-        variables: { username: searchField }
-    });
+    const [ addFriend, { friendError } ] = useMutation(ADD_FRIEND);
 
-    if(loading) console.log('loading...');
-    if (!data) console.log('no data!');
+    // query to get all user then filter users by the client specifics
+    // then gen in the modal
+    const { data, loading, error } = useQuery(QUERY_USERS);
 
-    fetch('/graphql', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-            QUERY_USER,
-            // variables: { searchField }
-        })
-    }).then(r=> r.json())
-        .then(data => console.log('data returned:', data));
+    const [ input, setInput ] = useState('');
+    const [ aMatch, setAMatch] = useState('');
+    const [ friend, setFriend] = useState('');
+
+    const goFetch = async (e) => {
+        e.preventDefault();
+
+        const foundUser = data.users.filter( user => user.username === input )
+        console.log(foundUser);
+        setFriend(foundUser[0].username);
+    
+        if (foundUser.length) {
+            console.log(`User ${input} found!`);
+            setAMatch(true);
+        } else {
+            console.log(`User ${input} NOT found!`);
+            setAMatch(false);
+        }
+    };
+
     
 
-    // fetch('/graphql', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //         QUERY_USERS,
-    //     })
-    // }).then(r=> r.json())
-    //     .then(data => console.log('data returned:', data));
-    // console.log(data);
+    const addFriendToList = async () => {
 
-
-    // const { loading, data } = useQuery(QUERY_USER);
-    // console.log(data);
-
-
-    // console.log(`Error! ${error}`);
-    // console.log(queryData);
-
-    // const [addFriend, { error }] = useMutation(ADD_FRIEND, {
-    //     update(cache, {data: { addFriend }}) {
-    //         try {
-    //             const { friends } = cache.readQuery({ query: QUERY_USER });
-
-    //             cache.writeQuery({
-    //                 query: QUERY_USER,
-    //                 data: { friends: [addFriend, ...friends] }
-    //             });
-
-    //         } catch (e) {
-    //             console.log(e);
-    //         }
-    //     }
-    // })
+        try {
+            console.log('test')
+            // call the mutation and passed in the variables the 
+            // current logged in user and the username found
+            await addFriend({
+                variables: {
+                    "username": currentUser,
+                    "friendUsername": friend
+                }
+            })
+        } catch(err) {
+            console.log(err)
+            throw new Error('Something went wrong')
+        }
+    }
+ 
+    // conditionally render if searched username is found where 
+    // Add Friend buttonm is displayed
+    const userIsFound = () => {
+        return (
+            <>
+                Username found!
+                <br></br>
+                {/* 
+                
+                    the function uses the hook mutation to take the current
+                    username logged in and the friend => username found 
+                    as varaiable in the function => friends now on clien to see
+                */}
+                <AddFriendButton onClick={addFriendToList}>
+                    Add Friend
+                </AddFriendButton>
+            </>
+        );
+    } 
 
     return (
         // The Modal
@@ -85,17 +94,17 @@ const SearchModal = ({ openModal }) => {
             <ModalBackground>
                 {/* Modal content */}
                 <ModalWrapper>
-                    <ModalContent>
-                        <Input id="queryUser" type="text" placeholder="Search.." />
-                        <button onClick={goFetch}>Search</button>
-            
+                    <ModalContent onSubmit={goFetch} >
+                        <Input id="queryUser" 
+                            type="text"
+                            placeholder="Search.." 
+                            value={input} 
+                            onChange={(e) => setInput(e.target.value)}
+                            />
+                        <button type="submit">Search</button>
                     </ModalContent>
                     <SearchResult>
-                        Matching Result!
-                        <br/>
-                        <button>
-                            Add Friend
-                        </button>
+                        {aMatch ? userIsFound() : `Username ${input} not found!`}
                     </SearchResult>
                     <ModalClose onClick={openModal}>
                         &times;
@@ -107,3 +116,5 @@ const SearchModal = ({ openModal }) => {
 };
 
 export default SearchModal;
+
+

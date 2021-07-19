@@ -143,6 +143,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ✏️
 
 No current testing
+## Questions
+
+✉️ Contact us with any questions:[GitHub](https://github.com/rjointer2/Gamma)<br />
 
 ## Contributing
 :octocat: [Rossevelt Jointer](https://github.com/rjointer2)
@@ -150,8 +153,7 @@ No current testing
 :octocat: [Hung Tang](https://github.com/htang2021)
 :octocat: [Senait Gerezgiher](https://github.com/senait77)
 
-## Questions
-✉️ Contact us with any questions:[GitHub](https://github.com/rjointer2/Gamma)<br />
+
 
 [![ForTheBadge built-with-swag](http://ForTheBadge.com/images/badges/built-with-swag.svg)](https://github.com/rjointer2/Gamma)
 

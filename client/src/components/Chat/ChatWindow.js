@@ -18,6 +18,7 @@ import styled from "styled-components";
 import io from "socket.io-client";
 
 import { Column1, Column2, Container as PageContainer, Row, Wrapper } from '../../globalStyles/aligment';
+import FriendList from "../FriendList/FriendList";
 
 const Page = styled.div`
   display: flex;
@@ -154,7 +155,7 @@ const ChatWindow = () => {
         <Wrapper>
             <Row>
                 <Column1>
-                    Hi
+                    <FriendList />
                 </Column1>
                 <Column2>
                 <Page>
